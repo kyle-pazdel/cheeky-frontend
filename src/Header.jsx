@@ -11,7 +11,9 @@ export function Header() {
             <NavLink to="/login">Login</NavLink> | <NavLink to="/signup">Signup</NavLink>
           </>
         ) : (
-          <LogoutLink />
+          <>
+            <LogoutLink /> | <NavLink to="/me">My Profile</NavLink>
+          </>
         )}
       </nav>
     </header>
