@@ -28,6 +28,23 @@ export function BookingsIndex() {
   return (
     <div>
       <h1>My Bookings!</h1>
+      {bookings.map((booking) => (
+        <div key={booking.id}>
+          <h2>Your Booking with {booking.performer_name}</h2>
+          <p>Location: {booking.location}</p>
+          <p>Event Type: {booking.event_type}</p>
+          <p>Location: {booking.location}</p>
+          <p>Hourly Rate: {booking.performer_rate}</p>
+          <p>Total: {booking.total}</p>
+          <p>
+            Start Time: {booking.start_time} – End Time: {booking.end_time}
+          </p>
+          <p>Location: {booking.location}</p>
+          <small>
+            Contact: {booking.performer_name} {booking.performer_email} {booking.performer_phone_number}
+          </small>
+        </div>
+      ))}
       <Modal show={isBookingVisible} onClose={handleHideBooking}>
         {/* <BookingShow booking={currentBooking} /> */}
       </Modal>
