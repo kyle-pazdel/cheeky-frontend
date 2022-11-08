@@ -7,7 +7,7 @@ export function PerformersShow(props) {
       </p>
       <p>{props.performer.bio}</p>
       <p>
-        gig range: {props.performer.shortest_gig} min – {props.performer.longest_gig}min
+        gig range: {props.performer.shortest_gig}min – {props.performer.longest_gig}min
       </p>
       <p>performance type: {props.performer.performance_type}</p>
       <p>hourly rate: {props.performer.rate}</p>
