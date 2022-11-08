@@ -29,20 +29,30 @@ export function Signup() {
           <li key={error}>{error}</li>
         ))}
       </ul>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} action="/photos" method="post" enctype="multipart/form-data">
         <div>
-          Name: <input name="name" type="text" />
+          First Name: <input name="first_name" type="text" />
+          Last Name: <input name="last_name" type="text" />
         </div>
         <div>
           Email: <input name="email" type="email" />
         </div>
+        <div>
+          Phone Number: <input name="phone_number" type="text" />
+        </div>
+        {/* <div>
+          <input name="photo[image]" type="hidden" />
+          <input name="photo[image] " type="file" />
+        </div> */}
         <div>
           Password: <input name="password" type="password" />
         </div>
         <div>
           Password confirmation: <input name="password_confirmation" type="password" />
         </div>
-        <button type="submit">Signup</button>
+        <button type="submit" value="Create">
+          Signup
+        </button>
       </form>
     </div>
   );
