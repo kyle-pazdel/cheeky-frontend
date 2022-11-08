@@ -6,6 +6,7 @@ import { Footer } from "./Footer";
 import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { UsersShow } from "./UsersShow";
+import { BookingsIndex } from "./BookingsIndex";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/me" element={<UsersShow />} />
+          <Route path="/mybookings" element={<BookingsIndex />} />
         </Routes>
         <Footer />
       </div>

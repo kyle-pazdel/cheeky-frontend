@@ -12,7 +12,7 @@ export function Header() {
           </>
         ) : (
           <>
-            <LogoutLink /> | <NavLink to="/me">My Profile</NavLink>
+            <LogoutLink /> | <NavLink to="/me">My Profile</NavLink> | <NavLink to="/mybookings">My Bookings</NavLink>
           </>
         )}
       </nav>
