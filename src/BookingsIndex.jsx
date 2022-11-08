@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { Modal } from "./Modal";
+import { BookingsShow } from "./BookingsShow";
 
 export function BookingsIndex() {
   const [bookings, setBookings] = useState([]);
@@ -45,10 +46,13 @@ export function BookingsIndex() {
           <small>
             Contact: {booking.performer_name} {booking.performer_email} {booking.performer_phone_number}
           </small>
+          <div>
+            <button onClick={handleShowBooking}>See Booking Details</button>
+          </div>
         </div>
       ))}
       <Modal show={isBookingVisible} onClose={handleHideBooking}>
-        {/* <BookingShow booking={currentBooking} /> */}
+        <BookingsShow booking={currentBooking} />
       </Modal>
     </div>
   );
