@@ -1,8 +1,10 @@
+import { NavLink } from "react-router-dom";
+
 export function Header() {
   return (
     <header>
       <nav>
-        <a href="#">Home</a> | <a href="#">Link</a> | <a href="#">Login</a> | <a href="#">Signup</a> |{" "}
+        <NavLink to="/">Home</NavLink> | <a href="#">Login</a> | <NavLink to="/signup">Signup</NavLink> |{" "}
         <a href="#">Sign Out</a>
       </nav>
     </header>
