@@ -1,7 +1,14 @@
 export function PerformersIndex(props) {
   return (
     <div>
-      <h1>All Queens</h1>
+      {props.performers.map((performer) => (
+        <div key={performer.id}>
+          <h4>{performer.name}</h4>
+          <p>
+            {performer.city}, {performer.state}
+          </p>
+        </div>
+      ))}
     </div>
   );
 }

@@ -8,12 +8,15 @@ export function Home() {
   const handleIndexPerformers = () => {
     axios.get("http://localhost:3000/performers.json").then((response) => {
       console.log(response.data);
+      setPerformers(response.data);
     });
   };
 
+  useEffect(handleIndexPerformers, []);
+
   return (
     <div>
-      <PerformersIndex />
+      <PerformersIndex performers={performers} />
     </div>
   );
 }
