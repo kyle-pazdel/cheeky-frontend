@@ -7,6 +7,7 @@ export function PerformersIndex(props) {
           <p>
             {performer.city}, {performer.state}
           </p>
+          <button>More Info</button>
         </div>
       ))}
     </div>
