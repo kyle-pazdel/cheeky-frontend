@@ -23,7 +23,12 @@ export function UsersShow() {
     setIsFormVisible(false);
   };
 
-  const handleUpdateUser = () => {};
+  const handleUpdateUser = (userId, params) => {
+    axios.patch("http://localhost:3000/users/" + userId + ".json", params).then((response) => {
+      const updatedUser = response.data;
+      setUser(updatedUser);
+    });
+  };
 
   useEffect(handleShowUser, []);
 
@@ -36,7 +41,7 @@ export function UsersShow() {
       <p>Phone Number: {user.phone_number}</p>
       <button onClick={handleShowUserForm}>Edit Account Details</button>
       <Modal show={isFormVisible} onClose={handleHideUserForm}>
-        <UsersUpdate user={user} />
+        <UsersUpdate user={user} onUpdateUser={handleUpdateUser} onHideUserForm={handleHideUserForm} />
       </Modal>
     </div>
   );
