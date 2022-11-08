@@ -30,7 +30,9 @@ export function BookingsIndex() {
       <h1>My Bookings!</h1>
       {bookings.map((booking) => (
         <div key={booking.id}>
-          <h2>Your Booking with {booking.performer_name}</h2>
+          <h2>
+            {booking.event_name} with {booking.performer_name}
+          </h2>
           <p>Location: {booking.location}</p>
           <p>Event Type: {booking.event_type}</p>
           <p>Location: {booking.location}</p>
