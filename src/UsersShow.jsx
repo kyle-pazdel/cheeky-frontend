@@ -39,6 +39,13 @@ export function UsersShow() {
       });
   };
 
+  const handleDestroyUser = () => {
+    axios.delete(`http://localhost:3000/users/${userId}.json`);
+    localStorage.removeItem("jwt");
+    localStorage.removeItem("user_id");
+    window.location.href = "/";
+  };
+
   useEffect(handleShowUser, []);
 
   return (
@@ -59,6 +66,7 @@ export function UsersShow() {
       <Modal show={isFormVisible} onClose={handleHideUserForm}>
         <UsersUpdate user={user} errors={errors} onUpdateUser={handleUpdateUser} onHideUserForm={handleHideUserForm} />
       </Modal>
+      <button onClick={handleDestroyUser}>Delete Account</button>
     </div>
   );
 }
