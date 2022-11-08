@@ -7,7 +7,7 @@ export function PerformersIndex(props) {
           <p>
             {performer.city}, {performer.state}
           </p>
-          <button>More Info</button>
+          <button onClick={() => props.onSelectPerformer(performer)}>More Info</button>
         </div>
       ))}
     </div>

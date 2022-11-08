@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { PerformersIndex } from "./PerfomersIndex";
+import { Modal } from "./Modal";
+import { PerformersShow } from "./PerformersShow";
 
 export function Home() {
   const [performers, setPerformers] = useState([]);
@@ -28,6 +30,9 @@ export function Home() {
   return (
     <div>
       <PerformersIndex performers={performers} onSelectPerformer={handleShowPerformer} />
+      <Modal show={isPerformerVisible} onClose={handleHidePerformer}>
+        <PerformersShow performer={currentPerformer} />
+      </Modal>
     </div>
   );
 }
