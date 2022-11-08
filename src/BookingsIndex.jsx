@@ -6,7 +6,7 @@ import { BookingsShow } from "./BookingsShow";
 export function BookingsIndex() {
   const [bookings, setBookings] = useState([]);
   const [isBookingVisible, setIsBookingVisible] = useState(false);
-  const [currentBooking, setCurrentBooking] = useState([]);
+  const [currentBooking, setCurrentBooking] = useState({});
 
   const handleIndexBookings = () => {
     axios.get("http://localhost:3000/bookings.json").then((response) => {
@@ -47,7 +47,7 @@ export function BookingsIndex() {
             Contact: {booking.performer_name} {booking.performer_email} {booking.performer_phone_number}
           </small>
           <div>
-            <button onClick={handleShowBooking}>See Booking Details</button>
+            <button onClick={() => handleShowBooking(booking)}>See Booking Details</button>
           </div>
         </div>
       ))}
