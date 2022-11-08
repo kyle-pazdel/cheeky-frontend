@@ -7,6 +7,8 @@ export function UsersShow() {
   const [user, setUser] = useState({});
   const userId = localStorage.getItem("user_id");
   const [isFormVisible, setIsFormVisible] = useState(false);
+  const [errors, setErrors] = useState([]);
+  const [status, setStatus] = useState(null);
 
   const handleShowUser = () => {
     axios.get("http://localhost:3000/users/" + userId + ".json").then((response) => {
@@ -24,10 +26,17 @@ export function UsersShow() {
   };
 
   const handleUpdateUser = (userId, params) => {
-    axios.patch("http://localhost:3000/users/" + userId + ".json", params).then((response) => {
-      const updatedUser = response.data;
-      setUser(updatedUser);
-    });
+    axios
+      .patch("http://localhost:3000/users/" + userId + ".json", params)
+      .then((response) => {
+        const updatedUser = response.data;
+        setUser(updatedUser);
+      })
+      .catch((error) => {
+        console.log(error.response);
+        setErrors(error.response.data.errors);
+        setStatus(error.response.status);
+      });
   };
 
   useEffect(handleShowUser, []);
@@ -40,8 +49,15 @@ export function UsersShow() {
       <p>Email: {user.email}</p>
       <p>Phone Number: {user.phone_number}</p>
       <button onClick={handleShowUserForm}>Edit Account Details</button>
+      {errors !== undefined ? (
+        <ul>
+          {errors.map((error) => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
+      ) : null}
       <Modal show={isFormVisible} onClose={handleHideUserForm}>
-        <UsersUpdate user={user} onUpdateUser={handleUpdateUser} onHideUserForm={handleHideUserForm} />
+        <UsersUpdate user={user} errors={errors} onUpdateUser={handleUpdateUser} onHideUserForm={handleHideUserForm} />
       </Modal>
     </div>
   );
