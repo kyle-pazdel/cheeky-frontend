@@ -17,6 +17,7 @@ export function BookingsIndex() {
   };
 
   const handleShowBooking = (booking) => {
+    console.log(booking);
     setIsBookingVisible(true);
     setCurrentBooking(booking);
   };
