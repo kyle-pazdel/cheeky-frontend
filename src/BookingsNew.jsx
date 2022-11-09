@@ -1,6 +1,7 @@
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import DayJs from "react-dayjs";
 
 export function BookingsNew() {
   const location = useLocation();
@@ -8,6 +9,16 @@ export function BookingsNew() {
   const performer = location.state.performer;
   const userId = location.state.userId;
   const [errors, setErrors] = useState([]);
+  const [start, setStart] = useState("");
+  const [end, setEnd] = useState("");
+  const [total, setTotal] = useState(null);
+
+  const handleTotal = () => {
+    console.log(Date.parse(start));
+    console.log(Date.parse(end));
+    console.log((Date.parse(end) - Date.parse(start)) / 3600000);
+    setTotal((Date.parse(end) - Date.parse(start)) / 3600000);
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -25,6 +36,8 @@ export function BookingsNew() {
         setErrors(error.response.data.errors);
       });
   };
+
+  useEffect(handleTotal);
   return (
     <div>
       <h1>Book with {performer.name}</h1>
@@ -50,13 +63,33 @@ export function BookingsNew() {
           <div>
             Postal Code: <input name="postal_code" type="text" />
           </div>
+          <div></div>
           <div>
             Event Type: <input name="event_type" type="text" />
           </div>
           <div>
-            Start Time: <input name="start_time" type="datetime-local" />
-            End Time: <input name="end_time" type="datetime-local" />
+            <label>
+              Start Time: <p>{start}</p>
+              <input
+                value={start}
+                name="start_time"
+                type="datetime-local"
+                onChange={(event) => setStart(event.target.value)}
+              />
+            </label>
           </div>
+          <div>
+            <label>
+              End Time: <p>{end}</p>
+              <input
+                value={end}
+                name="end_time"
+                type="datetime-local"
+                onChange={(event) => setEnd(event.target.value)}
+              />
+            </label>
+          </div>
+          <h3>Total: {total}</h3>
           <button type="submit">Submit</button>
         </form>
       </div>
