@@ -17,13 +17,19 @@ export function BookingsIndex() {
   };
 
   const handleShowBooking = (booking) => {
-    console.log(booking);
     setIsBookingVisible(true);
     setCurrentBooking(booking);
   };
 
   const handleHideBooking = () => {
     setIsBookingVisible(false);
+  };
+
+  const handleDestroyBooking = (booking) => {
+    console.log("handleDestroyBooking");
+    axios.delete(`http://localhost:3000/bookings/${booking.id}.json`).then((response) => {
+      setBookings(bookings.filter((b) => b.id !== booking.id));
+    });
   };
 
   useEffect(handleIndexBookings, []);
@@ -56,7 +62,11 @@ export function BookingsIndex() {
         </div>
       ))}
       <Modal show={isBookingVisible} onClose={handleHideBooking}>
-        <BookingsShow booking={currentBooking} />
+        <BookingsShow
+          booking={currentBooking}
+          onDestroyBooking={handleDestroyBooking}
+          onCancelBooking={handleHideBooking}
+        />
       </Modal>
     </div>
   );

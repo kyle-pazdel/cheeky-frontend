@@ -4,6 +4,11 @@ import { BookingsUpdate } from "./BookingsUpdate";
 export function BookingsShow(props) {
   const startTime = props.booking.start_time;
   const endTime = props.booking.end_time;
+
+  const handleClick = () => {
+    props.onDestroyBooking(props.booking);
+    props.onCancelBooking();
+  };
   return (
     <div>
       <h2>
@@ -23,6 +28,9 @@ export function BookingsShow(props) {
         Contact: {props.booking.performer_name} {props.booking.performer_email} {props.booking.performer_phone_number}
       </small>
       <BookingsUpdate booking={props.booking} />
+      <div>
+        <button onClick={handleClick}>Cancel Booking</button>
+      </div>
     </div>
   );
 }

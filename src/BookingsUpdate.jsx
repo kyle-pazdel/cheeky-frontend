@@ -14,7 +14,6 @@ export function BookingsUpdate(props) {
     setDuration((Date.parse(end) - Date.parse(start)) / 3600000);
   };
   const handleTotal = () => {
-    console.log(booking.performer_rate);
     setTotal(duration * booking.performer_rate);
   };
 
@@ -78,7 +77,9 @@ export function BookingsUpdate(props) {
         </div>
         {duration > 0 ? <h3>Updated Duration: {duration} hours</h3> : <h3>Updated Duration: 0</h3>}
         {total > 0 ? <h3>Updated Total: ${total}</h3> : <h3>Updated Total: $0</h3>}
-        <button type="submit">Submit</button>
+        <div>
+          <button type="submit">Submit</button>
+        </div>
       </form>
     </div>
   );
