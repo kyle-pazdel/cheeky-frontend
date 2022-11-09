@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 export function PerformersIndex(props) {
   return (
     <div>
@@ -7,7 +9,8 @@ export function PerformersIndex(props) {
           <p>
             {performer.city}, {performer.state}
           </p>
-          <button onClick={() => props.onSelectPerformer(performer)}>More Info</button>
+          {/* <button onClick={() => props.onSelectPerformer(performer)}>More Info</button> */}
+          <Link to={`/performers/${performer.id}`}>More Info</Link>
         </div>
       ))}
     </div>

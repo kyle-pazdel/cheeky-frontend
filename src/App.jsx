@@ -9,6 +9,7 @@ import { UsersShow } from "./UsersShow";
 import { BookingsIndex } from "./BookingsIndex";
 import { BookingsNew } from "./BookingsNew";
 import DayJs from "react-dayjs";
+import { PerformersShow } from "./PerformersShow";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/performers/:id" element={<PerformersShow />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/me" element={<UsersShow />} />

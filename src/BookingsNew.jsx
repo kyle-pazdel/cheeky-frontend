@@ -24,17 +24,6 @@ export function BookingsNew() {
     event.preventDefault();
     setErrors([]);
     const params = new FormData(event.target);
-    axios
-      .post("http://localhost:3000/bookings.json", params)
-      .then((response) => {
-        console.log(response.data);
-        event.target.reset();
-        window.location.href = "/my-bookings"; // Change this to hide a modal, redirect to a specific page, etc.
-      })
-      .catch((error) => {
-        console.log(error.response.data.errors);
-        setErrors(error.response.data.errors);
-      });
   };
 
   useEffect(handleDuration);
