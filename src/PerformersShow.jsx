@@ -29,7 +29,9 @@ export function PerformersShow(props) {
         <h3>{performer.name}'s Reviews</h3>
         {performer.performer_reviews.map((review) => (
           <div key={review.id}>
-            <p>{review.comment}</p>
+            <p>
+              {review.rating} ~ {review.comment}
+            </p>
           </div>
         ))}
       </div>
