@@ -7,6 +7,7 @@ import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { UsersShow } from "./UsersShow";
 import { BookingsIndex } from "./BookingsIndex";
+import { BookingsNew } from "./BookingsNew";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/me" element={<UsersShow />} />
           <Route path="/my-bookings" element={<BookingsIndex />} />
+          <Route path="/book" element={<BookingsNew />} />
         </Routes>
         <Footer />
       </div>
