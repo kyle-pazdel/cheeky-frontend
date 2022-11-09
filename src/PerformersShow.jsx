@@ -7,24 +7,32 @@ export function PerformersShow(props) {
 
   return (
     <div>
-      <h4>{props.performer.name}</h4>
+      <h4>{performer.name}</h4>
       <p>
-        {props.performer.city}, {props.performer.state}
+        {performer.city}, {performer.state}
       </p>
-      <p>{props.performer.bio}</p>
+      <p>{performer.bio}</p>
       <p>
-        gig range: {props.performer.shortest_gig}min – {props.performer.longest_gig}min
+        gig range: {performer.shortest_gig}min – {performer.longest_gig}min
       </p>
-      <p>performance type: {props.performer.performance_type}</p>
-      <p>hourly rate: {props.performer.rate}</p>
-      <p>{props.performer.email}</p>
-      <p>@{props.performer.twitter_handle} on Twitter</p>
-      <p>{props.performer.instagram_handle} on Instagram</p>
+      <p>performance type: {performer.performance_type}</p>
+      <p>hourly rate: {performer.rate}</p>
+      <p>{performer.email}</p>
+      <p>@{performer.twitter_handle} on Twitter</p>
+      <p>{performer.instagram_handle} on Instagram</p>
       {localStorage.jwt !== undefined ? (
         <Link to="/book" state={{ performer, userId }}>
           Book Now
         </Link>
       ) : null}
+      <div>
+        <h3>{performer.name}'s Reviews</h3>
+        {performer.performer_reviews.map((review) => (
+          <div key={review.id}>
+            <p>{review.comment}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
