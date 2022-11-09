@@ -1,4 +1,3 @@
-import DayJs from "react-dayjs";
 import { BookingsUpdate } from "./BookingsUpdate";
 import { useParams } from "react-router-dom";
 import { ReviewsNew } from "./ReviewsNew";
@@ -61,8 +60,7 @@ export function BookingsShow() {
       <p>Hourly Rate: {booking.performer_rate}</p>
       <p>Total: {booking.total}</p>
       <p>
-        Start Time: <DayJs format="MMMM D, YYYY">{startTime}</DayJs> at <DayJs format="h:mm A">{startTime}</DayJs> – End
-        Time: <DayJs format="MMMM D, YYYY">{endTime}</DayJs> at <DayJs format="h:mm A">{endTime}</DayJs>
+        Start Time: {startTime} – End Time: {endTime}
       </p>
       <p>
         Location: {booking.address} {booking.city} {booking.state} {booking.postal_code}

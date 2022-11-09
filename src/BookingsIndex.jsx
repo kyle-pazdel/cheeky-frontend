@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import DayJs from "react-dayjs";
 
 export function BookingsIndex() {
   const [bookings, setBookings] = useState([]);
@@ -23,9 +22,7 @@ export function BookingsIndex() {
           <h2>
             {booking.event_name} with {booking.performer_name}
           </h2>
-          <p>
-            Date: <DayJs format="MMMM D, YYYY">{booking.start_time}</DayJs>
-          </p>
+          <p>Date: {booking.start_time}</p>
           <div>
             <Link to={`/bookings/${booking.id}`}>See Booking Details</Link>
           </div>

@@ -1,5 +1,4 @@
 import axios from "axios";
-import DayJs from "react-dayjs";
 import { useState, useEffect } from "react";
 
 export function BookingsUpdate(props) {

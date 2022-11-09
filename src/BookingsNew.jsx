@@ -1,7 +1,5 @@
-import { useLocation } from "react-router-dom";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import DayJs from "react-dayjs";
 
 export function BookingsNew(props) {
   const performer = props.performer;
@@ -55,6 +53,9 @@ export function BookingsNew(props) {
           <div></div>
           <div>
             Event Type: <input name="event_type" type="text" />
+          </div>
+          <div>
+            <></>
           </div>
           <div>
             <label>

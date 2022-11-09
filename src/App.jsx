@@ -9,7 +9,7 @@ import { UsersShow } from "./UsersShow";
 import { BookingsIndex } from "./BookingsIndex";
 import { BookingsShow } from "./BookingsShow";
 import { BookingsNew } from "./BookingsNew";
-import DayJs from "react-dayjs";
+// import DayJs from "react-dayjs";
 import { PerformersShow } from "./PerformersShow";
 
 function App() {
