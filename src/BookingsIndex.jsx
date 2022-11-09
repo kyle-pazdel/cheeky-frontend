@@ -32,13 +32,6 @@ export function BookingsIndex() {
     });
   };
 
-  const handleCreateReview = (params) => {
-    console.log(params);
-    axios.post("http://localhost:3000/reviews.json", params).then((response) => {
-      console.log(response.data);
-    });
-  };
-
   useEffect(handleIndexBookings, []);
 
   return (
@@ -73,7 +66,6 @@ export function BookingsIndex() {
           booking={currentBooking}
           onDestroyBooking={handleDestroyBooking}
           onCancelBooking={handleHideBooking}
-          onCreateReview={handleCreateReview}
         />
       </Modal>
     </div>

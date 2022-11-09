@@ -1,20 +1,27 @@
 import DayJs from "react-dayjs";
 import { BookingsUpdate } from "./BookingsUpdate";
+import { ReviewsNew } from "./ReviewsNew";
+import { Modal } from "./Modal";
+import { useState } from "react";
+import axios from "axios";
 
 export function BookingsShow(props) {
   const startTime = props.booking.start_time;
   const endTime = props.booking.end_time;
+  // const [isReviewFormVisible, setIsReviewFormVisible] = useState(false);
 
   const handleClick = () => {
     props.onDestroyBooking(props.booking);
     props.onCancelBooking();
   };
 
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    const params = new FormData(event.target);
-    props.onCreateReview(params, () => event.target.reset());
+  const handleCreateReview = (params) => {
+    console.log(params);
+    axios.post("http://localhost:3000/reviews.json", params).then((response) => {
+      console.log(response.data);
+    });
   };
+
   return (
     <div>
       <h2>
@@ -37,25 +44,7 @@ export function BookingsShow(props) {
       <div>
         <button onClick={handleClick}>Cancel Booking</button>
       </div>
-      <form onSubmit={handleFormSubmit}>
-        <input type="hidden" name="booking_id" value={props.booking.id}></input>
-        <label>
-          Leave a Review
-          <input name="comment" type="text" />
-        </label>
-        <select name="rating">
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option selected value="5">
-            5
-          </option>
-        </select>
-        <div>
-          <button type="submit">Submit</button>
-        </div>
-      </form>
+      <ReviewsNew booking={props.booking} onCreateReview={handleCreateReview} />
     </div>
   );
 }
