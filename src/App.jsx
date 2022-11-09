@@ -8,6 +8,7 @@ import { Login } from "./Login";
 import { UsersShow } from "./UsersShow";
 import { BookingsIndex } from "./BookingsIndex";
 import { BookingsNew } from "./BookingsNew";
+import DayJs from "react-dayjs";
 
 function App() {
   return (

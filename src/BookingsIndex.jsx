@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import DayJs from "react-dayjs";
 import { Modal } from "./Modal";
 import { BookingsShow } from "./BookingsShow";
 
@@ -40,7 +41,7 @@ export function BookingsIndex() {
           <p>Hourly Rate: {booking.performer_rate}</p>
           <p>Total: {booking.total}</p>
           <p>
-            Start Time: {booking.start_time} – End Time: {booking.end_time}
+            Start Time: <DayJs>{booking.start_time}</DayJs> – End Time: <DayJs>{booking.end_time}</DayJs>
           </p>
           <p>Location: {booking.location}</p>
           <small>
