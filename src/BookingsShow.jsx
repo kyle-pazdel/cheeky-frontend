@@ -3,17 +3,40 @@ import { BookingsUpdate } from "./BookingsUpdate";
 import { useParams } from "react-router-dom";
 import { ReviewsNew } from "./ReviewsNew";
 import { Modal } from "./Modal";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 export function BookingsShow() {
-  const startTime = props.booking.start_time;
-  const endTime = props.booking.end_time;
+  const params = useParams();
+  console.log(params);
+  const [booking, setBooking] = useState({});
+  const [isBookingUpdateVisible, setIsBookingUpdateVisible] = useState(false);
+
+  const startTime = booking.start_time;
+  const endTime = booking.end_time;
+
+  const handleShowBooking = () => {
+    axios.get(`http://localhost:3000/bookings/${params.id}.json`).then((response) => {
+      console.log(response.data);
+      setBooking(response.data);
+    });
+  };
+
+  const handleShowUpdateBooking = () => {
+    setIsBookingUpdateVisible(true);
+  };
+
+  const handleHideUpdateBooking = () => {
+    setIsBookingUpdateVisible(false);
+  };
+
+  useEffect(handleShowBooking, []);
+
   // const [isReviewFormVisible, setIsReviewFormVisible] = useState(false);
 
-  const handleClick = () => {
-    props.onDestroyBooking(props.booking);
-    props.onCancelBooking();
+  const handleDestroyBooking = (booking) => {
+    console.log("handleDestroyBooking");
+    axios.delete(`http://localhost:3000/bookings/${booking.id}.json`).then((window.location.href = `/my-bookings`));
   };
 
   const handleCreateReview = (params) => {
@@ -26,26 +49,31 @@ export function BookingsShow() {
   return (
     <div>
       <h2>
-        {props.booking.event_name} with {props.booking.performer_name}
+        {booking.event_name} with {booking.performer_name}
       </h2>
-      <p>Event Type: {props.booking.event_type}</p>
-      <p>Hourly Rate: {props.booking.performer_rate}</p>
-      <p>Total: {props.booking.total}</p>
+      <p>Event Type: {booking.event_type}</p>
+      <p>Hourly Rate: {booking.performer_rate}</p>
+      <p>Total: {booking.total}</p>
       <p>
         Start Time: <DayJs format="MMMM D, YYYY">{startTime}</DayJs> at <DayJs format="h:mm A">{startTime}</DayJs> – End
         Time: <DayJs format="MMMM D, YYYY">{endTime}</DayJs> at <DayJs format="h:mm A">{endTime}</DayJs>
       </p>
       <p>
-        Location: {props.booking.address} {props.booking.city} {props.booking.state} {props.booking.postal_code}
+        Location: {booking.address} {booking.city} {booking.state} {booking.postal_code}
       </p>
       <small>
-        Contact: {props.booking.performer_name} {props.booking.performer_email} {props.booking.performer_phone_number}
+        Contact: {booking.performer_name} {booking.performer_email} {booking.performer_phone_number}
       </small>
-      <BookingsUpdate booking={props.booking} />
       <div>
-        <button onClick={handleClick}>Cancel Booking</button>
+        <button onClick={handleShowUpdateBooking}>Update Booking Details</button>
       </div>
-      <ReviewsNew booking={props.booking} onCreateReview={handleCreateReview} />
+      <Modal show={isBookingUpdateVisible} onClose={handleHideUpdateBooking}>
+        <BookingsUpdate booking={booking} />
+      </Modal>
+      <div>
+        <button onClick={handleDestroyBooking}>Cancel Booking</button>
+      </div>
+      <ReviewsNew booking={booking} onCreateReview={handleCreateReview} />
     </div>
   );
 }

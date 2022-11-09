@@ -13,13 +13,6 @@ export function BookingsIndex() {
     });
   };
 
-  const handleDestroyBooking = (booking) => {
-    console.log("handleDestroyBooking");
-    axios.delete(`http://localhost:3000/bookings/${booking.id}.json`).then((response) => {
-      setBookings(bookings.filter((b) => b.id !== booking.id));
-    });
-  };
-
   useEffect(handleIndexBookings, []);
 
   return (
