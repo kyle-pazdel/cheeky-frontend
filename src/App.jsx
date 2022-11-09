@@ -7,6 +7,7 @@ import { Signup } from "./Signup";
 import { Login } from "./Login";
 import { UsersShow } from "./UsersShow";
 import { BookingsIndex } from "./BookingsIndex";
+import { BookingsShow } from "./BookingsShow";
 import { BookingsNew } from "./BookingsNew";
 import DayJs from "react-dayjs";
 import { PerformersShow } from "./PerformersShow";
@@ -23,6 +24,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/me" element={<UsersShow />} />
           <Route path="/my-bookings" element={<BookingsIndex />} />
+          <Route path="/bookings/:id" element={<BookingsShow />} />
           <Route path="/book" element={<BookingsNew />} />
         </Routes>
         <Footer />

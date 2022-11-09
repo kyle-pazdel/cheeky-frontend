@@ -1,11 +1,12 @@
 import DayJs from "react-dayjs";
 import { BookingsUpdate } from "./BookingsUpdate";
+import { useParams } from "react-router-dom";
 import { ReviewsNew } from "./ReviewsNew";
 import { Modal } from "./Modal";
 import { useState } from "react";
 import axios from "axios";
 
-export function BookingsShow(props) {
+export function BookingsShow() {
   const startTime = props.booking.start_time;
   const endTime = props.booking.end_time;
   // const [isReviewFormVisible, setIsReviewFormVisible] = useState(false);

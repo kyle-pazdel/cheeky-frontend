@@ -1,28 +1,16 @@
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import DayJs from "react-dayjs";
-import { Modal } from "./Modal";
-import { BookingsShow } from "./BookingsShow";
 
 export function BookingsIndex() {
   const [bookings, setBookings] = useState([]);
-  const [isBookingVisible, setIsBookingVisible] = useState(false);
-  const [currentBooking, setCurrentBooking] = useState({});
 
   const handleIndexBookings = () => {
     axios.get("http://localhost:3000/bookings.json").then((response) => {
       console.log(response.data);
       setBookings(response.data);
     });
-  };
-
-  const handleShowBooking = (booking) => {
-    setIsBookingVisible(true);
-    setCurrentBooking(booking);
-  };
-
-  const handleHideBooking = () => {
-    setIsBookingVisible(false);
   };
 
   const handleDestroyBooking = (booking) => {
@@ -57,17 +45,10 @@ export function BookingsIndex() {
             Contact: {booking.performer_name} {booking.performer_email} {booking.performer_phone_number}
           </small>
           <div>
-            <button onClick={() => handleShowBooking(booking)}>See Booking Details</button>
+            <Link to={`/bookings/${booking.id}`}>See Booking Details</Link>
           </div>
         </div>
       ))}
-      <Modal show={isBookingVisible} onClose={handleHideBooking}>
-        <BookingsShow
-          booking={currentBooking}
-          onDestroyBooking={handleDestroyBooking}
-          onCancelBooking={handleHideBooking}
-        />
-      </Modal>
     </div>
   );
 }
