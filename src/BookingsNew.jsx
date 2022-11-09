@@ -11,13 +11,15 @@ export function BookingsNew() {
   const [errors, setErrors] = useState([]);
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
+  const [duration, setDuration] = useState("");
   const [total, setTotal] = useState(null);
 
+  const handleDuration = () => {
+    setDuration((Date.parse(end) - Date.parse(start)) / 3600000);
+  };
   const handleTotal = () => {
-    console.log(Date.parse(start));
-    console.log(Date.parse(end));
-    console.log((Date.parse(end) - Date.parse(start)) / 3600000);
-    setTotal((Date.parse(end) - Date.parse(start)) / 3600000);
+    console.log(performer.rate);
+    setTotal(duration * performer.rate);
   };
 
   const handleSubmit = (event) => {
@@ -37,6 +39,7 @@ export function BookingsNew() {
       });
   };
 
+  useEffect(handleDuration);
   useEffect(handleTotal);
   return (
     <div>
@@ -51,6 +54,7 @@ export function BookingsNew() {
         <form onSubmit={handleSubmit}>
           <input type="hidden" name="user_id" value={userId}></input>
           <input type="hidden" name="performer_id" value={performer.id}></input>
+          <input type="hidden" name="total" value={total}></input>
           <div>
             Event Name: <input name="event_name" type="text" />
           </div>
@@ -89,7 +93,8 @@ export function BookingsNew() {
               />
             </label>
           </div>
-          <h3>Total: {total}</h3>
+          {duration > 0 ? <h3>Duration: {duration} hours</h3> : <h3>Duration: 0</h3>}
+          {total > 0 ? <h3>Total: ${total}</h3> : <h3>Total: $0</h3>}
           <button type="submit">Submit</button>
         </form>
       </div>
