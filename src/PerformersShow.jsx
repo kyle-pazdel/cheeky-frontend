@@ -20,9 +20,11 @@ export function PerformersShow(props) {
       <p>{props.performer.email}</p>
       <p>@{props.performer.twitter_handle} on Twitter</p>
       <p>{props.performer.instagram_handle} on Instagram</p>
-      <Link to="/book" state={{ performer, userId }}>
-        Book Now
-      </Link>
+      {localStorage.jwt !== undefined ? (
+        <Link to="/book" state={{ performer, userId }}>
+          Book Now
+        </Link>
+      ) : null}
     </div>
   );
 }
