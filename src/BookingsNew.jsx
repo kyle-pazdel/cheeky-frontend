@@ -5,9 +5,7 @@ import DayJs from "react-dayjs";
 
 export function BookingsNew() {
   const location = useLocation();
-  // const { performer } = location.state;
   const performer = location.state.performer;
-  const userId = location.state.userId;
   const [errors, setErrors] = useState([]);
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
@@ -44,7 +42,6 @@ export function BookingsNew() {
   return (
     <div>
       <h1>Book with {performer.name}</h1>
-      <p>Your user id # is {userId}</p>
       <div>
         {/* <ul>
           {errors.map((error) => (
@@ -52,7 +49,6 @@ export function BookingsNew() {
           ))}
         </ul> */}
         <form onSubmit={handleSubmit}>
-          <input type="hidden" name="user_id" value={userId}></input>
           <input type="hidden" name="performer_id" value={performer.id}></input>
           <input type="hidden" name="total" value={total}></input>
           <div>

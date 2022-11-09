@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { BookingsNew } from "./BookingsNew";
 
 export function PerformersShow(props) {
-  const userId = localStorage.getItem("user_id");
   const performer = props.performer;
 
   return (
@@ -21,7 +20,7 @@ export function PerformersShow(props) {
       <p>@{performer.twitter_handle} on Twitter</p>
       <p>{performer.instagram_handle} on Instagram</p>
       {localStorage.jwt !== undefined ? (
-        <Link to="/book" state={{ performer, userId }}>
+        <Link to="/book" state={{ performer }}>
           Book Now
         </Link>
       ) : null}
