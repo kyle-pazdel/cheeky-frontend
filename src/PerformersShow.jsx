@@ -28,17 +28,14 @@ export function PerformersShow() {
   };
 
   const handleCreateBooking = (params) => {
-    axios
-      .post("http://localhost:3000/bookings.json", params)
-      .then((response) => {
-        console.log(response.data);
-        event.target.reset();
-        window.location.href = "/my-bookings"; // Change this to hide a modal, redirect to a specific page, etc.
-      })
-      .catch((error) => {
-        console.log(error.response.data.errors);
-        setErrors(error.response.data.errors);
-      });
+    axios.post("http://localhost:3000/bookings.json", params).then((response) => {
+      console.log(response.data);
+      window.location.href = "/my-bookings"; // Change this to hide a modal, redirect to a specific page, etc.
+    });
+    // .catch((error) => {
+    //   console.log(error.response.data.errors);
+    //   setErrors(error.response.data.errors);
+    // });
   };
 
   return (
@@ -56,9 +53,9 @@ export function PerformersShow() {
       <p>{performer.email}</p>
       <p>@{performer.twitter_handle} on Twitter</p>
       <p>{performer.instagram_handle} on Instagram</p>
-      {localStorage.jwt !== undefined ? <button onClick={() => handleShowBookingForm()}></button> : null}
+      {localStorage.jwt !== undefined ? <button onClick={() => handleShowBookingForm()}>Book Now</button> : null}
       <Modal show={isBookingFormVisible} onClose={handleHideBookingForm}>
-        <BookingsNew onCreateBooking={handleCreateBooking} />
+        <BookingsNew performer={performer} onCreateBooking={handleCreateBooking} />
       </Modal>
       <div>
         <h3>{performer.name}'s Reviews</h3>

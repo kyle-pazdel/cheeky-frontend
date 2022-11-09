@@ -3,9 +3,8 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import DayJs from "react-dayjs";
 
-export function BookingsNew() {
-  const location = useLocation();
-  const performer = location.state.performer;
+export function BookingsNew(props) {
+  const performer = props.performer;
   const [errors, setErrors] = useState([]);
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
@@ -24,6 +23,7 @@ export function BookingsNew() {
     event.preventDefault();
     setErrors([]);
     const params = new FormData(event.target);
+    props.onCreateBooking(params, () => event.target.reset());
   };
 
   useEffect(handleDuration);
@@ -32,11 +32,11 @@ export function BookingsNew() {
     <div>
       <h1>Book with {performer.name}</h1>
       <div>
-        {/* <ul>
-          {errors.map((error) => (
+        <ul>
+          {errors?.map((error) => (
             <li key={error}>{error}</li>
           ))}
-        </ul> */}
+        </ul>
         <form onSubmit={handleSubmit}>
           <input type="hidden" name="performer_id" value={performer.id}></input>
           <input type="hidden" name="total" value={total}></input>
