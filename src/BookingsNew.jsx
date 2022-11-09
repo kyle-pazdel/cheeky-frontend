@@ -12,7 +12,7 @@ export function BookingsNew() {
   const [start, setStart] = useState("");
   const [end, setEnd] = useState("");
   const [duration, setDuration] = useState("");
-  const [total, setTotal] = useState(null);
+  const [total, setTotal] = useState("");
 
   const handleDuration = () => {
     setDuration((Date.parse(end) - Date.parse(start)) / 3600000);

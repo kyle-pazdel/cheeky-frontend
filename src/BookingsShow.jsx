@@ -1,6 +1,5 @@
-import { useEffect } from "react";
 import DayJs from "react-dayjs";
-import dayjs from "dayjs";
+import { BookingsUpdate } from "./BookingsUpdate";
 
 export function BookingsShow(props) {
   const startTime = props.booking.start_time;
@@ -23,6 +22,7 @@ export function BookingsShow(props) {
       <small>
         Contact: {props.booking.performer_name} {props.booking.performer_email} {props.booking.performer_phone_number}
       </small>
+      <BookingsUpdate booking={props.booking} />
     </div>
   );
 }
