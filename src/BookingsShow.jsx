@@ -11,6 +11,7 @@ export function BookingsShow() {
   console.log(params);
   const [booking, setBooking] = useState({});
   const [isBookingUpdateVisible, setIsBookingUpdateVisible] = useState(false);
+  const [reviews, setReviews] = useState([]);
 
   const startTime = booking.start_time;
   const endTime = booking.end_time;
@@ -32,6 +33,11 @@ export function BookingsShow() {
 
   useEffect(handleShowBooking, []);
 
+  const handleIndexReviews = (review) => {
+    setReviews(booking.reviews);
+  };
+
+  useEffect(handleIndexReviews);
   // const [isReviewFormVisible, setIsReviewFormVisible] = useState(false);
 
   const handleDestroyBooking = (booking) => {
@@ -73,7 +79,14 @@ export function BookingsShow() {
       <div>
         <button onClick={handleDestroyBooking}>Cancel Booking</button>
       </div>
-      <ReviewsNew booking={booking} onCreateReview={handleCreateReview} />
+      {reviews?.map((review) => (
+        <div>
+          <p>
+            {review.rating} ~ {review.comment}
+          </p>
+        </div>
+      ))}
+      <ReviewsNew booking={booking} onSubmitReview={handleIndexReviews} onCreateReview={handleCreateReview} />
     </div>
   );
 }
