@@ -2,3 +2,7 @@ html {
   scroll-behavior: smooth;
 }
 
+.leaflet-container {
+  width: 7100;
+  height: 50vh;
+}
