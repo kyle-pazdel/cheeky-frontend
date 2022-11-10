@@ -42,7 +42,7 @@ export function DatePickerComponent(props) {
         selectsEnd
         startDate={props.end}
         endDate={props.end}
-        mindDate={props.start}
+        minDate={props.start}
         onChange={(date) => props.setEnd(date)}
         showTimeSelect
         dateFormat="MMMM d, yyyy h:mmaa"
