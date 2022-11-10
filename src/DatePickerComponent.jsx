@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import styled from "styled-components";
 
 export function DatePickerComponent() {
   const [startDate, setStartDate] = useState(null);
@@ -42,7 +41,8 @@ export function DatePickerComponent() {
         mindDate={startDate}
         onChange={(date) => setEndDate(date)}
         showTimeSelect
-        dateFormat="Pp"
+        dateFormat="MMMM d, yyyy h:mmaa"
+        // dateFormat="Pp"
         allowSameDay={true}
         name="end_time"
       />

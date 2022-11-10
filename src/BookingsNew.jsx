@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { DatePickerComponent } from "./DatePickerComponent";
+import TableDatePicker from "./TableDatePicker";
 
 export function BookingsNew(props) {
   const performer = props.performer;
@@ -58,7 +59,8 @@ export function BookingsNew(props) {
           <div>
             <></>
           </div>
-          <DatePickerComponent />
+          {/* <DatePickerComponent /> */}
+          <TableDatePicker />
           {/* <div>
             <label>
               Start Time: <p>{start}</p>
