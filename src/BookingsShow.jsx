@@ -75,7 +75,6 @@ export function BookingsShow() {
       <Modal show={isBookingUpdateVisible} onClose={handleHideUpdateBooking}>
         <BookingsUpdate booking={booking} />
       </Modal>
-      <DatePickerComponent />
       <div>
         <button onClick={handleDestroyBooking}>Cancel Booking</button>
       </div>

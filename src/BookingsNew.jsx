@@ -1,6 +1,4 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { DatePickerComponent } from "./DatePickerComponent";
 import TableDatePicker from "./TableDatePicker";
 
 export function BookingsNew(props) {
@@ -95,23 +93,6 @@ export function BookingsNew(props) {
             <input type="text" value={eventType} onChange={handleEventTypeChange}></input>
             <p>{eventType}</p>
           </label>
-
-          {/* <div>
-            address: <input name="address" type="text" />
-          </div>
-          <div>
-            City: <input name="city" type="text" /> State: <input name="state" type="text" />
-          </div>
-          <div>
-            Postal Code: <input name="postal_code" type="text" />
-          </div>
-          <div></div>
-          <div>
-            Event Type: <input name="event_type" type="text" />
-          </div>
-          <div>
-            <></>
-          </div> */}
           <div>
             <TableDatePicker start={start} setStart={setStart} end={end} setEnd={setEnd} />
           </div>
