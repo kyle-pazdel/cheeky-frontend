@@ -32,7 +32,7 @@ export function BookingsUpdate(props) {
       end_time: end,
     };
     axios
-      .patch(`http://localhost:3000/bookings/${booking.id}.json`, params)
+      .patch(`/bookings/${booking.id}.json`, params)
       .then((response) => {
         console.log(response.data);
         event.target.reset();

@@ -11,7 +11,7 @@ export function UsersShow() {
   const [status, setStatus] = useState(null);
 
   const handleShowUser = () => {
-    axios.get("http://localhost:3000/users/" + userId + ".json").then((response) => {
+    axios.get("/users/" + userId + ".json").then((response) => {
       console.log(response.data);
       setUser(response.data);
     });
@@ -27,7 +27,7 @@ export function UsersShow() {
 
   const handleUpdateUser = (userId, params) => {
     axios
-      .patch("http://localhost:3000/users/" + userId + ".json", params)
+      .patch("/users/" + userId + ".json", params)
       .then((response) => {
         const updatedUser = response.data;
         setUser(updatedUser);
@@ -40,7 +40,7 @@ export function UsersShow() {
   };
 
   const handleDestroyUser = () => {
-    axios.delete(`http://localhost:3000/users/${userId}.json`);
+    axios.delete(`/users/${userId}.json`);
     localStorage.removeItem("jwt");
     localStorage.removeItem("user_id");
     window.location.href = "/";

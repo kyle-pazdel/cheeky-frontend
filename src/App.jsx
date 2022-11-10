@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import axios from "axios";
 import { Header } from "./Header";
 import { Home } from "./Home";
 import { Footer } from "./Footer";
@@ -13,6 +14,8 @@ import { BookingsNew } from "./BookingsNew";
 import { PerformersShow } from "./PerformersShow";
 
 function App() {
+  axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
+
   return (
     <BrowserRouter>
       <div>

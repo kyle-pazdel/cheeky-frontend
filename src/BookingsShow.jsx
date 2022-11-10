@@ -17,7 +17,7 @@ export function BookingsShow() {
   const endTime = booking.end_time;
 
   const handleShowBooking = () => {
-    axios.get(`http://localhost:3000/bookings/${params.id}.json`).then((response) => {
+    axios.get(`/bookings/${params.id}.json`).then((response) => {
       console.log(response.data);
       setBooking(response.data);
     });
@@ -42,12 +42,12 @@ export function BookingsShow() {
 
   const handleDestroyBooking = (booking) => {
     console.log("handleDestroyBooking");
-    axios.delete(`http://localhost:3000/bookings/${booking.id}.json`).then((window.location.href = `/my-bookings`));
+    axios.delete(`/bookings/${booking.id}.json`).then((window.location.href = `/my-bookings`));
   };
 
   const handleCreateReview = (params) => {
     console.log(params);
-    axios.post("http://localhost:3000/reviews.json", params).then((response) => {
+    axios.post("/reviews.json", params).then((response) => {
       console.log(response.data);
     });
   };

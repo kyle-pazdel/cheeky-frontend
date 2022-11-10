@@ -10,7 +10,7 @@ export function PerformersShow() {
   const [isBookingFormVisible, setIsBookingFormVisible] = useState(false);
 
   const handleShowPerformer = () => {
-    axios.get(`http://localhost:3000/performers/${params.id}.json`).then((response) => {
+    axios.get(`/performers/${params.id}.json`).then((response) => {
       console.log(response.data);
       setPerformer(response.data);
     });
@@ -28,7 +28,7 @@ export function PerformersShow() {
   };
 
   const handleCreateBooking = (params) => {
-    axios.post("http://localhost:3000/bookings.json", params).then((response) => {
+    axios.post("/bookings.json", params).then((response) => {
       console.log(response.data);
       window.location.href = "/my-bookings"; // Change this to hide a modal, redirect to a specific page, etc.
     });

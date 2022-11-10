@@ -6,7 +6,7 @@ export function BookingsIndex() {
   const [bookings, setBookings] = useState([]);
 
   const handleIndexBookings = () => {
-    axios.get("http://localhost:3000/bookings.json").then((response) => {
+    axios.get("/bookings.json").then((response) => {
       console.log(response.data);
       setBookings(response.data);
     });
