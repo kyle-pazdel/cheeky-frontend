@@ -16,10 +16,10 @@ const Styles = styled.div`
   }
 `;
 
-export default function TableDatePicker() {
+export default function TableDatePicker(props) {
   return (
     <Styles>
-      <DatePickerComponent />
+      <DatePickerComponent start={props.start} setStart={props.setStart} end={props.end} setEnd={props.setEnd} />
     </Styles>
   );
 }

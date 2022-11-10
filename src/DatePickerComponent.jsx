@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
-export function DatePickerComponent() {
-  const [startDate, setStartDate] = useState(null);
-  console.log(startDate);
-  const [endDate, setEndDate] = useState(null);
+export function DatePickerComponent(props) {
+  // const [startDate, setStartDate] = useState(null);
+  // console.log(startDate);
+  // const [endDate, setEndDate] = useState(null);
 
+  const handleStartChange = (event) => {
+    props.start(event.target.value);
+  };
   return (
     <div>
       Start Date:
@@ -16,16 +19,17 @@ export function DatePickerComponent() {
           return new Date() <= d;
         }}
         placeholderText="Select Start Date"
-        selected={startDate}
+        selected={props.start}
         selectsStart
-        startDate={startDate}
-        endDate={endDate}
-        onChange={(date) => setStartDate(date)}
+        startDate={props.start}
+        endDate={props.end}
+        onChange={(date) => props.setStart(date)}
         showTimeSelect
         dateFormat="MMMM d, yyyy h:mmaa"
         // dateFormat="Pp"
         allowSameDay={true}
-        name="start_time"
+        // value={props.start}
+        // onChange={handleStartChange}
       />
       End Date:
       <DatePicker
@@ -34,18 +38,21 @@ export function DatePickerComponent() {
           return new Date() <= d;
         }}
         placeholderText="Select End Date"
-        selected={endDate}
+        selected={props.end}
         selectsEnd
-        startDate={startDate}
-        endDate={endDate}
-        mindDate={startDate}
-        onChange={(date) => setEndDate(date)}
+        startDate={props.end}
+        endDate={props.end}
+        mindDate={props.start}
+        onChange={(date) => props.setEnd(date)}
         showTimeSelect
         dateFormat="MMMM d, yyyy h:mmaa"
         // dateFormat="Pp"
         allowSameDay={true}
-        name="end_time"
       />
+      <div>
+        <p>Selected start date: {props.start ? props.start.toString() : null}</p>
+        <p>Selected end date: {props.end ? props.end.toString() : null}</p>
+      </div>
     </div>
   );
 }

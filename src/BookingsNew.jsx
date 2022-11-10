@@ -6,17 +6,14 @@ import TableDatePicker from "./TableDatePicker";
 export function BookingsNew(props) {
   const performer = props.performer;
   const [errors, setErrors] = useState([]);
-  const [start, setStart] = useState("");
-  const [end, setEnd] = useState("");
-  const [duration, setDuration] = useState("");
-  const [total, setTotal] = useState("");
+  const [start, setStart] = useState(null);
+  const [end, setEnd] = useState(null);
+  const duration = (end - start) / 3600000;
+  const total = duration * performer.rate;
 
-  const handleDuration = () => {
-    setDuration((Date.parse(end) - Date.parse(start)) / 3600000);
-  };
   const handleTotal = () => {
     console.log(performer.rate);
-    setTotal(duration * performer.rate);
+    setTotal();
   };
 
   const handleSubmit = (event) => {
@@ -26,8 +23,6 @@ export function BookingsNew(props) {
     props.onCreateBooking(params, () => event.target.reset());
   };
 
-  useEffect(handleDuration);
-  useEffect(handleTotal);
   return (
     <div>
       <h1>Book with {performer.name}</h1>
@@ -60,7 +55,9 @@ export function BookingsNew(props) {
             <></>
           </div>
           {/* <DatePickerComponent /> */}
-          <TableDatePicker />
+          <div>
+            <TableDatePicker start={start} setStart={setStart} end={end} setEnd={setEnd} />
+          </div>
           {/* <div>
             <label>
               Start Time: <p>{start}</p>
@@ -84,8 +81,8 @@ export function BookingsNew(props) {
               />
             </label>
           </div> */}
-          {duration > 0 ? <h3>Duration: {duration} hours</h3> : <h3>Duration: 0</h3>}
-          {total > 0 ? <h3>Total: ${total}</h3> : <h3>Total: $0</h3>}
+          <h3>Duration: {duration}</h3>
+          <h3>Total: ${total}</h3>
           <button type="submit">Submit</button>
         </form>
       </div>
