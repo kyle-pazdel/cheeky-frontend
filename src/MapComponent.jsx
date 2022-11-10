@@ -4,7 +4,7 @@ import { GeoSearchControl, OpenStreetMapProvider } from "leaflet-geosearch";
 import { useEffect } from "react";
 import "leaflet/dist/leaflet.css";
 
-export function MapPage() {
+export function MapComponent() {
   const SearchField = () => {
     const provider = new OpenStreetMapProvider();
 

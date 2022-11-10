@@ -4,7 +4,7 @@ import { PerformersIndex } from "./PerfomersIndex";
 import { Modal } from "./Modal";
 import { PerformersShow } from "./PerformersShow";
 import { Link } from "react-router-dom";
-import { MapPage } from "./MapPage";
+import { MapComponent } from "./MapComponent";
 
 export function Home() {
   const [performers, setPerformers] = useState([]);

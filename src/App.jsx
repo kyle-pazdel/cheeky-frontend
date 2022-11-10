@@ -12,7 +12,7 @@ import { BookingsShow } from "./BookingsShow";
 import { BookingsNew } from "./BookingsNew";
 // import DayJs from "react-dayjs";
 import { PerformersShow } from "./PerformersShow";
-import { MapPage } from "./MapPage";
+import { MapComponent } from "./MapComponent";
 
 function App() {
   axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
@@ -30,7 +30,7 @@ function App() {
           <Route path="/my-bookings" element={<BookingsIndex />} />
           <Route path="/bookings/:id" element={<BookingsShow />} />
           <Route path="/book" element={<BookingsNew />} />
-          <Route path="/map" element={<MapPage />} />
+          <Route path="/map" element={<MapComponent />} />
         </Routes>
         <Footer />
       </div>

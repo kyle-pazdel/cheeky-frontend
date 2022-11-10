@@ -4,7 +4,7 @@ import { ReviewsNew } from "./ReviewsNew";
 import { Modal } from "./Modal";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { MapPage } from "./MapPage";
+import { MapComponent } from "./MapComponent";
 
 export function BookingsShow() {
   const params = useParams();
@@ -59,7 +59,7 @@ export function BookingsShow() {
         {booking.event_name} with {booking.performer_name}
       </h2>
       <div>
-        <MapPage />
+        <MapComponent />
       </div>
       <p>Event Type: {booking.event_type}</p>
       <p>Hourly Rate: {booking.performer_rate}</p>
