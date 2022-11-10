@@ -4,7 +4,6 @@ import { ReviewsNew } from "./ReviewsNew";
 import { Modal } from "./Modal";
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { DatePickerComponent } from "./DatePickerComponent";
 
 export function BookingsShow() {
   const params = useParams();
@@ -20,6 +19,7 @@ export function BookingsShow() {
     axios.get(`/bookings/${params.id}.json`).then((response) => {
       console.log(response.data);
       setBooking(response.data);
+      setReviews(response.data.reviews);
     });
   };
 
@@ -33,22 +33,22 @@ export function BookingsShow() {
 
   useEffect(handleShowBooking, []);
 
-  const handleIndexReviews = (review) => {
-    setReviews(booking.reviews);
-  };
-
-  useEffect(handleIndexReviews);
-  // const [isReviewFormVisible, setIsReviewFormVisible] = useState(false);
+  // const handleClick = () => {
+  //   handleDestroyBooking();
+  // };
 
   const handleDestroyBooking = (booking) => {
     console.log("handleDestroyBooking");
     axios.delete(`/bookings/${booking.id}.json`).then((window.location.href = `/my-bookings`));
   };
 
+  // const [isReviewFormVisible, setIsReviewFormVisible] = useState(false);
+
   const handleCreateReview = (params) => {
     console.log(params);
     axios.post("/reviews.json", params).then((response) => {
       console.log(response.data);
+      setReviews([...reviews, response.data]);
     });
   };
 
@@ -76,7 +76,7 @@ export function BookingsShow() {
         <BookingsUpdate booking={booking} />
       </Modal>
       <div>
-        <button onClick={handleDestroyBooking}>Cancel Booking</button>
+        <button onClick={() => handleDestroyBooking(booking)}>Cancel Booking</button>
       </div>
       {reviews?.map((review) => (
         <div>
@@ -85,7 +85,7 @@ export function BookingsShow() {
           </p>
         </div>
       ))}
-      <ReviewsNew booking={booking} onSubmitReview={handleIndexReviews} onCreateReview={handleCreateReview} />
+      <ReviewsNew booking={booking} onCreateReview={handleCreateReview} />
     </div>
   );
 }

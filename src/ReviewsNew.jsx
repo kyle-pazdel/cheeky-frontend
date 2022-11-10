@@ -3,8 +3,7 @@ export function ReviewsNew(props) {
     event.preventDefault();
     const params = new FormData(event.target);
     props.onCreateReview(params);
-    props.onSubmitReview();
-    window.location.href = `/bookings/${props.booking.id}`;
+    // window.location.href = `/bookings/${props.booking.id}`;
     event.target.reset();
   };
 
