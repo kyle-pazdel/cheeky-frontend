@@ -4,6 +4,7 @@ import { ReviewsNew } from "./ReviewsNew";
 import { Modal } from "./Modal";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { DatePickerComponent } from "./DatePickerComponent";
 
 export function BookingsShow() {
   const params = useParams();
@@ -74,6 +75,7 @@ export function BookingsShow() {
       <Modal show={isBookingUpdateVisible} onClose={handleHideUpdateBooking}>
         <BookingsUpdate booking={booking} />
       </Modal>
+      <DatePickerComponent />
       <div>
         <button onClick={handleDestroyBooking}>Cancel Booking</button>
       </div>

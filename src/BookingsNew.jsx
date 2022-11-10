@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { DatePickerComponent } from "./DatePickerComponent";
 
 export function BookingsNew(props) {
   const performer = props.performer;
@@ -57,7 +58,8 @@ export function BookingsNew(props) {
           <div>
             <></>
           </div>
-          <div>
+          <DatePickerComponent />
+          {/* <div>
             <label>
               Start Time: <p>{start}</p>
               <input
@@ -67,6 +69,7 @@ export function BookingsNew(props) {
                 onChange={(event) => setStart(event.target.value)}
               />
             </label>
+            
           </div>
           <div>
             <label>
@@ -78,7 +81,7 @@ export function BookingsNew(props) {
                 onChange={(event) => setEnd(event.target.value)}
               />
             </label>
-          </div>
+          </div> */}
           {duration > 0 ? <h3>Duration: {duration} hours</h3> : <h3>Duration: 0</h3>}
           {total > 0 ? <h3>Total: ${total}</h3> : <h3>Total: $0</h3>}
           <button type="submit">Submit</button>
