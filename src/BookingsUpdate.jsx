@@ -72,30 +72,42 @@ export function BookingsUpdate(props) {
       <p>{eventType}</p>
       <form onSubmit={handleSubmit}>
         <input type="hidden" name="total" value={total}></input>
-        <label>
-          Event Name:
-          <input type="text" value={eventName} onChange={handleEventNameChange}></input>
-        </label>
-        <label>
-          Address:
-          <input type="text" value={address} onChange={handleAddressChange}></input>
-        </label>
-        <label>
-          City:
-          <input type="text" value={city} onChange={handleCityChange}></input>
-        </label>
-        <label>
-          State:
-          <input type="text" value={eventState} onChange={handleEventStateChange}></input>
-        </label>
-        <label>
-          Postal Code:
-          <input type="text" value={postalCode} onChange={handlePostalCodeChange}></input>
-        </label>
-        <label>
-          Event Type:
-          <input type="text" value={eventType} onChange={handleEventTypeChange}></input>
-        </label>
+        <div>
+          <label>
+            Event Name:
+            <input type="text" value={eventName} onChange={handleEventNameChange}></input>
+          </label>
+        </div>
+        <div>
+          <label>
+            Address:
+            <input type="text" value={address} onChange={handleAddressChange}></input>
+          </label>
+        </div>
+        <div>
+          <label>
+            City:
+            <input type="text" value={city} onChange={handleCityChange}></input>
+          </label>
+        </div>
+        <div>
+          <label>
+            State:
+            <input type="text" value={eventState} onChange={handleEventStateChange}></input>
+          </label>
+        </div>
+        <div>
+          <label>
+            Postal Code:
+            <input type="text" value={postalCode} onChange={handlePostalCodeChange}></input>
+          </label>
+        </div>
+        <div>
+          <label>
+            Event Type:
+            <input type="text" value={eventType} onChange={handleEventTypeChange}></input>
+          </label>
+        </div>
         <div>
           <TableDatePicker start={start} setStart={setStart} end={end} setEnd={setEnd} />
         </div>
