@@ -9,7 +9,6 @@ import { ReviewsUpdate } from "./ReviewsUpdate";
 
 export function BookingsShow() {
   const params = useParams();
-  console.log(params);
   const [booking, setBooking] = useState({});
   const [isBookingUpdateVisible, setIsBookingUpdateVisible] = useState(false);
   const [reviews, setReviews] = useState([]);
