@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import TableDatePicker from "./TableDatePicker";
 
 export function BookingsUpdate(props) {
@@ -70,6 +70,11 @@ export function BookingsUpdate(props) {
       <p>{eventState}</p>
       <p>{postalCode}</p>
       <p>{eventType}</p>
+      <ul>
+        {errors?.map((error) => (
+          <li key={error}>{error}</li>
+        ))}
+      </ul>
       <form onSubmit={handleSubmit}>
         <input type="hidden" name="total" value={total}></input>
         <div>
@@ -113,42 +118,6 @@ export function BookingsUpdate(props) {
         </div>
         <h3>Duration: {duration > 0 ? duration : 0}</h3>
         <h3>Total: ${total > 0 ? total : 0}</h3>
-        {/* <div>
-          Event Name: <input name="event_name" defaultValue={props.booking.event_name} type="text" />
-        </div>
-        <div>
-          address: <input name="address" defaultValue={props.booking.address} type="text" />
-        </div>
-        <div>
-          City: <input name="city" defaultValue={props.booking.city} type="text" /> State:{" "}
-          <input name="state" defaultValue={props.booking.state} type="text" />
-        </div>
-        <div>
-          Postal Code: <input name="postal_code" defaultValue={props.booking.postal_code} type="text" />
-        </div>
-        <div></div>
-        <div>
-          Event Type: <input name="event_type" defaultValue={props.booking.event_type} type="text" />
-        </div> 
-        <div>
-          <label>
-            Updated Start Time: <p>{start}</p>
-            <input
-              value={start}
-              name="start_time"
-              type="datetime-local"
-              onChange={(event) => setStart(event.target.value)}
-            />
-          </label>
-        </div>
-        <div>
-          <label>
-            Updated End Time: <p>{end}</p>
-            <input value={end} name="end_time" type="datetime-local" onChange={(event) => setEnd(event.target.value)} />
-          </label>
-        </div> 
-        {duration > 0 ? <h3>Updated Duration: {duration} hours</h3> : <h3>Updated Duration: 0</h3>}
-        {total > 0 ? <h3>Updated Total: ${total}</h3> : <h3>Updated Total: $0</h3>} */}
         <div>
           <button type="submit">Submit</button>
         </div>

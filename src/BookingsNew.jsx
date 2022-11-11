@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import TableDatePicker from "./TableDatePicker";
 
 export function BookingsNew(props) {

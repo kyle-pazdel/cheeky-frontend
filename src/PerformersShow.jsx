@@ -21,7 +21,6 @@ export function PerformersShow() {
 
   const handleShowBookingForm = (performer) => {
     setIsBookingFormVisible(true);
-    // setCurrentPerformer(performer);
   };
 
   const handleHideBookingForm = () => {
@@ -33,16 +32,12 @@ export function PerformersShow() {
       .post("/bookings.json", params)
       .then((response) => {
         console.log(response.data);
-        window.location.href = "/my-bookings"; // Change this to hide a modal, redirect to a specific page, etc.
+        window.location.href = `/bookings/${response.data.id}`;
       })
       .catch((error) => {
         console.log(error.response.data.errors);
         setErrors(error.response.data.errors);
       });
-    // .catch((error) => {
-    //   console.log(error.response.data.errors);
-    //   setErrors(error.response.data.errors);
-    // });
   };
 
   return (
