@@ -2,19 +2,22 @@ export function ReviewsUpdate(props) {
   const handleSubmit = (event) => {
     event.preventDefault();
     const params = new FormData(event.target);
-    props.onUpdateReview(params);
+    props.onUpdateReview(props.review.id, params);
     props.onClose();
     event.target.reset();
   };
 
+  const handleClose = () => {
+    props.onClose();
+  };
+
   return (
     <div>
-      <h1>{props.review.comment}</h1>
       <form onSubmit={handleSubmit}>
         <input type="hidden" name="booking_id" value={props.booking.id}></input>
         <label>
           Leave a Review
-          <input name="comment" type="text" />
+          <input name="comment" type="text" defaultValue={props.review.comment} />
         </label>
         <select name="rating">
           <option value="1">1</option>
@@ -27,6 +30,9 @@ export function ReviewsUpdate(props) {
         </select>
         <div>
           <button type="submit">Submit</button>
+        </div>
+        <div>
+          <button onClick={handleClose}>Cancel</button>
         </div>
       </form>
     </div>

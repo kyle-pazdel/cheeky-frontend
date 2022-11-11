@@ -13,8 +13,7 @@ export function BookingsShow() {
   const [booking, setBooking] = useState({});
   const [isBookingUpdateVisible, setIsBookingUpdateVisible] = useState(false);
   const [reviews, setReviews] = useState([]);
-  const [isReviewUpdateVisible, setIsReviewUpdateVisible] = useState(false);
-  const [currentReview, setCurrentReview] = useState({});
+  const [isReviewUpdateVisible, setIsReviewUpdateVisible] = useState(0);
 
   const startTime = booking.start_time;
   const endTime = booking.end_time;
@@ -36,13 +35,11 @@ export function BookingsShow() {
   };
 
   const handleShowUpdateReview = (review) => {
-    setIsReviewUpdateVisible(true);
-    setCurrentReview(review);
-    console.log(currentReview);
+    setIsReviewUpdateVisible(review.id);
   };
 
   const handleHideUpdateReview = () => {
-    setIsReviewUpdateVisible(false);
+    setIsReviewUpdateVisible(0);
   };
 
   useEffect(handleShowBooking, []);
@@ -66,13 +63,25 @@ export function BookingsShow() {
     });
   };
 
-  const handleUpdateReview = (params) => {
+  const handleUpdateReview = (id, params) => {
     console.log(params);
-    axios.patch(`/reviews/${currentReview.id}.json`, params).then((response) => {
+    axios.patch(`/reviews/${id}.json`, params).then((response) => {
       console.log(response.data);
-      setReviews([...currentReview, response.data]);
+      setReviews(
+        reviews.map((review) => {
+          if (review.id === response.data.id) {
+            return response.data;
+          } else {
+            return review;
+          }
+        })
+      );
     });
   };
+
+  // const handleDestroyReview = () => {
+  //   axios.delete(`/reviews/${}`)
+  // };
 
   return (
     <div>
@@ -105,16 +114,17 @@ export function BookingsShow() {
       </div>
       {reviews?.map((review) => (
         <div key={review.id}>
-          {isReviewUpdateVisible === false ? (
+          {isReviewUpdateVisible !== review.id ? (
             <div>
               <p>
                 {review.rating} ~ {review.comment}
               </p>
-              <button onClick={handleShowUpdateReview}>Edit Review</button>
+              <button onClick={() => handleShowUpdateReview(review)}>Edit Review</button>
+              {/* <button onClick={() => handleDestroyReview(review)}>Delete Review</button> */}
             </div>
           ) : (
             <ReviewsUpdate
-              review={currentReview}
+              review={review}
               booking={booking}
               onUpdateReview={handleUpdateReview}
               onClose={handleHideUpdateReview}
