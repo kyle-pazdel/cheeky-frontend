@@ -2,9 +2,11 @@ export function PerformersIndexAdmin(props) {
   return (
     <div>
       <h1>Your Performers</h1>
-      {props.performers.map((performer) => (
+      {props.performers?.map((performer) => (
         <div>
-          <h3>{performer.name}</h3>
+          <h3>
+            {performer.name} ID: {performer.id}
+          </h3>
           <p>Phone Number: {performer.phone_number}</p>
           <p>Email: {performer.email}</p>
           <p>Shortest Gig: {performer.shortest_gig}</p>
