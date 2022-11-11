@@ -79,9 +79,11 @@ export function BookingsShow() {
     });
   };
 
-  // const handleDestroyReview = () => {
-  //   axios.delete(`/reviews/${}`)
-  // };
+  const handleDestroyReview = (review) => {
+    axios.delete(`/reviews/${review.id}.json`).then((response) => {
+      setReviews(reviews.filter((r) => r.id !== review.id));
+    });
+  };
 
   return (
     <div>
@@ -120,7 +122,7 @@ export function BookingsShow() {
                 {review.rating} ~ {review.comment}
               </p>
               <button onClick={() => handleShowUpdateReview(review)}>Edit Review</button>
-              {/* <button onClick={() => handleDestroyReview(review)}>Delete Review</button> */}
+              <button onClick={() => handleDestroyReview(review)}>Delete Review</button>
             </div>
           ) : (
             <ReviewsUpdate
