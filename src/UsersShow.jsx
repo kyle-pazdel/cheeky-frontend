@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { Modal } from "./Modal";
 import { UsersUpdate } from "./UsersUpdate";
+import { PerformersIndexAdmin } from "./PerformersIndexAdmin";
 
 export function UsersShow() {
   const [user, setUser] = useState({});
@@ -14,6 +15,9 @@ export function UsersShow() {
     axios.get("/users/" + userId + ".json").then((response) => {
       console.log(response.data);
       setUser(response.data);
+      // {
+      //   response.data.is_admin === true ? localStorage.setItem("is_admin", response.data.is_admin) : null;
+      // }
     });
   };
 
@@ -66,7 +70,15 @@ export function UsersShow() {
       <Modal show={isFormVisible} onClose={handleHideUserForm}>
         <UsersUpdate user={user} errors={errors} onUpdateUser={handleUpdateUser} onHideUserForm={handleHideUserForm} />
       </Modal>
-      <button onClick={handleDestroyUser}>Delete Account</button>
+      {user.is_admin === true ? (
+        <div>
+          <h2>Manage Performer Accounts</h2>
+          <PerformersIndexAdmin performers={user.performers} />
+        </div>
+      ) : null}
+      <div>
+        <button onClick={handleDestroyUser}>Delete Account</button>
+      </div>
     </div>
   );
 }
