@@ -5,6 +5,7 @@ import { Modal } from "./Modal";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { MapComponent } from "./MapComponent";
+import { ReviewsUpdate } from "./ReviewsUpdate";
 
 export function BookingsShow() {
   const params = useParams();
@@ -12,6 +13,8 @@ export function BookingsShow() {
   const [booking, setBooking] = useState({});
   const [isBookingUpdateVisible, setIsBookingUpdateVisible] = useState(false);
   const [reviews, setReviews] = useState([]);
+  const [isReviewUpdateVisible, setIsReviewUpdateVisible] = useState(false);
+  const [currentReview, setCurrentReview] = useState({});
 
   const startTime = booking.start_time;
   const endTime = booking.end_time;
@@ -30,6 +33,16 @@ export function BookingsShow() {
 
   const handleHideUpdateBooking = () => {
     setIsBookingUpdateVisible(false);
+  };
+
+  const handleShowUpdateReview = (review) => {
+    setIsReviewUpdateVisible(true);
+    setCurrentReview(review);
+    console.log(currentReview);
+  };
+
+  const handleHideUpdateReview = () => {
+    setIsReviewUpdateVisible(false);
   };
 
   useEffect(handleShowBooking, []);
@@ -53,13 +66,21 @@ export function BookingsShow() {
     });
   };
 
+  const handleUpdateReview = (params) => {
+    console.log(params);
+    axios.patch(`/reviews/${currentReview.id}.json`, params).then((response) => {
+      console.log(response.data);
+      setReviews([...currentReview, response.data]);
+    });
+  };
+
   return (
     <div>
       <h2>
         {booking.event_name} with {booking.performer_name}
       </h2>
       <div>
-        <MapComponent latitude={booking.latitude} longitude={booking.longitude} />
+        <MapComponent booking={booking} latitude={booking.latitude} longitude={booking.longitude} />
       </div>
       <p>Event Type: {booking.event_type}</p>
       <p>Hourly Rate: {booking.performer_rate}</p>
@@ -77,19 +98,32 @@ export function BookingsShow() {
         <button onClick={handleShowUpdateBooking}>Update Booking Details</button>
       </div>
       <Modal show={isBookingUpdateVisible} onClose={handleHideUpdateBooking}>
-        <BookingsUpdate booking={booking} />
+        <BookingsUpdate onCancel={handleHideUpdateBooking} booking={booking} />
       </Modal>
       <div>
         <button onClick={() => handleDestroyBooking(booking)}>Cancel Booking</button>
       </div>
       {reviews?.map((review) => (
         <div key={review.id}>
-          <p>
-            {review.rating} ~ {review.comment}
-          </p>
+          {isReviewUpdateVisible === false ? (
+            <div>
+              <p>
+                {review.rating} ~ {review.comment}
+              </p>
+              <button onClick={handleShowUpdateReview}>Edit Review</button>
+            </div>
+          ) : (
+            <ReviewsUpdate
+              review={currentReview}
+              booking={booking}
+              onUpdateReview={handleUpdateReview}
+              onClose={handleHideUpdateReview}
+            />
+          )}
         </div>
       ))}
-      {/* <ReviewsNew booking={booking} onCreateReview={handleCreateReview} /> */}
+      <h2>Leave a Review</h2>
+      <ReviewsNew booking={booking} onCreateReview={handleCreateReview} />
     </div>
   );
 }

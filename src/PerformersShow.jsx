@@ -66,6 +66,9 @@ export function PerformersShow() {
             <p>
               {review.rating} ~ {review.comment}
             </p>
+            <small>
+              by {review.user.first_name} {review.user.last_name} on {review.created_at}
+            </small>
           </div>
         ))}
       </div>

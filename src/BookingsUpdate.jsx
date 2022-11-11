@@ -120,6 +120,7 @@ export function BookingsUpdate(props) {
         <h3>Total: ${total > 0 ? total : 0}</h3>
         <div>
           <button type="submit">Submit</button>
+          <button onClick={() => props.onCancel()}>Cancel</button>
         </div>
       </form>
     </div>

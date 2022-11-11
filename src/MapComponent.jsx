@@ -16,7 +16,10 @@ export function MapComponent(props) {
             />
             <Marker position={position}>
               <Popup>
-                A pretty CSS3 popup. <br /> Easily customizable.
+                {props.booking.event_name}
+                <br />
+                {props.booking.address}, <br />
+                {props.booking.city}, {props.booking.state}
               </Popup>
             </Marker>
           </MapContainer>
