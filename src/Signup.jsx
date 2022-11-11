@@ -47,7 +47,7 @@ export function Signup() {
       is_admin: isAdmin,
     };
     axios
-      .post("/users", params)
+      .post("/users.json", params)
       .then((response) => {
         console.log(response.data);
         event.target.reset();
@@ -63,7 +63,7 @@ export function Signup() {
     <div id="signup">
       <h1>Signup</h1>
       <ul>
-        {errors.map((error) => (
+        {errors?.map((error) => (
           <li key={error}>{error}</li>
         ))}
       </ul>
@@ -106,7 +106,7 @@ export function Signup() {
           </label>
           <label>
             Signing Up as a Queen?:
-            <input type="checkbox" value={isAdmin} onChange={handleIsAdminChange}></input>
+            <input type="checkbox" value={`${isAdmin}`} onChange={handleIsAdminChange}></input>
           </label>
           <p>Is "My Value" checked? {isAdmin.toString()}</p>
         </div>
