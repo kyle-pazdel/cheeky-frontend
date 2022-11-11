@@ -6,6 +6,7 @@ import { Modal } from "./Modal";
 
 export function PerformersShow() {
   const params = useParams();
+  const [errors, setErrors] = useState([]);
   const [performer, setPerformer] = useState({});
   const [isBookingFormVisible, setIsBookingFormVisible] = useState(false);
 
@@ -28,10 +29,16 @@ export function PerformersShow() {
   };
 
   const handleCreateBooking = (params) => {
-    axios.post("/bookings.json", params).then((response) => {
-      console.log(response.data);
-      window.location.href = "/my-bookings"; // Change this to hide a modal, redirect to a specific page, etc.
-    });
+    axios
+      .post("/bookings.json", params)
+      .then((response) => {
+        console.log(response.data);
+        window.location.href = "/my-bookings"; // Change this to hide a modal, redirect to a specific page, etc.
+      })
+      .catch((error) => {
+        console.log(error.response.data.errors);
+        setErrors(error.response.data.errors);
+      });
     // .catch((error) => {
     //   console.log(error.response.data.errors);
     //   setErrors(error.response.data.errors);
@@ -55,7 +62,7 @@ export function PerformersShow() {
       <p>{performer.instagram_handle} on Instagram</p>
       {localStorage.jwt !== undefined ? <button onClick={() => handleShowBookingForm()}>Book Now</button> : null}
       <Modal show={isBookingFormVisible} onClose={handleHideBookingForm}>
-        <BookingsNew performer={performer} onCreateBooking={handleCreateBooking} />
+        <BookingsNew errors={errors} performer={performer} onCreateBooking={handleCreateBooking} />
       </Modal>
       <div>
         <h3>{performer.name}'s Reviews</h3>

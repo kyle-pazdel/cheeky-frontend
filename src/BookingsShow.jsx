@@ -53,13 +53,20 @@ export function BookingsShow() {
     });
   };
 
+  const handleShowLatLng = () => {
+    console.log(booking);
+    console.log(booking.latitude);
+    console.log(booking.longitude);
+  };
+
   return (
     <div>
       <h2>
         {booking.event_name} with {booking.performer_name}
       </h2>
+      <button onClick={handleShowLatLng}>SHOW LAT LONG</button>
       <div>
-        <MapComponent />
+        <MapComponent latitude={booking.latitude} longitude={booking.longitude} />
       </div>
       <p>Event Type: {booking.event_type}</p>
       <p>Hourly Rate: {booking.performer_rate}</p>

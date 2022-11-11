@@ -3,7 +3,7 @@ import TableDatePicker from "./TableDatePicker";
 
 export function BookingsNew(props) {
   const performer = props.performer;
-  const [errors, setErrors] = useState([]);
+
   const [start, setStart] = useState(null);
   const [end, setEnd] = useState(null);
   const [eventName, setEventName] = useState("");
@@ -18,7 +18,6 @@ export function BookingsNew(props) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setErrors([]);
     const params = {
       performer_id: performer.id,
       total: total,
@@ -57,7 +56,7 @@ export function BookingsNew(props) {
       <h1>Book with {performer.name}</h1>
       <div>
         <ul>
-          {errors?.map((error) => (
+          {props.errors?.map((error) => (
             <li key={error}>{error}</li>
           ))}
         </ul>
