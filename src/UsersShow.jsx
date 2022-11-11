@@ -3,6 +3,7 @@ import axios from "axios";
 import { Modal } from "./Modal";
 import { UsersUpdate } from "./UsersUpdate";
 import { PerformersIndexAdmin } from "./PerformersIndexAdmin";
+import { Link } from "react-router-dom";
 
 export function UsersShow() {
   const [user, setUser] = useState({});
@@ -74,6 +75,7 @@ export function UsersShow() {
         <div>
           <h2>Manage Performer Accounts</h2>
           <PerformersIndexAdmin performers={user.performers} />
+          <Link to="/add-performer">Add Performer Account Details</Link>
         </div>
       ) : null}
       <div>
