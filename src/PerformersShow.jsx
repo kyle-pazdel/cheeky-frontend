@@ -43,6 +43,7 @@ export function PerformersShow() {
   return (
     <div>
       <h4>{performer.name}</h4>
+      <img src={performer.featured_image} alt={`photo of ${performer.name}`} />
       <p>
         {performer.city}, {performer.state}
       </p>

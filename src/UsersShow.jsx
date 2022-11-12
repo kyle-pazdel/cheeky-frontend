@@ -55,7 +55,7 @@ export function UsersShow() {
 
   return (
     <div>
-      <h1>My Profile!</h1>
+      <h1>My Profile</h1>
       <p>First Name: {user.first_name}</p>
       <p>Last Name: {user.last_name}</p>
       <p>Email: {user.email}</p>
@@ -79,7 +79,7 @@ export function UsersShow() {
       </Modal>
       {user.is_admin === true ? (
         <div>
-          <h2>Manage Performer Accounts</h2>
+          <h2>Manage Talent Accounts</h2>
           <PerformersIndexAdmin performers={user.performers} />
           <Link to="/add-performer">Add Queen</Link>
         </div>

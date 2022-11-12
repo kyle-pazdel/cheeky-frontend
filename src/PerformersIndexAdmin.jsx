@@ -2,6 +2,7 @@ import axios from "axios";
 import { useState } from "react";
 import { PerformersUpdate } from "./PerformersUpdate";
 import { Modal } from "./Modal";
+import { FileForm } from "./FileForm";
 
 export function PerformersIndexAdmin(props) {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -38,12 +39,10 @@ export function PerformersIndexAdmin(props) {
 
   return (
     <div>
-      <h1>Your Performers</h1>
       {performers?.map((performer) => (
-        <div>
-          <h3>
-            {performer.name} ID: {performer.id}
-          </h3>
+        <div key={performer.id}>
+          <h3>{performer.name}</h3>
+          <img src={performer?.featured_image} alt={`photo of ${performer.name}`}></img>
           <p>Phone Number: {performer.phone_number}</p>
           <p>Email: {performer.email}</p>
           <p>Shortest Gig: {performer.shortest_gig}</p>
@@ -64,6 +63,7 @@ export function PerformersIndexAdmin(props) {
               onDestroyPerformer={handleDestroyPerformer}
               onClose={handleHideForm}
             />
+            <FileForm performer={performer} />
           </Modal>
         </div>
       ))}

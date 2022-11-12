@@ -130,7 +130,7 @@ export function PerformersUpdate(props) {
           Submit
         </button>
       </form>
-      <button onClick={handleClick}>Delete Queen's Account</button>
+      <button onClick={handleClick}>Delete {props.performer.name}'s Account</button>
     </div>
   );
 }
