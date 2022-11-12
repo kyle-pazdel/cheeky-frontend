@@ -56,6 +56,11 @@ export function PerformersIndexAdmin(props) {
           <p>Twitter: @{performer.twitter_handle}</p>
           <p>Performance Type: {performer.performance_type}</p>
           <button onClick={() => handleShowForm(performer)}>Update {performer.name}'s Details</button>
+          {performer.posts?.map((post) => (
+            <div key={post.id}>
+              <img src={post.image_url} alt={`image of ${performer.name}`} className="profile-image" />
+            </div>
+          ))}
           <Modal show={isFormVisible} onClose={handleHideForm}>
             <PerformersUpdate
               performer={currentPerformer}
