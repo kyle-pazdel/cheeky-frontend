@@ -56,7 +56,9 @@ export function Signup() {
           response.data.is_admin === true ? localStorage.Storage.setItem("is_admin", response.data.is_admin) : null;
         }
         event.target.reset();
-        window.location.href = "/";
+        {
+          isAdmin === true ? (window.location.href = "/add-performer") : (window.location.href = "/");
+        }
       })
       .catch((error) => {
         console.log(error.response.data.errors);
