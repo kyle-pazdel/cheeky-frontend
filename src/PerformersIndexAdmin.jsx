@@ -63,7 +63,7 @@ export function PerformersIndexAdmin(props) {
               onDestroyPerformer={handleDestroyPerformer}
               onClose={handleHideForm}
             />
-            <FileForm performer={performer} />
+            <FileForm performer={currentPerformer} />
           </Modal>
         </div>
       ))}

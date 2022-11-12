@@ -6,3 +6,10 @@ html {
   width: 7100;
   height: 50vh;
 }
+
+.profile-image {
+  width: 300px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}

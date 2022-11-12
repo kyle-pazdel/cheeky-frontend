@@ -9,6 +9,7 @@ export function PerformersShow() {
   const [errors, setErrors] = useState([]);
   const [performer, setPerformer] = useState({});
   const [isBookingFormVisible, setIsBookingFormVisible] = useState(false);
+  const [posts, setPosts] = useState([]);
 
   const handleShowPerformer = () => {
     axios.get(`/performers/${params.id}.json`).then((response) => {
@@ -17,7 +18,15 @@ export function PerformersShow() {
     });
   };
 
+  const handleIndexPosts = () => {
+    setPosts(performer.posts);
+  };
+  const handleLogPosts = () => {
+    console.log(posts);
+  };
+
   useEffect(handleShowPerformer, []);
+  useEffect(handleIndexPosts, []);
 
   const handleShowBookingForm = (performer) => {
     setIsBookingFormVisible(true);
@@ -43,7 +52,10 @@ export function PerformersShow() {
   return (
     <div>
       <h4>{performer.name}</h4>
-      <img src={performer.featured_image} alt={`photo of ${performer.name}`} />
+      <div>
+        <img src={performer.profile_image?.image_url} alt={`photo of ${performer.name}`} className="profile-image" />
+      </div>
+      <button onClick={handleLogPosts}>Log</button>
       <p>
         {performer.city}, {performer.state}
       </p>
@@ -56,6 +68,11 @@ export function PerformersShow() {
       <p>{performer.email}</p>
       <p>@{performer.twitter_handle} on Twitter</p>
       <p>{performer.instagram_handle} on Instagram</p>
+      {performer.posts?.map((post) => (
+        <div key={post.id}>
+          <img src={post.image_url} alt={`photo of ${performer.name}`} className="profile-image" />
+        </div>
+      ))}
       {localStorage.jwt !== undefined ? <button onClick={() => handleShowBookingForm()}>Book Now</button> : null}
       <Modal show={isBookingFormVisible} onClose={handleHideBookingForm}>
         <BookingsNew errors={errors} performer={performer} onCreateBooking={handleCreateBooking} />

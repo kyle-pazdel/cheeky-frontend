@@ -6,10 +6,10 @@ export function PerformersIndex(props) {
       {props.performers.map((performer) => (
         <div key={performer.id}>
           <h4>{performer.name}</h4>
+          <img src={performer.profile_image.image_url} alt={`image of ${performer.name}`} className="profile-image" />
           <p>
             {performer.city}, {performer.state}
           </p>
-          {/* <button onClick={() => props.onSelectPerformer(performer)}>More Info</button> */}
           <Link to={`/performers/${performer.id}`}>More Info</Link>
         </div>
       ))}
