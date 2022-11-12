@@ -19,7 +19,6 @@ export function PerformersUpdate(props) {
       performance_type: performanceType,
     };
     props.onUpdatePerformer(props.performer.id, params);
-    props.onClose();
   };
 
   const handleClick = () => {
@@ -41,7 +40,7 @@ export function PerformersUpdate(props) {
 
   return (
     <div>
-      <h1>Update {props.performer.name}'s Account</h1>
+      <h1>Update {props.performer?.name}'s Account</h1>
       <ul>
         {errors?.map((error) => (
           <li key={error}>{error}</li>

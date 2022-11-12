@@ -98,10 +98,6 @@ export function Signup() {
             <input type="text" value={phoneNumber} onChange={handlePhoneNumberChange}></input>
           </label>
         </div>
-        {/* <div>
-          <input name="photo[image]" type="hidden" />
-          <input name="photo[image] " type="file" />
-        </div> */}
         <div>
           <label>
             Password:

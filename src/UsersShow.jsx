@@ -16,9 +16,6 @@ export function UsersShow() {
     axios.get("/users/" + userId + ".json").then((response) => {
       console.log(response.data);
       setUser(response.data);
-      // {
-      //   response.data.is_admin === true ? localStorage.setItem("is_admin", response.data.is_admin) : null;
-      // }
     });
   };
 

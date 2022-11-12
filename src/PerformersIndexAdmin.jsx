@@ -42,7 +42,7 @@ export function PerformersIndexAdmin(props) {
       {performers?.map((performer) => (
         <div key={performer.id}>
           <h3>{performer.name}</h3>
-          <img src={performer?.featured_image} alt={`photo of ${performer.name}`}></img>
+          <img src={performer.posts[0]?.image_url} alt={`photo of ${performer.name}`} className="profile-image" />
           <p>Phone Number: {performer.phone_number}</p>
           <p>Email: {performer.email}</p>
           <p>Shortest Gig: {performer.shortest_gig}</p>
@@ -56,11 +56,11 @@ export function PerformersIndexAdmin(props) {
           <p>Twitter: @{performer.twitter_handle}</p>
           <p>Performance Type: {performer.performance_type}</p>
           <button onClick={() => handleShowForm(performer)}>Update {performer.name}'s Details</button>
-          {performer.posts?.map((post) => (
+          {/* {performer.posts?.map((post) => (
             <div key={post.id}>
               <img src={post.image_url} alt={`image of ${performer.name}`} className="profile-image" />
             </div>
-          ))}
+          ))} */}
           <Modal show={isFormVisible} onClose={handleHideForm}>
             <PerformersUpdate
               performer={currentPerformer}
@@ -68,7 +68,7 @@ export function PerformersIndexAdmin(props) {
               onDestroyPerformer={handleDestroyPerformer}
               onClose={handleHideForm}
             />
-            <FileForm performer={currentPerformer} />
+            <FileForm performer={currentPerformer} onClose={handleHideForm} />
           </Modal>
         </div>
       ))}
