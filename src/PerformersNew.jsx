@@ -8,7 +8,6 @@ export function PerformersNew() {
     const params = {
       name: name,
       phone_number: phoneNumber,
-      phone_number: phoneNumber,
       email: email,
       shortest_gig: shortestGig,
       longest_gig: longestGig,
@@ -49,7 +48,7 @@ export function PerformersNew() {
 
   return (
     <div>
-      <h1>Add Performer Account</h1>
+      <h1>Add Performer Details</h1>
       <ul>
         {errors?.map((error) => (
           <li key={error}>{error}</li>
@@ -59,19 +58,19 @@ export function PerformersNew() {
         <input type="hidden" name="user_id" value={localStorage.user_id}></input>
         <div>
           <label>
-            Name:
+            Drag Name:
             <input type="text" value={name} onChange={(event) => setName(event.target.value)}></input>
           </label>
         </div>
         <div>
           <label>
-            Phone Number:
+            Idustry Phone Number:
             <input type="text" value={phoneNumber} onChange={(event) => setPhoneNumber(event.target.value)}></input>
           </label>
         </div>
         <div>
           <label>
-            Email:
+            Industry Email:
             <input type="text" value={email} onChange={(event) => setEmail(event.target.value)}></input>
           </label>
         </div>
@@ -99,7 +98,7 @@ export function PerformersNew() {
         </div>
         <div>
           <label>
-            Rate:
+            Rate (hourly):
             <input type="text" value={rate} onChange={(event) => setRate(event.target.value)}></input>
           </label>
         </div>
@@ -121,7 +120,7 @@ export function PerformersNew() {
         </div>
         <div>
           <label>
-            Twitter Handle:
+            Twitter Handle: @
             <input type="text" value={twitterHandle} onChange={(event) => setTwitterHandle(event.target.value)}></input>
           </label>
         </div>
