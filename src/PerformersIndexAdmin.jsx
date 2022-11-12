@@ -4,8 +4,6 @@ import { PerformersUpdate } from "./PerformersUpdate";
 import { Modal } from "./Modal";
 
 export function PerformersIndexAdmin(props) {
-  const [errors, setErrors] = useState([]);
-  const [status, setStatus] = useState(null);
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [currentPerformer, setCurrentPerformer] = useState({});
 
@@ -14,12 +12,16 @@ export function PerformersIndexAdmin(props) {
     setCurrentPerformer(performer);
   };
 
+  const handleHideForm = () => {
+    setIsFormVisible(false);
+  };
+
   const handleUpdatePerformer = (performerId, params) => {
     axios
       .patch("/performers/" + performerId + ".json", params)
       .then((response) => {
-        const updatedPerformer = response.data;
-        // setUser(updatedUser);
+        console.log(response.data);
+        // window.location.href = "/my-performers";
       })
       .catch((error) => {
         console.log(error.response);
@@ -48,8 +50,12 @@ export function PerformersIndexAdmin(props) {
           <p>Twitter: @{performer.twitter_handle}</p>
           <p>Performance Type: {performer.performance_type}</p>
           <button onClick={() => handleShowForm(performer)}>Update {performer.name}'s Details</button>
-          <Modal show={isFormVisible} onClose={() => setIsFormVisible(false)}>
-            <PerformersUpdate performer={currentPerformer} />
+          <Modal show={isFormVisible} onClose={handleHideForm}>
+            <PerformersUpdate
+              performer={currentPerformer}
+              onUpdatePerformer={handleUpdatePerformer}
+              onClose={handleHideForm}
+            />
           </Modal>
         </div>
       ))}

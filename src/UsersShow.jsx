@@ -75,7 +75,7 @@ export function UsersShow() {
         <div>
           <h2>Manage Performer Accounts</h2>
           <PerformersIndexAdmin performers={user.performers} />
-          <Link to="/add-performer">Add Performer Account</Link>
+          <Link to="/add-performer">Add Queen</Link>
         </div>
       ) : null}
       <div>
