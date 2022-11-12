@@ -44,8 +44,8 @@ export function UsersShow() {
       });
   };
 
-  const handleDestroyUser = () => {
-    axios.delete(`/users/${userId}.json`);
+  const handleDestroyUser = (id) => {
+    axios.delete(`/users/${id}.json`);
     localStorage.removeItem("jwt");
     localStorage.removeItem("user_id");
     window.location.href = "/";
@@ -69,7 +69,13 @@ export function UsersShow() {
         </ul>
       ) : null}
       <Modal show={isFormVisible} onClose={handleHideUserForm}>
-        <UsersUpdate user={user} errors={errors} onUpdateUser={handleUpdateUser} onHideUserForm={handleHideUserForm} />
+        <UsersUpdate
+          user={user}
+          errors={errors}
+          onUpdateUser={handleUpdateUser}
+          onHideUserForm={handleHideUserForm}
+          onDestroyUser={handleDestroyUser}
+        />
       </Modal>
       {user.is_admin === true ? (
         <div>
@@ -78,9 +84,6 @@ export function UsersShow() {
           <Link to="/add-performer">Add Queen</Link>
         </div>
       ) : null}
-      <div>
-        <button onClick={handleDestroyUser}>Delete Account</button>
-      </div>
     </div>
   );
 }

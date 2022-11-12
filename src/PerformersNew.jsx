@@ -18,14 +18,13 @@ export function PerformersNew() {
       instagram_handle: instagramHandle,
       twitter_handle: twitterHandle,
       performance_type: performanceType,
-      user_id: localStorage.user_id,
     };
     axios
       .post("/performers.json", params)
       .then((response) => {
         console.log(response.data);
         event.target.reset();
-        window.location.href = "/my-performers";
+        window.location.href = "/me";
       })
       .catch((error) => {
         console.log(error.response.data.errors);
@@ -55,7 +54,6 @@ export function PerformersNew() {
         ))}
       </ul>
       <form onSubmit={handleSubmit} action="/photos" method="post" enctype="multipart/form-data">
-        <input type="hidden" name="user_id" value={localStorage.user_id}></input>
         <div>
           <label>
             Drag Name:

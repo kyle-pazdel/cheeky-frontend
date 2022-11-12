@@ -5,6 +5,10 @@ export function UsersUpdate(props) {
     props.onHideUserForm();
     props.onUpdateUser(props.user.id, params, () => event.target.reset());
   };
+
+  const handleClick = () => {
+    props.onDestroyUser(props.user.id);
+  };
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -29,6 +33,9 @@ export function UsersUpdate(props) {
           ))}
         </ul>
       ) : null}
+      <div>
+        <button onClick={handleClick}>Delete Account</button>
+      </div>
     </div>
   );
 }

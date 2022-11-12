@@ -21,6 +21,10 @@ export function PerformersUpdate(props) {
     props.onUpdatePerformer(props.performer.id, params);
     props.onClose();
   };
+
+  const handleClick = () => {
+    props.onDestroyPerformer();
+  };
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState(props.performer.name);
   const [phoneNumber, setPhoneNumber] = useState(props.performer.phone_number);
@@ -126,6 +130,7 @@ export function PerformersUpdate(props) {
           Submit
         </button>
       </form>
+      <button onClick={handleClick}>Delete Queen's Account</button>
     </div>
   );
 }

@@ -5,6 +5,7 @@ import { Modal } from "./Modal";
 
 export function PerformersIndexAdmin(props) {
   const [isFormVisible, setIsFormVisible] = useState(false);
+  const [performers, setPerformers] = useState(props.performers);
   const [currentPerformer, setCurrentPerformer] = useState({});
 
   const handleShowForm = (performer) => {
@@ -21,18 +22,24 @@ export function PerformersIndexAdmin(props) {
       .patch("/performers/" + performerId + ".json", params)
       .then((response) => {
         console.log(response.data);
-        // window.location.href = "/my-performers";
       })
       .catch((error) => {
         console.log(error.response);
-        setErrors(error.response.data.errors);
-        setStatus(error.response.status);
+        // setErrors(error.response.data.errors);
+        // setStatus(error.response.status);
       });
   };
+
+  const handleDestroyPerformer = () => {
+    axios.delete(`/performers/${currentPerformer.id}.json`).then(() => {});
+    handleHideForm();
+    setPerformers(performers.filter((p) => p.id !== currentPerformer.id));
+  };
+
   return (
     <div>
       <h1>Your Performers</h1>
-      {props.performers?.map((performer) => (
+      {performers?.map((performer) => (
         <div>
           <h3>
             {performer.name} ID: {performer.id}
@@ -54,6 +61,7 @@ export function PerformersIndexAdmin(props) {
             <PerformersUpdate
               performer={currentPerformer}
               onUpdatePerformer={handleUpdatePerformer}
+              onDestroyPerformer={handleDestroyPerformer}
               onClose={handleHideForm}
             />
           </Modal>
