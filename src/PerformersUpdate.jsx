@@ -19,6 +19,7 @@ export function PerformersUpdate(props) {
       performance_type: performanceType,
     };
     props.onUpdatePerformer(props.performer.id, params);
+    props.onHideUserForm();
   };
 
   const handleClick = () => {
@@ -125,9 +126,7 @@ export function PerformersUpdate(props) {
             ></input>
           </label>
         </div>
-        <button type="submit" value="Create">
-          Submit
-        </button>
+        <button type="submit">Submit</button>
       </form>
       <button onClick={handleClick}>Delete {props.performer.name}'s Account</button>
     </div>

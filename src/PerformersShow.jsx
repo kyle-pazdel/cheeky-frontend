@@ -6,6 +6,7 @@ import { Modal } from "./Modal";
 import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from "react-router-dom";
+import { SocialIcon } from "react-social-icons";
 
 export function PerformersShow() {
   const params = useParams();
@@ -72,19 +73,37 @@ export function PerformersShow() {
           />
           <p className="fs-3">{performer.name}</p>
         </div>
-        <div className="fw-semibold mt-6">
+        <div className="col fw-semibold mt-6">
           <p>
             {performer.city}, {performer.state}
           </p>
         </div>
-        <p>
-          {formatTime(shortestGig)} – {formatTime(longestGig)}
-        </p>
-        <p>performance type: {performer.performance_type}</p>
-        <p>hourly rate: {performer.rate}</p>
-        <p>{performer.bio}</p>
-        <p>@{performer.twitter_handle} on Twitter</p>
-        <p>{performer.instagram_handle} on Instagram</p>
+        <div className="card">
+          <div class="card-header fw-bolder">Details</div>
+          <ul className="list-group list-group-flush">
+            <li className="list-group-item">
+              {formatTime(shortestGig)} – {formatTime(longestGig)}
+            </li>
+            <li className="list-group-item no-wrap">{performer.rate} p/h</li>
+            <li className="list-group-item text-nowrap">{performer.performance_type}</li>
+            <li className="list-group-item text-nowrap">
+              <SocialIcon
+                className="m-2"
+                bgColor="black"
+                target="_blank"
+                url={`https://twitter.com/${performer.twitter_handle}`}
+                network="twitter"
+              />
+              <SocialIcon
+                className="m-2"
+                bgColor="black"
+                target="_blank"
+                url={`https://www.instagram.com/${performer.instagram_handle}`}
+                network="instagram"
+              />
+            </li>
+          </ul>
+        </div>
       </div>
       <div className="col-9">
         <Carousel autoPlay={true} showArrows={true} showThumbs={true}>
@@ -97,6 +116,12 @@ export function PerformersShow() {
             </div>
           ))}
         </Carousel>
+      </div>
+      <div className="card row">
+        <div class="card-header fw-bolder">About {performer.name}</div>
+        <div className="card-text">
+          <p>{performer.bio}</p>
+        </div>
       </div>
       {localStorage.jwt !== undefined ? (
         <button onClick={() => handleShowBookingForm()} className="btn btn-dark">
