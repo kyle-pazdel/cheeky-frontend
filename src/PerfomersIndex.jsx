@@ -2,15 +2,21 @@ import { Link } from "react-router-dom";
 
 export function PerformersIndex(props) {
   return (
-    <div>
+    <div className="row">
       {props.performers.map((performer) => (
-        <div key={performer.id}>
-          <h4>{performer.name}</h4>
-          <img src={performer.profile_image?.image_url} alt={`image of ${performer.name}`} className="profile-image" />
-          <p>
-            {performer.city}, {performer.state}
-          </p>
-          <Link to={`/performers/${performer.id}`}>More Info</Link>
+        <div key={performer.id} className="card col-2" style={{ width: "18rem" }}>
+          <div>
+            <img src={performer.profile_image?.image_url} alt={`image of ${performer.name}`} className="card-img" />
+          </div>
+          <div className="card-img h-100 d-flex flex-column justify-content-end">
+            <h5 className="card-title">{performer.name}</h5>
+            <small className="card-text">
+              {performer.city}, {performer.state}
+            </small>
+            <Link to={`/performers/${performer.id}`} className="btn btn-primary">
+              More Info
+            </Link>
+          </div>
         </div>
       ))}
     </div>
