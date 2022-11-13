@@ -1,5 +1,5 @@
 import { BookingsUpdate } from "./BookingsUpdate";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { ReviewsNew } from "./ReviewsNew";
 import { Modal } from "./Modal";
 import { useState, useEffect } from "react";
@@ -110,7 +110,7 @@ export function BookingsShow() {
       <p>Hourly Rate: {booking.performer_rate}</p>
       <p>Total: {booking.total}</p>
       <p>
-        {startTime} – {booking.end_time}
+        {booking.start_time} – {booking.end_time}
       </p>
       <p>
         Location: {booking.address} {booking.city} {booking.state} {booking.postal_code}
@@ -124,6 +124,13 @@ export function BookingsShow() {
       <Modal show={isBookingUpdateVisible} onClose={handleHideUpdateBooking}>
         <BookingsUpdate onCancel={handleHideUpdateBooking} booking={booking} />
       </Modal>
+      {booking.paid === true ? (
+        <div>
+          <p>PAID</p>
+        </div>
+      ) : (
+        <Link to={`/process-payment/${booking.id}`}>Submit Payment</Link>
+      )}
       <div>
         <button onClick={() => handleDestroyBooking(booking)}>Cancel Booking</button>
       </div>
