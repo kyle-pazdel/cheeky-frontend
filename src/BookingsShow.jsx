@@ -4,6 +4,7 @@ import { ReviewsNew } from "./ReviewsNew";
 import { Modal } from "./Modal";
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { format } from "date-fns";
 import { MapComponent } from "./MapComponent";
 import { ReviewsUpdate } from "./ReviewsUpdate";
 
@@ -13,15 +14,20 @@ export function BookingsShow() {
   const [isBookingUpdateVisible, setIsBookingUpdateVisible] = useState(false);
   const [reviews, setReviews] = useState([]);
   const [isReviewUpdateVisible, setIsReviewUpdateVisible] = useState(0);
+  const [startTime, setStartTime] = useState("");
+  // const [endTime, setEndTime] = useState("");
 
-  const startTime = booking.start_time;
-  const endTime = booking.end_time;
+  // const startTime = booking.start_time;
+  // const endTime = booking.end_time;
 
   const handleShowBooking = () => {
     axios.get(`/bookings/${params.id}.json`).then((response) => {
       console.log(response.data);
       setBooking(response.data);
       setReviews(response.data.reviews);
+      // setStartTime(response.data.start_time);
+      // setEndTime(response.data.end_time);
+      formatStartTime(response.data.start_time);
     });
   };
 
@@ -78,8 +84,15 @@ export function BookingsShow() {
     });
   };
 
+  const formatStartTime = (time) => {
+    const formattedTime = format(new Date(time), "MMMM dd yyyy, p");
+    console.log(formattedTime);
+    // return formattedTime;
+  };
+
   return (
     <div>
+      {/* <button onClick={console.log(formattedStartTime)}>TIME</button> */}
       <h2>
         {booking.event_name} with {booking.performer_name}
       </h2>
@@ -97,7 +110,7 @@ export function BookingsShow() {
       <p>Hourly Rate: {booking.performer_rate}</p>
       <p>Total: {booking.total}</p>
       <p>
-        Start Time: {startTime} – End Time: {endTime}
+        {startTime} – {booking.end_time}
       </p>
       <p>
         Location: {booking.address} {booking.city} {booking.state} {booking.postal_code}

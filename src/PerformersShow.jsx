@@ -21,9 +21,6 @@ export function PerformersShow() {
   const handleIndexPosts = () => {
     setPosts(performer.posts);
   };
-  const handleLogPosts = () => {
-    console.log(posts);
-  };
 
   useEffect(handleShowPerformer, []);
   useEffect(handleIndexPosts, []);
@@ -53,9 +50,12 @@ export function PerformersShow() {
     <div>
       <h4>{performer.name}</h4>
       <div>
-        <img src={performer.profile_image?.image_url} alt={`photo of ${performer.name}`} className="profile-image" />
+        <img
+          src={performer.profile_image?.image_url}
+          alt={`photo of ${performer.name}`}
+          className="thumbnail-profile-image"
+        />
       </div>
-      <button onClick={handleLogPosts}>Log</button>
       <p>
         {performer.city}, {performer.state}
       </p>
