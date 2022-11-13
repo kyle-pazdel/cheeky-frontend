@@ -43,16 +43,10 @@ export function BookingsShow() {
 
   useEffect(handleShowBooking, []);
 
-  // const handleClick = () => {
-  //   handleDestroyBooking();
-  // };
-
   const handleDestroyBooking = (booking) => {
     console.log("handleDestroyBooking");
     axios.delete(`/bookings/${booking.id}.json`).then((window.location.href = `/my-bookings`));
   };
-
-  // const [isReviewFormVisible, setIsReviewFormVisible] = useState(false);
 
   const handleCreateReview = (params) => {
     console.log(params);
@@ -89,6 +83,13 @@ export function BookingsShow() {
       <h2>
         {booking.event_name} with {booking.performer_name}
       </h2>
+      <div>
+        <img
+          src={booking.performer_profile_image?.image_url}
+          alt={`image of ${booking.performer_name}`}
+          className="thumbnail-profile-image"
+        />
+      </div>
       <div>
         <MapComponent booking={booking} latitude={booking.latitude} longitude={booking.longitude} />
       </div>

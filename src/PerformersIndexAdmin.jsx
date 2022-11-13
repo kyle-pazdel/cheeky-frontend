@@ -3,6 +3,7 @@ import { useState } from "react";
 import { PerformersUpdate } from "./PerformersUpdate";
 import { Modal } from "./Modal";
 import { FileForm } from "./FileForm";
+import { Link } from "react-router-dom";
 
 export function PerformersIndexAdmin(props) {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -42,7 +43,12 @@ export function PerformersIndexAdmin(props) {
       {performers?.map((performer) => (
         <div key={performer.id}>
           <h3>{performer.name}</h3>
-          <img src={performer.posts[0]?.image_url} alt={`photo of ${performer.name}`} className="profile-image" />
+
+          {performer.posts[0]?.image_url !== undefined ? (
+            <img src={performer.posts[0]?.image_url} alt={`photo of ${performer.name}`} className="profile-image" />
+          ) : (
+            <Link to={`/profile-image/${performer.id}`}>Add a profile Image for {performer.name}</Link>
+          )}
           <p>Phone Number: {performer.phone_number}</p>
           <p>Email: {performer.email}</p>
           <p>Shortest Gig: {performer.shortest_gig}</p>
