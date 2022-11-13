@@ -18,22 +18,26 @@ export function PaymentProcessing() {
   useEffect(handleShowBooking, []);
 
   const handleSubmit = (event) => {
-    event.preventDefault();
-    setErrors([]);
-    const params = {
-      paid: isPaid,
-    };
-    axios
-      .patch(`/bookings/${booking.id}.json`, params)
-      .then((response) => {
-        console.log(response.data);
-        event.target.reset();
-        window.location.href = `/bookings/${booking.id}`;
-      })
-      .catch((error) => {
-        console.log(error.response.data.errors);
-        setErrors(error.response.data.errors);
-      });
+    if (isPaid === true) {
+      event.preventDefault();
+      setErrors([]);
+      const params = {
+        paid: isPaid,
+      };
+      axios
+        .patch(`/bookings/${booking.id}.json`, params)
+        .then((response) => {
+          console.log(response.data);
+          event.target.reset();
+          window.location.href = `/bookings/${booking.id}`;
+        })
+        .catch((error) => {
+          console.log(error.response.data.errors);
+          setErrors(error.response.data.errors);
+        });
+    } else {
+      null;
+    }
   };
 
   const handleIsPaidChange = () => {
@@ -82,7 +86,7 @@ export function PaymentProcessing() {
               <a href="#">Terms and Conditions</a>
             </div>
             <label>
-              Agree to Terms and Conditiions:
+              Agree to Terms and Conditions:
               <input type="checkbox" value={`${isPaid}`} onChange={handleIsPaidChange}></input>
             </label>
           </div>
