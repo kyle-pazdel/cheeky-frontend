@@ -151,7 +151,11 @@ export function PerformersShow() {
         <BookingsNew errors={errors} performer={performer} onCreateBooking={handleCreateBooking} />
       </Modal>
       <div className="card reviews">
-        <p className="card-header fw-bolder fs-5">{performer.name}'s Reviews</p>
+        {performer.performer_reviews?.length > 0 ? (
+          <p className="card-header fw-bolder fs-5">{performer.name}'s Reviews</p>
+        ) : (
+          <p className="card-header fw-bolder fs-5 fst-italic">No reviews for {performer.name} yet...</p>
+        )}
         {performer.performer_reviews?.map((review) => (
           <div className="card m-0 p-2" key={review.id}>
             <div>
