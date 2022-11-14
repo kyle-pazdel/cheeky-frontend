@@ -36,14 +36,14 @@ export function BookingsIndex() {
               <Link to={`/bookings/${booking.id}`}>See Booking Details</Link>
             </div>
           </div> */}
-          <div key={booking.id} class="card">
-            <h5 class="card-header">
+          <div key={booking.id} className="card">
+            <h5 className="card-header">
               {booking.event_name} with {booking.performer_name}
             </h5>
-            <div class="card-body">
-              <h5 class="card-title">{formatTime(booking.start_time)}</h5>
-              <p class="card-text">at {booking.address}</p>
-              <Link to={`/bookings/${booking.id}`} class="btn btn-dark">
+            <div className="card-body">
+              <h5 className="card-title">{formatTime(booking.start_time)}</h5>
+              <p className="card-text">at {booking.address}</p>
+              <Link to={`/bookings/${booking.id}`} className="btn btn-dark">
                 See Booking Details
               </Link>
             </div>

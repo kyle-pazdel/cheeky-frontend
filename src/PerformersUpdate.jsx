@@ -44,7 +44,7 @@ export function PerformersUpdate(props) {
 
   return (
     <div>
-      <h1>Update {props.performer?.name}'s Account</h1>
+      <p className="m-3 fs-5 fw-semibold card-title">Update {props.performer?.name}'s Account</p>
       <ul>
         {errors?.map((error) => (
           <li key={error}>{error}</li>
@@ -202,9 +202,6 @@ export function PerformersUpdate(props) {
           Submit
         </button>
       </form>
-      <button className="btn btn-sm btn-outline-success" onClick={handleClick}>
-        Delete {props.performer.name}'s Account
-      </button>
     </div>
   );
 }

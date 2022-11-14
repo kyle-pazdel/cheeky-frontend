@@ -15,6 +15,7 @@ export function BookingsShow() {
   const [isBookingUpdateVisible, setIsBookingUpdateVisible] = useState(false);
   const [reviews, setReviews] = useState([]);
   const [isReviewUpdateVisible, setIsReviewUpdateVisible] = useState(0);
+  const [isCancellationVisible, setIsCancellationVisible] = useState(false);
 
   const handleShowBooking = () => {
     axios.get(`/bookings/${params.id}.json`).then((response) => {
@@ -30,6 +31,14 @@ export function BookingsShow() {
 
   const handleHideUpdateBooking = () => {
     setIsBookingUpdateVisible(false);
+  };
+
+  const handleShowCancellation = () => {
+    setIsCancellationVisible(true);
+  };
+
+  const handleHideCancellation = () => {
+    setIsCancellationVisible(false);
   };
 
   const handleShowUpdateReview = (review) => {
@@ -142,7 +151,7 @@ export function BookingsShow() {
             </ul>
           </div>
         </div>
-        <div className="col-sm-3 card text-bg-dark mb-3 event-update-controls">
+        <div className="col card text-bg-dark mb-3 event-update-controls">
           <div className="card-body">
             {booking.paid === true ? (
               <div>
@@ -158,16 +167,22 @@ export function BookingsShow() {
                 Update Booking Details
               </button>
             </div>
+            <button className="btn btn-outline-secondary" onClick={handleShowCancellation}>
+              Cancel Booking
+            </button>
             <Modal show={isBookingUpdateVisible} onClose={handleHideUpdateBooking}>
               <BookingsUpdate onCancel={handleHideUpdateBooking} booking={booking} />
             </Modal>
           </div>
-          <div>
+        </div>
+        <Modal show={isCancellationVisible} onClose={handleHideCancellation}>
+          <div className="card m-4">
+            <p className="cardTitle">Are you sure you want to cancel?</p>
             <button className="btn btn-outline-secondary" onClick={() => handleDestroyBooking(booking)}>
-              Cancel Booking
+              Yes, proceed.
             </button>
           </div>
-        </div>
+        </Modal>
       </div>
       {reviews?.map((review) => (
         <div key={review.id}>
