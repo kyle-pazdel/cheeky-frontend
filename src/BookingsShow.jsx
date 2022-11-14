@@ -11,6 +11,7 @@ import { formatPhoneNumber } from "react-phone-number-input";
 
 export function BookingsShow() {
   const params = useParams();
+  const [errors, setErrors] = useState([]);
   const [booking, setBooking] = useState({});
   const [isBookingUpdateVisible, setIsBookingUpdateVisible] = useState(false);
   const [reviews, setReviews] = useState([]);
@@ -62,6 +63,21 @@ export function BookingsShow() {
       console.log(response.data);
       setReviews([...reviews, response.data]);
     });
+  };
+
+  const handleUpdateBooking = (params) => {
+    setErrors([]);
+    axios
+      .patch(`/bookings/${booking.id}.json`, params)
+      .then((response) => {
+        console.log(response.data);
+        setBooking(response.data);
+      })
+      .catch((error) => {
+        console.log(error.response.data.errors);
+        setErrors(error.response.data.errors);
+      });
+    handleHideUpdateBooking();
   };
 
   const handleUpdateReview = (id, params) => {
@@ -171,7 +187,11 @@ export function BookingsShow() {
               Cancel Booking
             </button>
             <Modal show={isBookingUpdateVisible} onClose={handleHideUpdateBooking}>
-              <BookingsUpdate onCancel={handleHideUpdateBooking} booking={booking} />
+              <BookingsUpdate
+                onCancel={handleHideUpdateBooking}
+                onUpdateBooking={handleUpdateBooking}
+                booking={booking}
+              />
             </Modal>
           </div>
         </div>
