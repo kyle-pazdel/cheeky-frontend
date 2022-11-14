@@ -98,7 +98,7 @@ export function BookingsShow() {
       </h2>
       <div>
         <img
-          src={booking.performer_profile_image?.image_url}
+          src={booking.performer_image?.image_url}
           alt={`image of ${booking.performer_name}`}
           className="thumbnail-profile-image"
         />
