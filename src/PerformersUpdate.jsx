@@ -1,5 +1,6 @@
 import { useState } from "react";
 import PhoneInput from "react-phone-number-input";
+import { SocialIcon } from "react-social-icons";
 
 export function PerformersUpdate(props) {
   const handleSubmit = (event) => {
@@ -50,11 +51,138 @@ export function PerformersUpdate(props) {
         ))}
       </ul>
       <form onSubmit={handleSubmit} action="/photos" method="post" enctype="multipart/form-data">
-        <div>
-          <label>
-            Drag Name:
-            <input type="text" value={name} onChange={(event) => setName(event.target.value)}></input>
-          </label>
+        <div className="input-group input-group-sm mb-3">
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            Drag Name
+          </span>
+          <input
+            type="text"
+            className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          ></input>
+        </div>
+        <div className="input-group input-group-sm mb-3">
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            Shortest Gig Length (min)
+          </span>
+          <input
+            type="number"
+            className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            value={shortestGig}
+            onChange={(event) => setShortestGig(event.target.value)}
+          ></input>
+        </div>
+        <div className="input-group input-group-sm mb-3">
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            Longest Gig Length (min)
+          </span>
+          <input
+            type="number"
+            className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            value={longestGig}
+            onChange={(event) => setLongestGig(event.target.value)}
+          ></input>
+        </div>
+        <div className="input-group input-group-sm mb-3">
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            Rate (hourly)
+          </span>
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            $
+          </span>
+          <input
+            type="number"
+            className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            value={rate}
+            onChange={(event) => setRate(event.target.value)}
+          ></input>
+        </div>
+        <div className="input-group input-group-sm mb-3">
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            Performance Type
+          </span>
+          <input
+            type="text"
+            className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            value={performanceType}
+            onChange={(event) => setPerformanceType(event.target.value)}
+          ></input>
+        </div>
+        <div className="input-group input-group-sm mb-3">
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            City
+          </span>
+          <input
+            type="text"
+            className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            value={city}
+            onChange={(event) => setCity(event.target.value)}
+          ></input>
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            State
+          </span>
+          <input
+            type="text"
+            className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            value={state}
+            onChange={(event) => setState(event.target.value)}
+          ></input>
+        </div>
+
+        <div className="input-group input-group-sm mb-3">
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            <SocialIcon className="m-2" bgColor="black" network="instagram" /> Handle
+          </span>
+          <input
+            type="text"
+            className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            value={instagramHandle}
+            onChange={(event) => setInstagramHandle(event.target.value)}
+          ></input>
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            <SocialIcon className="m-2" bgColor="black" network="twitter" /> Handle
+          </span>
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            @
+          </span>
+          <input
+            type="text"
+            className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            value={twitterHandle}
+            onChange={(event) => setTwitterHandle(event.target.value)}
+          ></input>
+        </div>
+        <div className="input-group input-group-sm mb-3">
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            Industry Email
+          </span>
+          <input
+            type="text"
+            className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          ></input>
         </div>
         <div>
           <div className="input-group input-group-sm mb-3">
@@ -63,73 +191,17 @@ export function PerformersUpdate(props) {
         </div>
         <div>
           <label>
-            Industry Email:
-            <input type="text" value={email} onChange={(event) => setEmail(event.target.value)}></input>
-          </label>
-        </div>
-        <div>
-          <label>
-            Shortest Gig Length:
-            <input type="text" value={shortestGig} onChange={(event) => setShortestGig(event.target.value)}></input>
-          </label>
-        </div>
-        <div>
-          <label>
-            Longest Gig Length:
-            <input type="text" value={longestGig} onChange={(event) => setLongestGig(event.target.value)}></input>
-          </label>
-        </div>
-        <div>
-          <label>
-            City:
-            <input type="text" value={city} onChange={(event) => setCity(event.target.value)}></input>
-          </label>
-          <label>
-            State:
-            <input type="text" value={state} onChange={(event) => setState(event.target.value)}></input>
-          </label>
-        </div>
-        <div>
-          <label>
-            Rate (hourly):
-            <input type="text" value={rate} onChange={(event) => setRate(event.target.value)}></input>
-          </label>
-        </div>
-        <div>
-          <label>
             Bio:
-            <input type="text" value={bio} onChange={(event) => setBio(event.target.value)}></input>
+            <input type="textarea" value={bio} onChange={(event) => setBio(event.target.value)}></input>
           </label>
         </div>
-        <div>
-          <label>
-            Instagram Handle:
-            <input
-              type="text"
-              value={instagramHandle}
-              onChange={(event) => setInstagramHandle(event.target.value)}
-            ></input>
-          </label>
-        </div>
-        <div>
-          <label>
-            Twitter Handle: @
-            <input type="text" value={twitterHandle} onChange={(event) => setTwitterHandle(event.target.value)}></input>
-          </label>
-        </div>
-        <div>
-          <label>
-            Performance Type:
-            <input
-              type="text"
-              value={performanceType}
-              onChange={(event) => setPerformanceType(event.target.value)}
-            ></input>
-          </label>
-        </div>
-        <button type="submit">Submit</button>
+        <button className="btn btn-dark" type="submit">
+          Submit
+        </button>
       </form>
-      <button onClick={handleClick}>Delete {props.performer.name}'s Account</button>
+      <button className="btn btn-sm btn-outline-success" onClick={handleClick}>
+        Delete {props.performer.name}'s Account
+      </button>
     </div>
   );
 }
