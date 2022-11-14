@@ -189,13 +189,16 @@ export function PerformersUpdate(props) {
             <PhoneInput placeholder="Enter phone number" value={phoneNumber} onChange={setPhoneNumber} />
           </div>
         </div>
-        <div>
-          <label>
-            Bio:
-            <input type="textarea" value={bio} onChange={(event) => setBio(event.target.value)}></input>
-          </label>
-        </div>
-        <button className="btn btn-dark" type="submit">
+        <label className="col-12 mb-3 form-label fs-5 fw-semibold">
+          Bio
+          <textarea
+            type="text"
+            className="form-control mt-3"
+            value={bio}
+            onChange={(event) => setBio(event.target.value)}
+          />
+        </label>
+        <button className="mt-3 mb-3 btn btn-dark" type="submit">
           Submit
         </button>
       </form>

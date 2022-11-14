@@ -44,9 +44,11 @@ export function PerformersIndexAdmin(props) {
   };
 
   const handleDestroyPerformer = () => {
-    axios.delete(`/performers/${currentPerformer.id}.json`).then(() => {});
+    axios.delete(`/performers/${currentPerformer.id}.json`).then((response) => {
+      props.onRemovePerformer(currentPerformer);
+      console.log(currentPerformer);
+    });
     handleHideForm();
-    setPerformers(performers.filter((p) => p.id !== currentPerformer.id));
   };
 
   const sortPerformers = (p) => {
@@ -108,6 +110,9 @@ export function PerformersIndexAdmin(props) {
               onClose={handleHideForm}
             />
             <FileForm performer={currentPerformer} onClose={handleHideForm} />
+            <button className="btn btn-sm btn-outline-success" onClick={handleDestroyPerformer}>
+              Delete {performer.name}'s Account
+            </button>
           </Modal>
         </div>
       ))}

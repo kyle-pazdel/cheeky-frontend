@@ -43,6 +43,10 @@ export function UsersShow() {
     );
   };
 
+  const handleRemovePerformer = (performer) => {
+    setPerformers(performers.filter((p) => p.id !== performer.id));
+  };
+
   const handleUpdateUser = (userId, params) => {
     axios
       .patch("/users/" + userId + ".json", params)
@@ -99,7 +103,12 @@ export function UsersShow() {
       {user.is_admin === true ? (
         <div>
           <h2>Manage Talent Accounts</h2>
-          <PerformersIndexAdmin performers={performers} user={user} onSetPerformers={handleSetPerformers} />
+          <PerformersIndexAdmin
+            performers={performers}
+            user={user}
+            onSetPerformers={handleSetPerformers}
+            onRemovePerformer={handleRemovePerformer}
+          />
           <Link to="/add-performer">Add Queen</Link>
         </div>
       ) : null}
