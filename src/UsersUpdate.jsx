@@ -22,7 +22,7 @@ export function UsersUpdate(props) {
     props.onDestroyUser(props.user.id);
   };
   return (
-    <div>
+    <div className="mt-5 mb-2">
       <form onSubmit={handleSubmit}>
         <div className="input-group input-group-sm mb-3">
           <span className="input-group-text" id="inputGroup-sizing-sm">

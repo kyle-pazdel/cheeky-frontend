@@ -84,10 +84,14 @@ export function BookingsShow() {
     });
   };
 
-  const formatStartTime = (time) => {
-    const formattedTime = format(new Date(time), "MMMM dd yyyy, p");
-    console.log(formattedTime);
-    return formattedTime;
+  const formatTime = (time) => {
+    if (time) {
+      const formattedTime = format(new Date(time), "MMMM dd yyyy, p");
+      console.log(formattedTime);
+      return formattedTime;
+    } else {
+      return null;
+    }
   };
 
   const formatMoney = (n) => {
@@ -125,7 +129,7 @@ export function BookingsShow() {
               </li>
               <li className="list-group-item">{booking.postal_code}</li>
               <li className="list-group-item">
-                {booking.start_time} – {booking.end_time}
+                {formatTime(booking.start_time)} – {formatTime(booking.end_time)}
               </li>
 
               <div className="card mt-0 p-0 row-12">
