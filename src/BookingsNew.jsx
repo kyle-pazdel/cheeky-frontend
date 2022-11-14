@@ -80,45 +80,88 @@ export function BookingsNew(props) {
           <p>{eventType}</p>
         </div> */}
         <form onSubmit={handleSubmit}>
-          <input type="hidden" name="total" value={total}></input>
-          <div>
-            <label>
-              Event Name:
-              <input type="text" value={eventName} onChange={handleEventNameChange}></input>
-            </label>
-          </div>
-          <div>
-            <label>
-              Address:
-              <input type="text" value={address} onChange={handleAddressChange}></input>
-            </label>
-          </div>
-          <div>
-            <label>
-              City:
-              <input type="text" value={city} onChange={handleCityChange}></input>
-            </label>
-          </div>
-          <div>
-            <label>
-              State:
-              <input type="text" value={eventState} onChange={handleEventStateChange}></input>
-            </label>
-          </div>
-          <div>
-            <label>
-              Postal Code:
-              <input type="text" value={postalCode} onChange={handlePostalCodeChange}></input>
-            </label>
-          </div>
-          <div>
-            <label>
-              Event Type:
-              <input type="text" value={eventType} onChange={handleEventTypeChange}></input>
-            </label>
-          </div>
-          <div>
-            <TableDatePicker start={start} setStart={setStart} end={end} setEnd={setEnd} />
+          <div className="row m-3">
+            <div className="input-group input-group-sm mb-3">
+              <span className="input-group-text" id="inputGroup-sizing-sm">
+                Event Name
+              </span>
+              <input
+                type="text"
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                value={eventName}
+                onChange={handleEventNameChange}
+              ></input>
+            </div>
+            <div className="input-group input-group-sm mb-3">
+              <span className="input-group-text" id="inputGroup-sizing-sm">
+                Address
+              </span>
+              <input
+                type="text"
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                value={address}
+                onChange={handleAddressChange}
+              ></input>
+            </div>
+            <div className="input-group input-group-sm mb-3">
+              <span className="input-group-text" id="inputGroup-sizing-sm">
+                City
+              </span>
+              <input
+                type="text"
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                value={city}
+                onChange={handleCityChange}
+              ></input>
+            </div>
+            <div className="input-group input-group-sm mb-3">
+              <span className="input-group-text" id="inputGroup-sizing-sm">
+                State
+              </span>
+              <input
+                type="text"
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                value={eventState}
+                onChange={handleEventStateChange}
+              ></input>
+            </div>
+            <div className="input-group input-group-sm mb-3">
+              <span className="input-group-text" id="inputGroup-sizing-sm">
+                Postal Code
+              </span>
+              <input
+                type="text"
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                value={postalCode}
+                onChange={handlePostalCodeChange}
+              ></input>
+            </div>
+            <div className="input-group input-group-sm mb-3">
+              <span className="input-group-text" id="inputGroup-sizing-sm">
+                Event Type
+              </span>
+              <input
+                type="text"
+                className="form-control"
+                aria-label="Sizing example input"
+                aria-describedby="inputGroup-sizing-sm"
+                value={eventType}
+                onChange={handleEventTypeChange}
+              ></input>
+            </div>
+            <div>
+              <TableDatePicker start={start} setStart={setStart} end={end} setEnd={setEnd} />
+            </div>
           </div>
           <h3>Duration: {duration > 0 ? duration : 0}</h3>
           <h3>Total: ${total > 0 ? total : 0}</h3>
