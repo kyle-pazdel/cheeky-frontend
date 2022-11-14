@@ -39,34 +39,34 @@ export function PerformersIndexAdmin(props) {
   };
 
   return (
-    <div>
+    <div className="row">
       {performers?.map((performer) => (
-        <div key={performer.id}>
-          <h3>{performer.name}</h3>
+        <div className="col-5">
+          <div key={performer.id} className="card">
+            {performer.posts[0]?.image_url !== undefined ? (
+              <img src={performer.posts[0]?.image_url} alt={`photo of ${performer.name}`} className="card-img-top" />
+            ) : (
+              <Link className="btn btn-outline-dark" to={`/profile-image/${performer.id}`}>
+                Add a profile Image
+              </Link>
+            )}
 
-          {performer.posts[0]?.image_url !== undefined ? (
-            <img src={performer.posts[0]?.image_url} alt={`photo of ${performer.name}`} className="profile-image" />
-          ) : (
-            <Link to={`/profile-image/${performer.id}`}>Add a profile Image for {performer.name}</Link>
-          )}
-          <p>Phone Number: {performer.phone_number}</p>
-          <p>Email: {performer.email}</p>
-          <p>Shortest Gig: {performer.shortest_gig}</p>
-          <p>Longest Gig:{performer.longest_gig}</p>
-          <p>
-            Location: {performer.city}, {performer.state}
-          </p>
-          <p>Rate: ${performer.rate}</p>
-          <p>Bio: {performer.bio}</p>
-          <p>Instagram: {performer.instagram_handle}</p>
-          <p>Twitter: @{performer.twitter_handle}</p>
-          <p>Performance Type: {performer.performance_type}</p>
-          <button onClick={() => handleShowForm(performer)}>Update {performer.name}'s Details</button>
-          {/* {performer.posts?.map((post) => (
-            <div key={post.id}>
-              <img src={post.image_url} alt={`image of ${performer.name}`} className="profile-image" />
+            <div className="card-body">
+              <h5 className="card-title">{performer.name}</h5>
+              <ul className="list-group list-group-flush">
+                <li className="list-group-item">{performer.phone_number}</li>
+                <li className="list-group-item">{performer.email}</li>
+                <li className="list-group-item">
+                  {performer.city}, {performer.state}
+                </li>
+              </ul>
+              <p className="card-text">{performer.bio}</p>
             </div>
-          ))} */}
+            <button className="btn btn-dark" onClick={() => handleShowForm(performer)}>
+              Update Account Details
+            </button>
+          </div>
+
           <Modal show={isFormVisible} onClose={handleHideForm}>
             <PerformersUpdate
               performer={currentPerformer}
