@@ -14,7 +14,6 @@ export function BookingsShow() {
   const [isBookingUpdateVisible, setIsBookingUpdateVisible] = useState(false);
   const [reviews, setReviews] = useState([]);
   const [isReviewUpdateVisible, setIsReviewUpdateVisible] = useState(0);
-  const [startTime, setStartTime] = useState("");
   // const [endTime, setEndTime] = useState("");
 
   // const startTime = booking.start_time;
@@ -25,9 +24,6 @@ export function BookingsShow() {
       console.log(response.data);
       setBooking(response.data);
       setReviews(response.data.reviews);
-      // setStartTime(response.data.start_time);
-      // setEndTime(response.data.end_time);
-      formatStartTime(response.data.start_time);
     });
   };
 
@@ -100,7 +96,6 @@ export function BookingsShow() {
 
   return (
     <div>
-      {/* <button onClick={console.log(formattedStartTime)}>TIME</button> */}
       <h2>
         {booking.event_name} with {booking.performer_name}
       </h2>
@@ -134,7 +129,7 @@ export function BookingsShow() {
 
               <div className="card mt-0 p-0 row-12">
                 <ul className="list-group list-group-flush">
-                  <li className="list-group-item fs-6 fw-semibold">Rate ${booking.performer_rate} </li>
+                  <li className="list-group-item fs-6 fst-italic">Rate ${booking.performer_rate} hourly</li>
                 </ul>
                 <div className="card-header fs-6 fw-semibold">Total {formatMoney(booking.total)}</div>
               </div>

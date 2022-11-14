@@ -71,9 +71,9 @@ export function BookingsUpdate(props) {
         alt={`photo of ${props.booking.performer_name}`}
         className="thumbnail-profile-image rounded-circle mt-3"
       />
-      <p className="m-3 fs-5 fw-semibold">Update Event with {props.booking.performer_name}</p>
+      <p className="m-3 fs-5 text-dark fw-semibold">Update Event with {props.booking.performer_name}</p>
       <div className="card row">
-        <div class="card-header">{eventName}</div>
+        <div class="card-header text-dark ">{eventName}</div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">{address}</li>
           <li className="list-group-item">
