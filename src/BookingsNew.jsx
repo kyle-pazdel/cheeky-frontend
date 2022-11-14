@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import TableDatePicker from "./TableDatePicker";
-import Form from "react-bootstrap/Form";
 
 export function BookingsNew(props) {
   const performer = props.performer;
@@ -14,8 +13,11 @@ export function BookingsNew(props) {
   const [postalCode, setPostalCode] = useState("");
   const [eventType, setEventType] = useState("");
 
-  const duration = (end - start) / 3600000;
+  const duration = Math.round(((end - start) / 3600000) * 100) / 100;
   const total = duration * performer.rate;
+  const formatMoney = (n) => {
+    return "$ " + (Math.round(n * 100) / 100).toLocaleString();
+  };
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -54,33 +56,20 @@ export function BookingsNew(props) {
   };
   return (
     <div>
-      <h1>Book with {performer.name}</h1>
+      <img
+        src={performer.profile_image?.image_url}
+        alt={`photo of ${performer.name}`}
+        className="thumbnail-profile-image rounded-circle mt-3"
+      />
+      <p className="m-3 fs-5 fw-semibold">Book with {performer.name}</p>
       <div>
         <ul>
           {props.errors?.map((error) => (
             <li key={error}>{error}</li>
           ))}
         </ul>
-        {/* <div>
-          <p>{eventName}</p>
-        </div>
-        <div>
-          <p>{address}</p>
-        </div>
-        <div>
-          <p>{city}</p>
-        </div>
-        <div>
-          <p>{eventState}</p>
-        </div>
-        <div>
-          <p>{postalCode}</p>
-        </div>
-        <div>
-          <p>{eventType}</p>
-        </div> */}
         <form onSubmit={handleSubmit}>
-          <div className="row m-3">
+          <div className="row m-3 mb-0">
             <div className="input-group input-group-sm mb-3">
               <span className="input-group-text" id="inputGroup-sizing-sm">
                 Event Name
@@ -163,9 +152,17 @@ export function BookingsNew(props) {
               <TableDatePicker start={start} setStart={setStart} end={end} setEnd={setEnd} />
             </div>
           </div>
-          <h3>Duration: {duration > 0 ? duration : 0}</h3>
-          <h3>Total: ${total > 0 ? total : 0}</h3>
-          <button type="submit">Submit</button>
+          <div className="card mt-0 p-0 row-12">
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">{duration > 0 ? duration : 0} hours</li>
+            </ul>
+            <div className="card-header">Total {total > 0 ? formatMoney(total) : 0}</div>
+          </div>
+          <div className="d-grid gap-2">
+            <button className="btn btn-dark mt-3" type="submit">
+              Submit
+            </button>
+          </div>
         </form>
       </div>
     </div>
