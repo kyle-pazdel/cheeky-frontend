@@ -12,12 +12,19 @@ export function Home() {
   const handleIndexPerformers = () => {
     axios.get("/performers.json").then((response) => {
       console.log(response.data);
-      setPerformers(response.data);
+      sortPerformers(response.data);
     });
+  };
+  const sortPerformers = (performers) => {
+    if (performers) {
+      performers.sort((a, b) => (a.id > b.id ? 1 : -1));
+      setPerformers(performers);
+    } else {
+      null;
+    }
   };
 
   useEffect(handleIndexPerformers, []);
-
   return (
     <div>
       <PerformersIndex performers={performers} />

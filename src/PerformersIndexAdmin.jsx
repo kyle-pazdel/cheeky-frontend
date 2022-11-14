@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { PerformersUpdate } from "./PerformersUpdate";
 import { Modal } from "./Modal";
 import { FileForm } from "./FileForm";
@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 
 export function PerformersIndexAdmin(props) {
   const [isFormVisible, setIsFormVisible] = useState(false);
-  const [performers, setPerformers] = useState(props.performers);
+  const [performers, setPerformers] = useState([]);
   const [currentPerformer, setCurrentPerformer] = useState({});
 
   const handleShowForm = (performer) => {
@@ -37,6 +37,17 @@ export function PerformersIndexAdmin(props) {
     handleHideForm();
     setPerformers(performers.filter((p) => p.id !== currentPerformer.id));
   };
+
+  const sortPerformers = (performers) => {
+    if (performers) {
+      performers.sort((a, b) => (a.id > b.id ? 1 : -1));
+      setPerformers(performers);
+    } else {
+      null;
+    }
+  };
+
+  useEffect(() => sortPerformers(props.performers));
 
   return (
     <div className="row">
