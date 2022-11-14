@@ -42,9 +42,13 @@ export function PerformersIndexAdmin(props) {
     <div className="row">
       {performers?.map((performer) => (
         <div className="col-5">
-          <div key={performer.id} className="card">
+          <div key={performer.id} className="card" style={{ width: "25rem" }}>
             {performer.posts[0]?.image_url !== undefined ? (
-              <img src={performer.posts[0]?.image_url} alt={`photo of ${performer.name}`} className="card-img-top" />
+              <img
+                src={performer.posts[0]?.image_url}
+                alt={`photo of ${performer.name}`}
+                className="card-ig card-img-top"
+              />
             ) : (
               <Link className="btn btn-outline-dark" to={`/profile-image/${performer.id}`}>
                 Add a profile Image

@@ -52,12 +52,18 @@ export function UsersShow() {
 
   return (
     <div>
-      <h1>My Profile</h1>
-      <p>First Name: {user.first_name}</p>
-      <p>Last Name: {user.last_name}</p>
-      <p>Email: {user.email}</p>
-      <p>Phone Number: {user.phone_number}</p>
-      <button onClick={handleShowUserForm}>Edit Account Details</button>
+      <div className="row card">
+        <p className="card-header m-3 fs-3 fw-semibold">My Profile</p>
+        <ul className="list-group list-group-flush">
+          <li className="list-group-item">{user.first_name}</li>
+          <li className="list-group-item">Last Name: {user.last_name}</li>
+          <li className="list-group-item">Email: {user.email}</li>
+          <li className="list-group-item">Phone Number: {user.phone_number}</li>
+          <button className="btn btn-dark" onClick={handleShowUserForm}>
+            Edit Account Details
+          </button>
+        </ul>
+      </div>
       {errors !== undefined ? (
         <ul>
           {errors.map((error) => (
