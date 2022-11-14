@@ -7,6 +7,7 @@ import axios from "axios";
 import { format } from "date-fns";
 import { MapComponent } from "./MapComponent";
 import { ReviewsUpdate } from "./ReviewsUpdate";
+import { formatPhoneNumber } from "react-phone-number-input";
 
 export function BookingsShow() {
   const params = useParams();
@@ -128,9 +129,8 @@ export function BookingsShow() {
                 <div className="card-header fs-6 fw-semibold">Total {formatMoney(booking.total)}</div>
               </div>
               <li className="list-group-item">
-                <small>
-                  {booking.performer_email} {booking.performer_phone_number}
-                </small>
+                <small>{booking.performer_email}</small> <br />
+                <small>{formatPhoneNumber(booking.performer_phone_number)}</small>
               </li>
               <li className="list-group-item">
                 <small>

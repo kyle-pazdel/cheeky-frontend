@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PhoneInput from "react-phone-number-input";
 
 export function PerformersUpdate(props) {
   const handleSubmit = (event) => {
@@ -56,10 +57,9 @@ export function PerformersUpdate(props) {
           </label>
         </div>
         <div>
-          <label>
-            Idustry Phone Number:
-            <input type="text" value={phoneNumber} onChange={(event) => setPhoneNumber(event.target.value)}></input>
-          </label>
+          <div className="input-group input-group-sm mb-3">
+            <PhoneInput placeholder="Enter phone number" value={phoneNumber} onChange={setPhoneNumber} />
+          </div>
         </div>
         <div>
           <label>

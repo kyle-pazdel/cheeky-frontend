@@ -4,6 +4,7 @@ import { Modal } from "./Modal";
 import { UsersUpdate } from "./UsersUpdate";
 import { PerformersIndexAdmin } from "./PerformersIndexAdmin";
 import { Link } from "react-router-dom";
+import { formatPhoneNumber } from "react-phone-number-input";
 
 export function UsersShow() {
   const [user, setUser] = useState({});
@@ -73,7 +74,7 @@ export function UsersShow() {
           <li className="list-group-item">{user.first_name}</li>
           <li className="list-group-item">Last Name: {user.last_name}</li>
           <li className="list-group-item">Email: {user.email}</li>
-          <li className="list-group-item">Phone Number: {user.phone_number}</li>
+          <li className="list-group-item">Phone Number: {formatPhoneNumber(user.phone_number)}</li>
           <button className="btn btn-dark" onClick={handleShowUserForm}>
             Edit Account Details
           </button>

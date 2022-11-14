@@ -1,4 +1,6 @@
 import { useState } from "react";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 
 export function UsersUpdate(props) {
   const [firstName, setFirstName] = useState(props.user.first_name);
@@ -63,7 +65,15 @@ export function UsersUpdate(props) {
             onChange={(event) => setEmail(event.target.value)}
           ></input>
         </div>
+
         <div className="input-group input-group-sm mb-3">
+          {/* <span className="input-group-text" id="inputGroup-sizing-sm">
+            Phone Number
+          </span> */}
+          <PhoneInput placeholder="Enter phone number" value={phoneNumber} onChange={setPhoneNumber} />
+        </div>
+
+        {/* <div className="input-group input-group-sm mb-3">
           <span className="input-group-text" id="inputGroup-sizing-sm">
             Phone Number
           </span>
@@ -75,7 +85,7 @@ export function UsersUpdate(props) {
             value={phoneNumber}
             onChange={(event) => setPhoneNumber(event.target.value)}
           ></input>
-        </div>
+        </div> */}
         <button className="btn btn-dark" type="submit">
           Update Account Details
         </button>

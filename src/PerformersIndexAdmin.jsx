@@ -4,6 +4,7 @@ import { PerformersUpdate } from "./PerformersUpdate";
 import { Modal } from "./Modal";
 import { FileForm } from "./FileForm";
 import { Link } from "react-router-dom";
+import { formatPhoneNumber } from "react-phone-number-input";
 
 export function PerformersIndexAdmin(props) {
   const [isFormVisible, setIsFormVisible] = useState(false);
@@ -84,7 +85,7 @@ export function PerformersIndexAdmin(props) {
                   <h5 className="card-title">{performer.name}</h5>
                   <div className="card-body">
                     <ul className="list-group list-group-flush">
-                      <li className="list-group-item">{performer.phone_number}</li>
+                      <li className="list-group-item">{formatPhoneNumber(performer.phone_number)}</li>
                       <li className="list-group-item">{performer.email}</li>
                       <li className="list-group-item">
                         {performer.city}, {performer.state}
