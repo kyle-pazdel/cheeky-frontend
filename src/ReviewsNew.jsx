@@ -33,6 +33,7 @@ export function ReviewsNew(props) {
           </label>
           <div className="col-3">
             <p>Rating</p>
+            {rating === "" && comment.length > 6 ? <p>* Please select a rating</p> : null}
           </div>
           <div className="col-1">
             <select

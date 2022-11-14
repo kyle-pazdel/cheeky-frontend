@@ -90,6 +90,10 @@ export function BookingsShow() {
     return formattedTime;
   };
 
+  const formatMoney = (n) => {
+    return "$ " + (Math.round(n * 100) / 100).toLocaleString();
+  };
+
   return (
     <div>
       {/* <button onClick={console.log(formattedStartTime)}>TIME</button> */}
@@ -103,36 +107,74 @@ export function BookingsShow() {
           className="thumbnail-profile-image rounded-circle mb-3 mt-3"
         />
       </div>
-      <div>
-        <MapComponent booking={booking} latitude={booking.latitude} longitude={booking.longitude} />
-      </div>
-      <p>Event Type: {booking.event_type}</p>
-      <p>Hourly Rate: {booking.performer_rate}</p>
-      <p>Total: {booking.total}</p>
-      <p>
-        {booking.start_time} – {booking.end_time}
-      </p>
-      <p>
-        Location: {booking.address} {booking.city} {booking.state} {booking.postal_code}
-      </p>
-      <small>
-        Contact: {booking.performer_name} {booking.performer_email} {booking.performer_phone_number}
-      </small>
-      <div>
-        <button onClick={handleShowUpdateBooking}>Update Booking Details</button>
-      </div>
-      <Modal show={isBookingUpdateVisible} onClose={handleHideUpdateBooking}>
-        <BookingsUpdate onCancel={handleHideUpdateBooking} booking={booking} />
-      </Modal>
-      {booking.paid === true ? (
-        <div>
-          <p>PAID</p>
+      <div className="row card">
+        <MapComponent
+          className="p-0 m-0 card-image-top"
+          booking={booking}
+          latitude={booking.latitude}
+          longitude={booking.longitude}
+        />
+        <div className="col">
+          <p className="m-3 fs-5 fw-semibold">Event Details</p>
+          <div className="card row">
+            <div class="card-header">{booking.event_name}</div>
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">{booking.address}</li>
+              <li className="list-group-item">
+                {booking.city}, {booking.state} {booking.postal_code}
+              </li>
+              <li className="list-group-item">{booking.postal_code}</li>
+              <li className="list-group-item">
+                {booking.start_time} – {booking.end_time}
+              </li>
+
+              <div className="card mt-0 p-0 row-12">
+                <ul className="list-group list-group-flush">
+                  <li className="list-group-item fs-6 fw-semibold">Rate ${booking.performer_rate} </li>
+                </ul>
+                <div className="card-header fs-6 fw-semibold">Total {formatMoney(booking.total)}</div>
+              </div>
+              <li className="list-group-item">
+                <small>
+                  {booking.performer_email} {booking.performer_phone_number}
+                </small>
+              </li>
+              <li className="list-group-item">
+                <small>
+                  <Link className="link-dark text-wrap fst-italic" to={`/performers/${booking.performer_id}`}>
+                    See {booking.performer_name}'s Page
+                  </Link>
+                </small>
+              </li>
+            </ul>
+          </div>
         </div>
-      ) : (
-        <Link to={`/process-payment/${booking.id}`}>Submit Payment</Link>
-      )}
-      <div>
-        <button onClick={() => handleDestroyBooking(booking)}>Cancel Booking</button>
+        <div className="col-sm-3 card text-bg-dark mb-3 event-update-controls">
+          <div className="card-body">
+            {booking.paid === true ? (
+              <div>
+                <p>PAID</p>
+              </div>
+            ) : (
+              <Link className=" btn btn-outline-warning" to={`/process-payment/${booking.id}`}>
+                Submit Payment
+              </Link>
+            )}
+            <div className="pt-3 pb-3">
+              <button className="btn btn-outline-info" onClick={handleShowUpdateBooking}>
+                Update Booking Details
+              </button>
+            </div>
+            <Modal show={isBookingUpdateVisible} onClose={handleHideUpdateBooking}>
+              <BookingsUpdate onCancel={handleHideUpdateBooking} booking={booking} />
+            </Modal>
+          </div>
+          <div>
+            <button className="btn btn-outline-secondary" onClick={() => handleDestroyBooking(booking)}>
+              Cancel Booking
+            </button>
+          </div>
+        </div>
       </div>
       {reviews?.map((review) => (
         <div key={review.id}>

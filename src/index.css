@@ -47,3 +47,7 @@ body {
   height: 25vh;
   overflow-x: hidden;
 }
+
+.event-update-controls {
+  max-width: 30px;
+}
