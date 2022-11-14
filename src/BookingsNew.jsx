@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TableDatePicker from "./TableDatePicker";
+import Form from "react-bootstrap/Form";
 
 export function BookingsNew(props) {
   const performer = props.performer;
@@ -30,7 +31,7 @@ export function BookingsNew(props) {
       start_time: start,
       end_time: end,
     };
-    props.onCreateBooking(params, () => event.target.reset());
+    props.onCreateBooking(params, () => event.target.reset(event.target.value));
   };
 
   const handleEventNameChange = (event) => {
@@ -60,7 +61,7 @@ export function BookingsNew(props) {
             <li key={error}>{error}</li>
           ))}
         </ul>
-        <div>
+        {/* <div>
           <p>{eventName}</p>
         </div>
         <div>
@@ -77,7 +78,7 @@ export function BookingsNew(props) {
         </div>
         <div>
           <p>{eventType}</p>
-        </div>
+        </div> */}
         <form onSubmit={handleSubmit}>
           <input type="hidden" name="total" value={total}></input>
           <div>

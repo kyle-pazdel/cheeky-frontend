@@ -35,7 +35,7 @@ export function Header() {
                     </NavLink>
                   </li>
                   <li className="nav-item">
-                    <NavLink className="/signup" to="/login">
+                    <NavLink className="nav-link" to="/login">
                       Signup
                     </NavLink>
                   </li>

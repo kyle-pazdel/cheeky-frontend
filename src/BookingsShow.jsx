@@ -154,7 +154,6 @@ export function BookingsShow() {
           )}
         </div>
       ))}
-      <h2>Leave a Review</h2>
       <ReviewsNew booking={booking} onCreateReview={handleCreateReview} />
     </div>
   );
