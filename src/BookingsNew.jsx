@@ -54,6 +54,7 @@ export function BookingsNew(props) {
   const handleEventTypeChange = (event) => {
     setEventType(event.target.value);
   };
+
   return (
     <div>
       <img

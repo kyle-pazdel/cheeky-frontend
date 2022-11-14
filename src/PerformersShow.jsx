@@ -7,6 +7,7 @@ import { Carousel } from "react-responsive-carousel";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from "react-router-dom";
 import { SocialIcon } from "react-social-icons";
+import { format } from "date-fns";
 
 export function PerformersShow() {
   const params = useParams();
@@ -60,6 +61,12 @@ export function PerformersShow() {
     } else {
       return time + " min";
     }
+  };
+
+  const formatPostTime = (time) => {
+    const formattedTime = format(new Date(time), "MMMM dd yyyy, p");
+    console.log(formattedTime);
+    return formattedTime;
   };
 
   return (
@@ -143,14 +150,14 @@ export function PerformersShow() {
       <div className="card reviews">
         <p className="card-header fw-bolder fs-5">{performer.name}'s Reviews</p>
         {performer.performer_reviews?.map((review) => (
-          <div className="card" key={review.id}>
+          <div className="card m-0 p-2" key={review.id}>
             <div>
               <p>{review.rating}</p>
             </div>
             <div>
               <p>{review.comment}</p>
               <small>
-                by {review.user.first_name} {review.user.last_name} on {review.created_at}
+                by {review.user.first_name} {review.user.last_name} on {formatPostTime(review.created_at)}
               </small>
             </div>
           </div>
