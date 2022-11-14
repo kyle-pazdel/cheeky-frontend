@@ -10,6 +10,7 @@ export function PerformersIndexAdmin(props) {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [performers, setPerformers] = useState([]);
   const [currentPerformer, setCurrentPerformer] = useState({});
+  const [isDeletePerformerVisible, setIsDeletePerformerVisible] = useState(false);
 
   const handleShowForm = (performer) => {
     setIsFormVisible(true);
@@ -18,6 +19,14 @@ export function PerformersIndexAdmin(props) {
 
   const handleHideForm = () => {
     setIsFormVisible(false);
+  };
+
+  const handleShowDeletePerformer = () => {
+    setIsDeletePerformerVisible(true);
+  };
+
+  const handleHideDeletePerformer = () => {
+    setIsDeletePerformerVisible(false);
   };
 
   const handleUpdatePerformer = (performerId, params) => {
@@ -49,6 +58,7 @@ export function PerformersIndexAdmin(props) {
       console.log(currentPerformer);
     });
     handleHideForm();
+    handleHideDeletePerformer();
   };
 
   const sortPerformers = (p) => {
@@ -103,6 +113,9 @@ export function PerformersIndexAdmin(props) {
             </div>
           </div>
           <Modal show={isFormVisible} onClose={handleHideForm}>
+            <button className="btn btn-sm btn-outline-success" onClick={handleShowDeletePerformer}>
+              Delete {performer.name}'s Account
+            </button>
             <div className="card mb-3 mt-4">
               <PerformersUpdate
                 performer={currentPerformer}
@@ -111,12 +124,18 @@ export function PerformersIndexAdmin(props) {
                 onClose={handleHideForm}
               />
             </div>
+
             <div className="card mb-3">
               <FileForm performer={currentPerformer} onClose={handleHideForm} />
             </div>
-            <button className="btn btn-sm btn-outline-success" onClick={handleDestroyPerformer}>
-              Delete {performer.name}'s Account
-            </button>
+            <Modal show={isDeletePerformerVisible} onClose={handleHideDeletePerformer}>
+              <div className="card m-4">
+                <p className="cardTitle">Are you sure you want to delete {performer.name}'s account</p>
+                <button className="btn btn-outline-success" onClick={handleDestroyPerformer}>
+                  Yes, proceed.
+                </button>
+              </div>
+            </Modal>
           </Modal>
         </div>
       ))}
