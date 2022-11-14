@@ -19,7 +19,8 @@ export function PerformersUpdate(props) {
       performance_type: performanceType,
     };
     props.onUpdatePerformer(props.performer.id, params);
-    props.onHideUserForm();
+    props.onClose();
+    // window.location.href = "/me";
   };
 
   const handleClick = () => {

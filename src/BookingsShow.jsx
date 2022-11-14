@@ -14,10 +14,6 @@ export function BookingsShow() {
   const [isBookingUpdateVisible, setIsBookingUpdateVisible] = useState(false);
   const [reviews, setReviews] = useState([]);
   const [isReviewUpdateVisible, setIsReviewUpdateVisible] = useState(0);
-  // const [endTime, setEndTime] = useState("");
-
-  // const startTime = booking.start_time;
-  // const endTime = booking.end_time;
 
   const handleShowBooking = () => {
     axios.get(`/bookings/${params.id}.json`).then((response) => {
@@ -82,9 +78,7 @@ export function BookingsShow() {
 
   const formatTime = (time) => {
     if (time) {
-      const formattedTime = format(new Date(time), "MMMM dd yyyy, p");
-      console.log(formattedTime);
-      return formattedTime;
+      return format(new Date(time), "MMMM dd yyyy, p");
     } else {
       return null;
     }

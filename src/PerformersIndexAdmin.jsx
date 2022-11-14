@@ -24,6 +24,16 @@ export function PerformersIndexAdmin(props) {
       .patch("/performers/" + performerId + ".json", params)
       .then((response) => {
         console.log(response.data);
+        props.onSetPerformers(response.data);
+        // sortPerformers(
+        //   performers.map((performer) => {
+        //     if (performer.id === response.data.id) {
+        //       return response.data;
+        //     } else {
+        //       return performer;
+        //     }
+        //   })
+        // );
       })
       .catch((error) => {
         console.log(error.response);
@@ -38,10 +48,11 @@ export function PerformersIndexAdmin(props) {
     setPerformers(performers.filter((p) => p.id !== currentPerformer.id));
   };
 
-  const sortPerformers = (performers) => {
-    if (performers) {
-      performers.sort((a, b) => (a.id > b.id ? 1 : -1));
-      setPerformers(performers);
+  const sortPerformers = (p) => {
+    if (p) {
+      p.sort((a, b) => (a.id > b.id ? 1 : -1));
+      console.log(p);
+      setPerformers(p);
     } else {
       null;
     }

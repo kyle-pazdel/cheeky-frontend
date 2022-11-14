@@ -11,11 +11,14 @@ export function UsersShow() {
   const [isFormVisible, setIsFormVisible] = useState(false);
   const [errors, setErrors] = useState([]);
   const [status, setStatus] = useState(null);
+  const [performers, setPerformers] = useState([]);
 
   const handleShowUser = () => {
     axios.get("/users/" + userId + ".json").then((response) => {
       console.log(response.data);
       setUser(response.data);
+      setPerformers(response.data.performers);
+      console.log("handleShowUser");
     });
   };
 
@@ -25,6 +28,18 @@ export function UsersShow() {
 
   const handleHideUserForm = () => {
     setIsFormVisible(false);
+  };
+
+  const handleSetPerformers = (p) => {
+    setPerformers(
+      performers.map((performer) => {
+        if (performer.id === p.id) {
+          return p;
+        } else {
+          return performer;
+        }
+      })
+    );
   };
 
   const handleUpdateUser = (userId, params) => {
@@ -83,7 +98,7 @@ export function UsersShow() {
       {user.is_admin === true ? (
         <div>
           <h2>Manage Talent Accounts</h2>
-          <PerformersIndexAdmin performers={user.performers} />
+          <PerformersIndexAdmin performers={performers} user={user} onSetPerformers={handleSetPerformers} />
           <Link to="/add-performer">Add Queen</Link>
         </div>
       ) : null}
