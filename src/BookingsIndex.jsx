@@ -25,14 +25,28 @@ export function BookingsIndex() {
     <div>
       <h1>My Bookings!</h1>
       {bookings.map((booking) => (
-        <div key={booking.id}>
-          <h2>
-            {booking.event_name} with {booking.performer_name}
-          </h2>
-          <p>Date: {formatTime(booking.start_time)}</p>
-          <p>Date: {booking.start_time}</p>
-          <div>
-            <Link to={`/bookings/${booking.id}`}>See Booking Details</Link>
+        <div>
+          {/* <div key={booking.id}>
+            <h2>
+              {booking.event_name} with {booking.performer_name}
+            </h2>
+            <img />
+            <p>Date: {formatTime(booking.start_time)}</p>
+            <div>
+              <Link to={`/bookings/${booking.id}`}>See Booking Details</Link>
+            </div>
+          </div> */}
+          <div key={booking.id} class="card">
+            <h5 class="card-header">
+              {booking.event_name} with {booking.performer_name}
+            </h5>
+            <div class="card-body">
+              <h5 class="card-title">{formatTime(booking.start_time)}</h5>
+              <p class="card-text">at {booking.address}</p>
+              <Link to={`/bookings/${booking.id}`} class="btn btn-dark">
+                See Booking Details
+              </Link>
+            </div>
           </div>
         </div>
       ))}

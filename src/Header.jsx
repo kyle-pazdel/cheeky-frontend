@@ -7,7 +7,7 @@ export function Header() {
       <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
         <div className="container-fluid">
           <a className="navbar-brand" href="#">
-            Navbar
+            Cheeky
           </a>
           <button
             className="navbar-toggler"

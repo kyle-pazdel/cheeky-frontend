@@ -87,7 +87,7 @@ export function BookingsShow() {
   const formatStartTime = (time) => {
     const formattedTime = format(new Date(time), "MMMM dd yyyy, p");
     console.log(formattedTime);
-    // return formattedTime;
+    return formattedTime;
   };
 
   return (
@@ -100,7 +100,7 @@ export function BookingsShow() {
         <img
           src={booking.performer_image?.image_url}
           alt={`image of ${booking.performer_name}`}
-          className="thumbnail-profile-image"
+          className="thumbnail-profile-image rounded-circle mb-3 mt-3"
         />
       </div>
       <div>
