@@ -140,16 +140,19 @@ export function PerformersShow() {
       <Modal show={isBookingFormVisible} onClose={handleHideBookingForm}>
         <BookingsNew errors={errors} performer={performer} onCreateBooking={handleCreateBooking} />
       </Modal>
-      <div>
-        <h3>{performer.name}'s Reviews</h3>
+      <div className="card reviews">
+        <p className="card-header fw-bolder fs-5">{performer.name}'s Reviews</p>
         {performer.performer_reviews?.map((review) => (
-          <div key={review.id}>
-            <p>
-              {review.rating} ~ {review.comment}
-            </p>
-            <small>
-              by {review.user.first_name} {review.user.last_name} on {review.created_at}
-            </small>
+          <div className="card" key={review.id}>
+            <div>
+              <p>{review.rating}</p>
+            </div>
+            <div>
+              <p>{review.comment}</p>
+              <small>
+                by {review.user.first_name} {review.user.last_name} on {review.created_at}
+              </small>
+            </div>
           </div>
         ))}
       </div>

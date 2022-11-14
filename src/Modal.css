@@ -1,25 +1,3 @@
-/* .modal-background {
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1000;
-} */
-
-.modal-main {
-  position: absolute;
-  background: white;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  z-index: 1000;
-  /* transform: translate(-50%, -50%);
-  padding: 1em; */
-}
 
 .modal-main button.close {
   font-size: 2em;
@@ -28,4 +6,30 @@
   position: absolute;
   top: 0em;
   right: 0.2em;
+} 
+
+.modal-background {
+  display: block;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+}
+.modal-main {
+  position: fixed;
+  background: white;
+  width: 50%;
+  height: auto;
+  top: 50%;
+  left: 50%;
+  max-height: 80vh;
+  transform: translate(-50%, -50%);
+  padding: 1em;
+  border: 4px solid black;
+  z-index: 1000;
+  border-radius: 2%;
+  overflow-y: auto;
 }
