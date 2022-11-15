@@ -139,7 +139,7 @@ export function BookingsShow() {
         <div className="col">
           <p className="m-3 fs-5 fw-semibold">Event Details</p>
           <div className="card row">
-            <div class="card-header">{booking.event_name}</div>
+            <div className="card-header">{booking.event_name}</div>
             <ul className="list-group list-group-flush">
               <li className="list-group-item">{booking.address}</li>
               <li className="list-group-item">
