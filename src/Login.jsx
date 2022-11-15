@@ -8,11 +8,16 @@ if (jwt) {
 
 export function Login() {
   const [errors, setErrors] = useState([]);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setErrors([]);
-    const params = new FormData(event.target);
+    const params = {
+      email: email,
+      password: password,
+    };
     axios
       .post("/login", params)
       .then((response) => {
@@ -33,7 +38,7 @@ export function Login() {
   };
 
   return (
-    <div id="login">
+    <div id="login" className="card container d-flex flex-column align-items-center p-5" style={{ maxWidth: "40rem" }}>
       <h1>Login</h1>
       <ul>
         {errors.map((error) => (
@@ -41,11 +46,31 @@ export function Login() {
         ))}
       </ul>
       <form onSubmit={handleSubmit}>
-        <div>
-          Email: <input name="email" type="email" />
+        <div className="input-group input-group-sm mb-3">
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            Email
+          </span>
+          <input
+            type="text"
+            className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          ></input>
         </div>
-        <div>
-          Password: <input name="password" type="password" />
+        <div className="input-group input-group-sm mb-3">
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            Password
+          </span>
+          <input
+            type="password"
+            className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            value={password}
+            onChange={(event) => setPassword(event.target.value)}
+          ></input>
         </div>
         <button type="submit">Login</button>
       </form>
