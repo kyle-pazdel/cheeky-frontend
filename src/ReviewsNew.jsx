@@ -1,4 +1,3 @@
-import Form from "react-bootstrap/Form";
 import { useState } from "react";
 
 export function ReviewsNew(props) {
@@ -14,7 +13,6 @@ export function ReviewsNew(props) {
     };
     console.log(params);
     props.onCreateReview(params, () => event.target.reset());
-    // window.location.href = `/bookings/${props.booking.id}`;
     event.target.reset();
   };
 

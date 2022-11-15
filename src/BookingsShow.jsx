@@ -209,14 +209,24 @@ export function BookingsShow() {
         </Modal>
       </div>
       {reviews?.map((review) => (
-        <div key={review.id}>
+        <div key={review.id} className="card">
           {isReviewUpdateVisible !== review.id ? (
-            <div>
+            <div className="card">
               <p>
                 {review.rating} ~ {review.comment}
               </p>
-              <button onClick={() => handleShowUpdateReview(review)}>Edit Review</button>
-              <button onClick={() => handleDestroyReview(review)}>Delete Review</button>
+              <div className="row d-flex justify-content-center">
+                <div className="col-1 d-grid gap-2">
+                  <button className=" m-1 btn btn-dark" onClick={() => handleShowUpdateReview(review)}>
+                    Edit
+                  </button>
+                </div>
+                <div className="col-1 d-grid gap-2">
+                  <button className=" m-1 btn btn-outline-secondary" onClick={() => handleDestroyReview(review)}>
+                    Delete
+                  </button>
+                </div>
+              </div>
             </div>
           ) : (
             <ReviewsUpdate
