@@ -33,6 +33,14 @@ body {
   object-fit: cover;
   object-position: 100% 0
 }
+.gallery-photo {
+  width: 200px;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+  object-fit: cover;
+  object-position: 100% 0
+}
 
 .carousel-image {
   height: 700px;

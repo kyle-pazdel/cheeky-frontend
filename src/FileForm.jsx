@@ -77,18 +77,24 @@ export function FileForm(props) {
         </button>
       </form>
       <h3>{props.performer.name}'s Images</h3>
-      {posts?.map((post) => (
-        <div key={post.id}>
-          <div>
-            <img src={post.image_url} alt={`image of ${props.performer.name}`} className="profile-image" />
+      <div className="row">
+        {posts?.map((post) => (
+          <div
+            key={post.id}
+            class="card shadow container d-flex flex-column align-items-center m-1"
+            style={{ width: "10rem" }}
+          >
+            <div>
+              <img src={post.image_url} alt={`image of ${props.performer.name}`} className="gallery-photo p-0 m-0" />
+            </div>
+            <div>
+              <button className="mt-2 btn btn-outline-success m-0 " onClick={() => handleClick(post)}>
+                Delete Image
+              </button>
+            </div>
           </div>
-          <div>
-            <button className="btn btn-outline-success" onClick={() => handleClick(post)}>
-              Delete Image
-            </button>
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
