@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import PhoneInput from "react-phone-number-input";
 
 export function Signup() {
   const [errors, setErrors] = useState([]);
@@ -11,18 +12,6 @@ export function Signup() {
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
 
-  const handleFirstNameChange = (event) => {
-    setFirstName(event.target.value);
-  };
-  const handleLastNameChange = (event) => {
-    setLastName(event.target.value);
-  };
-  const handleEmailChange = (event) => {
-    setEmail(event.target.value);
-  };
-  const handlePhoneNumberChange = (event) => {
-    setPhoneNumber(event.target.value);
-  };
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
@@ -67,7 +56,7 @@ export function Signup() {
   };
 
   return (
-    <div id="signup">
+    <div id="signup" className="card container d-flex flex-column align-items-center p-5" style={{ maxWidth: "40rem" }}>
       <h1>Signup</h1>
       <ul>
         {errors?.map((error) => (
@@ -75,45 +64,92 @@ export function Signup() {
         ))}
       </ul>
       <form onSubmit={handleSubmit} action="/photos" method="post" enctype="multipart/form-data">
-        <div>
-          {password !== passwordConfirmation && passwordConfirmation.length !== 0 ? <p>Password must match</p> : null}
-          <label>
-            First Name:
-            <input type="text" value={firstName} onChange={handleFirstNameChange}></input>
-          </label>
-          <label>
-            Last Name:
-            <input type="text" value={lastName} onChange={handleLastNameChange}></input>
-          </label>
+        <div className="input-group input-group-sm mb-3">
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            First Name
+          </span>
+          <input
+            type="text"
+            className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            value={firstName}
+            onChange={(event) => setFirstName(event.target.value)}
+          ></input>
         </div>
-        <div>
-          <label>
-            Email:
-            <input type="text" value={email} onChange={handleEmailChange}></input>
-          </label>
+        <div className="input-group input-group-sm mb-3">
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            Last Name
+          </span>
+          <input
+            type="text"
+            className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            value={lastName}
+            onChange={(event) => setLastName(event.target.value)}
+          ></input>
         </div>
-        <div>
-          <label>
-            Phone Number:
-            <input type="text" value={phoneNumber} onChange={handlePhoneNumberChange}></input>
-          </label>
+        <div className="input-group input-group-sm mb-3">
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            Email
+          </span>
+          <input
+            type="text"
+            className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            value={email}
+            onChange={(event) => setEmail(event.target.value)}
+          ></input>
         </div>
-        <div>
-          <label>
-            Password:
-            <input type="password" value={password} onChange={handlePasswordChange}></input>
-          </label>
-          <label>
-            Confirm Password:
-            <input type="password" value={passwordConfirmation} onChange={handlePasswordConfirmationChange}></input>
-          </label>
-          <label>
-            Signing Up as a Queen?:
-            <input type="checkbox" value={`${isAdmin}`} onChange={handleIsAdminChange}></input>
+        <div className="input-group input-group-sm mb-3">
+          {/* <span className="input-group-text" id="inputGroup-sizing-sm">
+            Phone Number
+          </span> */}
+          <PhoneInput placeholder="Enter phone number" value={phoneNumber} onChange={setPhoneNumber} />
+        </div>
+        <div className="input-group input-group-sm mb-3">
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            Password
+          </span>
+          <input
+            type="password"
+            className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            value={password}
+            onChange={handlePasswordChange}
+          ></input>
+          <span className="input-group-text" id="inputGroup-sizing-sm">
+            Confirm Password
+          </span>
+          <input
+            type="password"
+            className="form-control"
+            aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm"
+            value={passwordConfirmation}
+            onChange={handlePasswordConfirmationChange}
+          ></input>
+        </div>
+        {password !== passwordConfirmation && passwordConfirmation.length !== 0 ? <p>Password must match</p> : null}
+        <div className="form-check form-switch">
+          <input
+            className="form-check-input"
+            value={`${isAdmin}`}
+            onChange={handleIsAdminChange}
+            type="checkbox"
+            role="switch"
+            id="flexSwitchCheckDefault"
+          />
+          <label className="form-check-label" for="flexSwitchCheckDefault">
+            Signing Up as a Queen?
           </label>
           <p>Is "My Value" checked? {isAdmin.toString()}</p>
         </div>
-        <button type="submit" value="Create">
+
+        <button className="btn btn-dark" type="submit" value="Create">
           Signup
         </button>
       </form>
