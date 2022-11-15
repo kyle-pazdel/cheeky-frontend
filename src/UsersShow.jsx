@@ -102,14 +102,21 @@ export function UsersShow() {
       </Modal>
       {user.is_admin === true ? (
         <div>
-          <h2>Manage Talent Accounts</h2>
+          <h2 className="mb-4">Manage Talent Accounts</h2>
           <PerformersIndexAdmin
             performers={performers}
             user={user}
             onSetPerformers={handleSetPerformers}
             onRemovePerformer={handleRemovePerformer}
           />
-          <Link to="/add-performer">Add Queen</Link>
+          <div>
+            <Link
+              className="btn btn-success btn-lg d-flex flex-row  justify-content-center pb-0 mb-4"
+              to="/add-performer"
+            >
+              <p className="mb-1 mx-3">&#x2b;</p> <p className="mb-1">Add Queen</p>
+            </Link>
+          </div>
         </div>
       ) : null}
     </div>

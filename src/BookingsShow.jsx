@@ -217,12 +217,12 @@ export function BookingsShow() {
               </p>
               <div className="row d-flex justify-content-center">
                 <div className="col-1 d-grid gap-2">
-                  <button className=" m-1 btn btn-dark" onClick={() => handleShowUpdateReview(review)}>
+                  <button className=" m-1 btn btn-dark btn-sm" onClick={() => handleShowUpdateReview(review)}>
                     Edit
                   </button>
                 </div>
                 <div className="col-1 d-grid gap-2">
-                  <button className=" m-1 btn btn-outline-secondary" onClick={() => handleDestroyReview(review)}>
+                  <button className=" m-1 btn btn-outline-secondary btn-sm" onClick={() => handleDestroyReview(review)}>
                     Delete
                   </button>
                 </div>

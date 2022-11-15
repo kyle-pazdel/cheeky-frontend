@@ -114,7 +114,7 @@ export function PaymentProcessing() {
           <div>
             {isPaid === false ? (
               <div>
-                <small>Please agree to our terms and conditions</small>
+                <small>Agree to our terms and conditions to proceed.</small>
               </div>
             ) : null}
 

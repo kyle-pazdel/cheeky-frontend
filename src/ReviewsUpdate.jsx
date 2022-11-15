@@ -46,12 +46,12 @@ export function ReviewsUpdate(props) {
           </select>
 
           <div className="col-1 d-grid gap-2">
-            <button className=" m-1 btn btn-dark" type="submit">
-              Edit
+            <button className="btn btn-dark btn-sm" type="submit">
+              Submit
             </button>
           </div>
           <div className="col-1 d-grid gap-2">
-            <button className=" m-1 btn btn-outline-secondary" onClick={handleClose}>
+            <button className="btn btn-outline-secondary btn-sm" onClick={handleClose}>
               Cancel
             </button>
           </div>

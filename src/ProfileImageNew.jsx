@@ -38,11 +38,6 @@ export function ProfileImageNew(props) {
 
   useEffect(handleShowPerformer), [];
 
-  const logParams = () => {
-    console.log(params.id);
-    console.log(performer);
-  };
-
   return (
     <div>
       <ul>
@@ -50,7 +45,6 @@ export function ProfileImageNew(props) {
           <li key={error}>{error}</li>
         ))}
       </ul>
-      <button onClick={logParams}>LOG</button>
       <h3>Add a Profile Image for {performer.name}</h3>
       <h3>Title</h3>
       <form onSubmit={(event) => handleSubmit(event)}>
