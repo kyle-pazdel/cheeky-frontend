@@ -8,6 +8,11 @@ body {
   padding-top: 3rem;
 }
 
+.bio-textarea,
+.reveiw-textarea {
+  resize: none;
+}
+
 .leaflet-container {
   width: 7100;
   height: 50vh;

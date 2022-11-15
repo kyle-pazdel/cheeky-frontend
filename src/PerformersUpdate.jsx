@@ -46,7 +46,7 @@ export function PerformersUpdate(props) {
           <li key={error}>{error}</li>
         ))}
       </ul>
-      <form onSubmit={handleSubmit} action="/photos" method="post" enctype="multipart/form-data">
+      <form onSubmit={handleSubmit} action="/photos" method="post" encType="multipart/form-data">
         <div className="input-group input-group-sm mb-3">
           <span className="input-group-text" id="inputGroup-sizing-sm">
             Drag Name
@@ -188,11 +188,14 @@ export function PerformersUpdate(props) {
           Bio
           <textarea
             type="text"
-            className="form-control mt-3"
+            className="form-control mt-3 bio-textarea"
+            rows="10"
+            maxlength="750"
             value={bio}
             onChange={(event) => setBio(event.target.value)}
           />
         </label>
+        <p>Characters remaining {750 - bio.length}</p>
         <button className="mt-3 mb-3 btn btn-dark" type="submit">
           Submit
         </button>

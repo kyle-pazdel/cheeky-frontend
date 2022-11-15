@@ -172,7 +172,9 @@ export function PerformersShow() {
             </div>
             <div>
               <p>{review.comment}</p>
-              <small>
+            </div>
+            <div>
+              <small className="fw-lighter">
                 by {review.user.first_name} {review.user.last_name} on {formatPostTime(review.created_at)}
               </small>
             </div>

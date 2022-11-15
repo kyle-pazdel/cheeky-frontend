@@ -31,6 +31,7 @@ export function ReviewsUpdate(props) {
           <textarea
             type="text"
             className="form-control mt-3"
+            maxlength="300"
             value={comment}
             onChange={(event) => setComment(event.target.value)}
           />

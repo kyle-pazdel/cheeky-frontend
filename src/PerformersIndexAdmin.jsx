@@ -103,7 +103,7 @@ export function PerformersIndexAdmin(props) {
                         {performer.city}, {performer.state}
                       </li>
                     </ul>
-                    <p className="card-text">{performer.bio}</p>
+                    {/* <p className="card-text">{performer.bio}</p> */}
                   </div>
                   <button className="btn btn-dark" onClick={() => handleShowForm(performer)}>
                     Update Account Details

@@ -198,10 +198,13 @@ export function PerformersNew() {
           <textarea
             type="text"
             className="form-control mt-3"
+            rows="10"
+            maxlength="750"
             value={bio}
             onChange={(event) => setBio(event.target.value)}
           />
         </label>
+        <p>Characters remaining {750 - bio.length}</p>
         <button className="mt-3 mb-3 btn btn-dark" type="submit">
           Submit
         </button>
