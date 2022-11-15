@@ -22,12 +22,8 @@ export function PerformersUpdate(props) {
     };
     props.onUpdatePerformer(props.performer.id, params);
     props.onClose();
-    // window.location.href = "/me";
   };
 
-  const handleClick = () => {
-    props.onDestroyPerformer();
-  };
   const [errors, setErrors] = useState([]);
   const [name, setName] = useState(props.performer.name);
   const [phoneNumber, setPhoneNumber] = useState(props.performer.phone_number);
@@ -143,7 +139,6 @@ export function PerformersUpdate(props) {
             onChange={(event) => setState(event.target.value)}
           ></input>
         </div>
-
         <div className="input-group input-group-sm mb-3">
           <span className="input-group-text" id="inputGroup-sizing-sm">
             <SocialIcon className="m-2" bgColor="black" network="instagram" /> Handle

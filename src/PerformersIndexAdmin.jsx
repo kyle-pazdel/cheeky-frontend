@@ -120,7 +120,6 @@ export function PerformersIndexAdmin(props) {
               <PerformersUpdate
                 performer={currentPerformer}
                 onUpdatePerformer={handleUpdatePerformer}
-                onDestroyPerformer={handleDestroyPerformer}
                 onClose={handleHideForm}
               />
             </div>
