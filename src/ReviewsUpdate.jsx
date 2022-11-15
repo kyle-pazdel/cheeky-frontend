@@ -1,4 +1,5 @@
 import { useState } from "react";
+import ReactStars from "react-rating-stars-component";
 
 export function ReviewsUpdate(props) {
   const [comment, setComment] = useState(props.review.comment);
@@ -20,6 +21,9 @@ export function ReviewsUpdate(props) {
     props.onClose();
   };
 
+  const handleRating = (rating) => {
+    setRating(rating);
+  };
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -32,19 +36,15 @@ export function ReviewsUpdate(props) {
           />
         </label>
         <div className="row d-flex justify-content-center">
-          <select
-            className="col-6 mb-3 form-select form-select-sm"
-            aria-label=".form-select-sm"
+          <ReactStars
+            count={5}
             value={rating}
-            onChange={(event) => setRating(event.target.value)}
-          >
-            <option value="5">5</option>
-            <option value="4">4</option>
-            <option value="3">3</option>
-            <option value="2">2</option>
-            <option value="1">1</option>
-          </select>
-
+            onChange={handleRating}
+            size={30}
+            isHalf={true}
+            activeColor="#e98dd7"
+            color="#ecb5bd"
+          />
           <div className="col-1 d-grid gap-2">
             <button className="btn btn-dark btn-sm" type="submit">
               Submit

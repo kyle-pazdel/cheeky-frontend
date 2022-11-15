@@ -8,6 +8,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { Link } from "react-router-dom";
 import { SocialIcon } from "react-social-icons";
 import { format } from "date-fns";
+import ReactStars from "react-rating-stars-component";
 
 export function PerformersShow() {
   const params = useParams();
@@ -159,7 +160,15 @@ export function PerformersShow() {
         {performer.performer_reviews?.map((review) => (
           <div className="card m-0 p-2" key={review.id}>
             <div>
-              <p>{review.rating}</p>
+              <ReactStars
+                count={5}
+                value={review.rating}
+                edit={false}
+                size={24}
+                isHalf={true}
+                activeColor="#e98dd7"
+                color="#ecb5bd"
+              />
             </div>
             <div>
               <p>{review.comment}</p>

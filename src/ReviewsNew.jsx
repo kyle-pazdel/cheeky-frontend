@@ -51,7 +51,15 @@ export function ReviewsNew(props) {
               <option value="2">2</option>
               <option value="1">1</option>
             </select> */}
-            <ReactStars count={5} value={rating} onChange={handleRating} size={24} activeColor="#ffd700" />
+            <ReactStars
+              count={5}
+              value={rating}
+              onChange={handleRating}
+              size={30}
+              isHalf={true}
+              activeColor="#e98dd7"
+              color="#ecb5bd"
+            />
           </div>
           <button type="submit" className="col-8 btn btn-dark mb-5">
             Submit

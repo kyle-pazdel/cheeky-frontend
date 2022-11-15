@@ -8,9 +8,8 @@ import { format } from "date-fns";
 import { MapComponent } from "./MapComponent";
 import { ReviewsUpdate } from "./ReviewsUpdate";
 import { formatPhoneNumber } from "react-phone-number-input";
-import payment from "./assets/payment.png";
-import paidcheck from "./assets/paidcheck.svg";
 import paymentreceived from "./assets/paymentreceived.svg";
+import ReactStars from "react-rating-stars-component";
 
 export function BookingsShow() {
   const params = useParams();
@@ -215,7 +214,16 @@ export function BookingsShow() {
           {isReviewUpdateVisible !== review.id ? (
             <div className="card">
               <p>
-                {review.rating} ~ {review.comment}
+                <ReactStars
+                  count={5}
+                  value={review.rating}
+                  edit={false}
+                  size={24}
+                  isHalf={true}
+                  activeColor="#e98dd7"
+                  color="#ecb5bd"
+                />
+                {review.comment}
               </p>
               <div className="row d-flex justify-content-center">
                 <div className="col-1 d-grid gap-2">
