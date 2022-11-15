@@ -49,22 +49,32 @@ export function FileForm(props) {
 
   return (
     <div>
+      <p className="m-3 fs-5 fw-semibold card-title">Add Image</p>
       <ul>
         {errors?.map((error) => (
           <li key={error}>{error}</li>
         ))}
       </ul>
-      <h1>Title</h1>
-      <form onSubmit={(event) => handleSubmit(event)}>
-        <div>
-          <label htmlFor="title">Image Post</label>
-          <input type="text" name="title" id="text" />
+      <form className="mb-3" onSubmit={(event) => handleSubmit(event)}>
+        <div className="mb-3">
+          <input className="form-control" type="file" name="image" id="formFileLg" />
         </div>
-        <div>
-          <label htmlFor="image">Image Post</label>
-          <input type="file" name="image" id="image" />
+        <div className="input-group mb-3">
+          <span className="input-group-text" id="basic-addon1">
+            Caption
+          </span>
+          <input
+            type="text"
+            name="title"
+            className="form-control"
+            placeholder="Write a caption to be displayed with this image..."
+            aria-label="Username"
+            aria-describedby="basic-addon1"
+          />
         </div>
-        <button type="submit">Submit</button>
+        <button className="mt-3 mb-3 btn btn-dark" type="submit">
+          Submit
+        </button>
       </form>
       <h3>{props.performer.name}'s Images</h3>
       {posts?.map((post) => (
@@ -73,7 +83,9 @@ export function FileForm(props) {
             <img src={post.image_url} alt={`image of ${props.performer.name}`} className="profile-image" />
           </div>
           <div>
-            <button onClick={() => handleClick(post)}>Delete Image</button>
+            <button className="btn btn-outline-success" onClick={() => handleClick(post)}>
+              Delete Image
+            </button>
           </div>
         </div>
       ))}
