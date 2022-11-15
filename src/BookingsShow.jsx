@@ -8,6 +8,7 @@ import { format } from "date-fns";
 import { MapComponent } from "./MapComponent";
 import { ReviewsUpdate } from "./ReviewsUpdate";
 import { formatPhoneNumber } from "react-phone-number-input";
+import payment from "./assets/payment.png";
 
 export function BookingsShow() {
   const params = useParams();
@@ -167,25 +168,28 @@ export function BookingsShow() {
             </ul>
           </div>
         </div>
-        <div className="col card text-bg-dark mb-3 event-update-controls">
+        <div className="col card text-bg-dark mb-3 p-0 h-50">
           <div className="card-body">
             {booking.paid === true ? (
-              <div>
-                <p>PAID</p>
+              <div className="row d-flex justify-content-center">
+                <p className="col-2">Payment Received</p>
+                {/* <img className="col-2 icon-image" src={payment} /> */}
               </div>
             ) : (
-              <Link className=" btn btn-outline-warning" to={`/process-payment/${booking.id}`}>
+              <Link className="d-grid gap-2 btn btn-outline-warning" to={`/process-payment/${booking.id}`}>
                 Submit Payment
               </Link>
             )}
-            <div className="pt-3 pb-3">
+            <div className="pt-3 pb-3 d-grid gap-2">
               <button className="btn btn-outline-info" onClick={handleShowUpdateBooking}>
                 Update Booking Details
               </button>
             </div>
-            <button className="btn btn-outline-secondary" onClick={handleShowCancellation}>
-              Cancel Booking
-            </button>
+            <div className="d-grid gap-2">
+              <button className="btn btn-outline-secondary" onClick={handleShowCancellation}>
+                Cancel Booking
+              </button>
+            </div>
             <Modal show={isBookingUpdateVisible} onClose={handleHideUpdateBooking}>
               <BookingsUpdate
                 onCancel={handleHideUpdateBooking}

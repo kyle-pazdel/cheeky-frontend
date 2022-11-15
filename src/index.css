@@ -48,6 +48,8 @@ body {
   overflow-x: hidden;
 }
 
-.event-update-controls {
-  max-width: 30px;
+.icon-image {
+  width: 10px;
+  height: 10px;
+  margin: 0;
 }
