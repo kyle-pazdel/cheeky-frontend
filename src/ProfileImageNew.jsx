@@ -39,25 +39,37 @@ export function ProfileImageNew(props) {
   useEffect(handleShowPerformer), [];
 
   return (
-    <div>
-      <ul>
-        {errors?.map((error) => (
-          <li key={error}>{error}</li>
-        ))}
-      </ul>
-      <h3>Add a Profile Image for {performer.name}</h3>
-      <h3>Title</h3>
-      <form onSubmit={(event) => handleSubmit(event)}>
-        <div>
-          <label htmlFor="title">Image Post</label>
-          <input type="text" name="title" id="text" />
-        </div>
-        <div>
-          <label htmlFor="image">Image Post</label>
-          <input type="file" name="image" id="image" />
-        </div>
-        <button type="submit">Submit</button>
-      </form>
+    <div className="card container d-flex flex-column align-items-center p-5">
+      <div clasName="mb-3" style={{ width: "30rem" }}>
+        <p className="m-3 fs-5 fw-semibold card-title">Add Profile Image</p>
+        <ul></ul>
+        <ul>
+          {errors?.map((error) => (
+            <li key={error}>{error}</li>
+          ))}
+        </ul>
+        <form onSubmit={(event) => handleSubmit(event)}>
+          <div className="mb-3">
+            <input className="form-control" type="file" name="image" id="formFileLg" />
+          </div>
+          <div className="input-group mb-3">
+            <span className="input-group-text" id="basic-addon1">
+              Caption
+            </span>
+            <input
+              type="text"
+              name="title"
+              className="form-control"
+              placeholder="Write a caption to be displayed with this image..."
+              aria-label="Username"
+              aria-describedby="basic-addon1"
+            />
+          </div>
+          <button className="mt-3 mb-3 btn btn-dark" type="submit">
+            Submit
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
