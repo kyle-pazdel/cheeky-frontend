@@ -9,6 +9,8 @@ import { MapComponent } from "./MapComponent";
 import { ReviewsUpdate } from "./ReviewsUpdate";
 import { formatPhoneNumber } from "react-phone-number-input";
 import payment from "./assets/payment.png";
+import paidcheck from "./assets/paidcheck.svg";
+import paymentreceived from "./assets/paymentreceived.svg";
 
 export function BookingsShow() {
   const params = useParams();
@@ -172,8 +174,8 @@ export function BookingsShow() {
           <div className="card-body">
             {booking.paid === true ? (
               <div className="row d-flex justify-content-center">
-                <p className="col-2">Payment Received</p>
-                {/* <img className="col-2 icon-image" src={payment} /> */}
+                {/* <p className="col-2">Payment Received</p> */}
+                <img className="col-2 icon-image" src={paymentreceived} />
               </div>
             ) : (
               <Link className="d-grid gap-2 btn btn-outline-warning" to={`/process-payment/${booking.id}`}>
