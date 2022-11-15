@@ -77,7 +77,7 @@ export function PerformersIndexAdmin(props) {
     <div className="row">
       {performers?.map((performer) => (
         <div key={performer.id}>
-          <div className="card mb-3" style={{ maxWidth: "100vh" }}>
+          <div className="card mb-3 shadow" style={{ maxWidth: "100vh" }}>
             <div className="row g-0">
               <div className="col-md-4">
                 {performer.posts[0]?.image_url !== undefined ? (

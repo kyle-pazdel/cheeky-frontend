@@ -72,7 +72,7 @@ export function UsersShow() {
 
   return (
     <div>
-      <div className="row card">
+      <div className="row card shadow">
         <p className="card-header m-3 fs-3 fw-semibold">My Profile</p>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">{user.first_name}</li>
@@ -111,7 +111,7 @@ export function UsersShow() {
           />
           <div>
             <Link
-              className="btn btn-success btn-lg d-flex flex-row  justify-content-center pb-0 mb-4"
+              className="shadow btn btn-success btn-lg d-flex flex-row  justify-content-center pb-0 mb-4"
               to="/add-performer"
             >
               <p className="mb-1 mx-3">&#x2b;</p> <p className="mb-1">Add Queen</p>
