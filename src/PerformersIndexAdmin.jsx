@@ -129,7 +129,9 @@ export function PerformersIndexAdmin(props) {
             </div>
             <Modal show={isDeletePerformerVisible} onClose={handleHideDeletePerformer}>
               <div className="card m-4">
-                <p className="cardTitle">Are you sure you want to delete {performer.name}'s account</p>
+                <p className="cardTitle">
+                  Are you sure you want to delete <br /> {currentPerformer.name}'s account
+                </p>
                 <button className="btn btn-outline-success" onClick={handleDestroyPerformer}>
                   Yes, proceed.
                 </button>

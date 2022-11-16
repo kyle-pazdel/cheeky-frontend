@@ -53,7 +53,10 @@ export function PaymentProcessing() {
   };
   return (
     <div>
-      <div className="card container d-flex flex-column align-items-center p-5" style={{ maxWidth: "40rem" }}>
+      <div
+        className="card shadow mb-4 container d-flex flex-column align-items-center p-5"
+        style={{ maxWidth: "40rem" }}
+      >
         <p className="m-3 fs-5 fw-semibold card-title">
           {booking.event_name} with {booking.performer_name}
         </p>

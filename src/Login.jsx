@@ -38,7 +38,11 @@ export function Login() {
   };
 
   return (
-    <div id="login" className="card container d-flex flex-column align-items-center p-5" style={{ maxWidth: "40rem" }}>
+    <div
+      id="login"
+      className="card shadow mb-4 container d-flex flex-column align-items-center p-5"
+      style={{ maxWidth: "40rem" }}
+    >
       <p className="m-3 fs-5 fw-semibold card-title">Login</p>
       <ul>
         {errors.map((error) => (

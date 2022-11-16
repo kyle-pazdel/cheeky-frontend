@@ -102,7 +102,7 @@ export function UsersUpdate(props) {
         </button>
         <Modal show={isAccountDeleteVisible} onClose={handleHideAccountDelete}>
           <div className="card m-4">
-            <p className="cardTitle">Are you sure you want to cancel?</p>
+            <p className="cardTitle">Are you sure you want to delete your account?</p>
             <button className="btn btn-outline-success" onClick={handleClick}>
               Yes, proceed.
             </button>
