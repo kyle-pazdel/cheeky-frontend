@@ -26,16 +26,6 @@ export function BookingsIndex() {
       <p className="fs-2 fw-semibold">My Bookings</p>
       {bookings.map((booking) => (
         <div>
-          {/* <div key={booking.id}>
-            <h2>
-              {booking.event_name} with {booking.performer_name}
-            </h2>
-            <img />
-            <p>Date: {formatTime(booking.start_time)}</p>
-            <div>
-              <Link to={`/bookings/${booking.id}`}>See Booking Details</Link>
-            </div>
-          </div> */}
           <div key={booking.id} className="card shadow mb-4">
             <h5 className="card-header">
               {booking.event_name} with {booking.performer_name}
