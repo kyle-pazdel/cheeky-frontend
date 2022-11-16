@@ -76,7 +76,9 @@ export function Login() {
             onChange={(event) => setPassword(event.target.value)}
           ></input>
         </div>
-        <button type="submit">Login</button>
+        <button className="btn btn-dark" type="submit">
+          Login
+        </button>
       </form>
     </div>
   );
