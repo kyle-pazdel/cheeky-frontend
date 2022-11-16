@@ -128,7 +128,7 @@ export function BookingsShow() {
           className="thumbnail-profile-image rounded-circle mb-3 mt-3"
         />
       </div>
-      <div className="row card">
+      <div className="row card shadow mb-4">
         <MapComponent
           className="p-0 m-0 card-image-top"
           booking={booking}
@@ -209,46 +209,51 @@ export function BookingsShow() {
           </div>
         </Modal>
       </div>
-      {reviews?.map((review) => (
-        <div key={review.id} className="card">
-          {isReviewUpdateVisible !== review.id ? (
-            <div className="card">
-              <p>
-                <ReactStars
-                  count={5}
-                  value={review.rating}
-                  edit={false}
-                  size={24}
-                  isHalf={true}
-                  activeColor="#e98dd7"
-                  color="#ecb5bd"
-                />
-                {review.comment}
-              </p>
-              <div className="row d-flex justify-content-center">
-                <div className="col-1 d-grid gap-2">
-                  <button className=" m-1 btn btn-dark btn-sm" onClick={() => handleShowUpdateReview(review)}>
-                    Edit
-                  </button>
-                </div>
-                <div className="col-1 d-grid gap-2">
-                  <button className=" m-1 btn btn-outline-secondary btn-sm" onClick={() => handleDestroyReview(review)}>
-                    Delete
-                  </button>
+      <div className="card shadow mb-4">
+        {reviews?.map((review) => (
+          <div key={review.id} className="card">
+            {isReviewUpdateVisible !== review.id ? (
+              <div className="card">
+                <p>
+                  <ReactStars
+                    count={5}
+                    value={review.rating}
+                    edit={false}
+                    size={24}
+                    isHalf={true}
+                    activeColor="#e98dd7"
+                    color="#ecb5bd"
+                  />
+                  {review.comment}
+                </p>
+                <div className="row d-flex justify-content-center">
+                  <div className="col-1 d-grid gap-2">
+                    <button className=" m-1 btn btn-dark btn-sm" onClick={() => handleShowUpdateReview(review)}>
+                      Edit
+                    </button>
+                  </div>
+                  <div className="col-1 d-grid gap-2">
+                    <button
+                      className=" m-1 btn btn-outline-secondary btn-sm"
+                      onClick={() => handleDestroyReview(review)}
+                    >
+                      Delete
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-          ) : (
-            <ReviewsUpdate
-              review={review}
-              booking={booking}
-              onUpdateReview={handleUpdateReview}
-              onClose={handleHideUpdateReview}
-            />
-          )}
-        </div>
-      ))}
-      <ReviewsNew booking={booking} onCreateReview={handleCreateReview} />
+            ) : (
+              <ReviewsUpdate
+                review={review}
+                booking={booking}
+                onUpdateReview={handleUpdateReview}
+                onClose={handleHideUpdateReview}
+              />
+            )}
+          </div>
+        ))}
+        <ReviewsNew booking={booking} onCreateReview={handleCreateReview} />
+      </div>
     </div>
   );
 }

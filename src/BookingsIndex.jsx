@@ -23,7 +23,7 @@ export function BookingsIndex() {
 
   return (
     <div>
-      <h1>My Bookings!</h1>
+      <p className="fs-2 fw-semibold">My Bookings</p>
       {bookings.map((booking) => (
         <div>
           {/* <div key={booking.id}>
@@ -36,7 +36,7 @@ export function BookingsIndex() {
               <Link to={`/bookings/${booking.id}`}>See Booking Details</Link>
             </div>
           </div> */}
-          <div key={booking.id} className="card">
+          <div key={booking.id} className="card shadow mb-4">
             <h5 className="card-header">
               {booking.event_name} with {booking.performer_name}
             </h5>
