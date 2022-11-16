@@ -95,7 +95,7 @@ export function PerformersShow() {
             <li className="list-group-item">
               {formatTime(shortestGig)} – {formatTime(longestGig)}
             </li>
-            <li className="list-group-item no-wrap">{performer.rate} p/h</li>
+            <li className="list-group-item no-wrap">${performer.rate} /h</li>
             <li className="list-group-item text-nowrap">{performer.performance_type}</li>
             <li className="list-group-item text-nowrap">
               <SocialIcon
