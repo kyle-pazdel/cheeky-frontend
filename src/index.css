@@ -67,3 +67,17 @@ body {
   display: block;
   margin: 0;
 }
+
+.landing-page-image {
+  /* background-image: url("./assets/landingimage.jpg"); */
+  background-image: url("./assets/landingimage2.jpg");
+  background-size: cover;
+  background-position: center-center;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100vw;
+  margin-top: -3rem;
+  max-width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  color: white;
+}

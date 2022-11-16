@@ -178,7 +178,7 @@ export function BookingsUpdate(props) {
           <ul className="list-group list-group-flush">
             <li className="list-group-item">{duration > 0 ? duration : 0} hours</li>
           </ul>
-          <div className="card-header">Total {total > 0 ? formatMoney(total) : 0}</div>
+          <div className="card-header text-black">Total {total > 0 ? formatMoney(total) : 0}</div>
         </div>
         <div className="d-grid gap-2">
           <button className="btn btn-dark mt-3" type="submit">
