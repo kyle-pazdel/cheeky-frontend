@@ -24,12 +24,13 @@
 ### Dependencies
 This Cheeky Frontend was built with React 18.2.0 and designed to be used with its [Ruby on Rails API Backend](https://github.com/kyle-pazdel/cheeky-api). Cheeky uses tools like [Leaflet](https://leafletjs.com/) for map data, and is styled with Bootstrap.
 <br/>
-*This app utilizes Node Package Manager ] for dependency installation. If you don't already have npm or Node.js configured on your local machine, you can follow the instructions [here for a quick set-up](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
+<br/>
+This app utilizes Node Package Manager for dependency installation. If you don't already have npm or Node.js configured on your local machine, you can follow the instructions [here for a quick set-up](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 
 ### Installation
 
-This app is currently in development, but can be cloned and run on a in conjunction with the running rails server ([see Cheeky API documentation](https://github.com/kyle-pazdel/cheeky-api#readme)).
+Cheeky is currently in development, but can be cloned and run in conjunction with the RoR backend server running ([see Cheeky API documentation](https://github.com/kyle-pazdel/cheeky-api#readme)).
 
 Navigate to your desired directory and use the following command to clone down...
 
@@ -43,20 +44,26 @@ change directories to the new clone...
 cd cheeky-frontend
 
 ```
-then install all dependencies with the following
+then install all dependencies with the following command.
 
 ```bash
-cd cheeky-frontend
+npm install
 
 ```
 
 ### Usage
 
+To begin using Cheeky, run the following command and proceed with backend installation.
+
 ```bash
+npm run dev
 
 ```
 
+
 ### Roadmap
+
+Future features include, payment processing, search capabilities, mobile-friendly design, and cloud based image storage.
 
 ## Author
 
@@ -65,3 +72,8 @@ cd cheeky-frontend
 <a href="https://github.com/kyle-pazdel">Kyle Pazdel</a>
 
 </p>
+
+Enjoy! 
+<br/>
+<br/>
+***"If you can't love yourself, how in the hell you gonna love somebody else? Can I get an amen?"***
