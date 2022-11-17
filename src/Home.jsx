@@ -27,11 +27,11 @@ export function Home() {
         <div className=" px-4 px-lg-5 landing-page-image">
           <div className="row m-0 gx-4 gx-lg-5 h-100 align-items-start justify-content-center text-center">
             <div className="col-lg-8 align-self-end">
-              <h1 className="text-white font-weight-bold">Your Premiere Drag Booking Spot</h1>
+              <h1 className="text-white font-weight-bold landing-text">Your Premiere Drag Booking Spot</h1>
               <hr className="divider" />
             </div>
             <div className="col-lg-8">
-              <p className="text-white-75 mb-5">
+              <p className="text-white-75 mb-5 fs-4 under-landing">
                 Whether for private parties or large events, begin browsing profiles below to search for a queen that
                 will take your event to the next level!{" "}
               </p>

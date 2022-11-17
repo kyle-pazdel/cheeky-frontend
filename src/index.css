@@ -81,3 +81,12 @@ body {
   margin-left: calc(-50vw + 50%);
   color: white;
 }
+
+.landing-text {
+  font-size: 5.5rem;
+}
+
+.under-landing, 
+.landing-text {
+  text-shadow: 5px 2px 15px black;
+}
