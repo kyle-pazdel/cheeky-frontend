@@ -19,16 +19,34 @@
 ### Introduction
 
 <p>This app is built by a queer person for queer people! This app offers a solution to the question, "How could my event get any more fabulous?" Cheeky is a booking platform designed with Drag Performers in mind. It allows a user to create bookings with Queens at a specified date and timeframe, with easy address input that is geocoded and returned on the map in a user-friendly detailed event page. Cheeky also permits users that have made a booking with a queen to share their thoughts in the form of rated reviews.</p>
-<p>Additionally, a user can create a talent management account to list themself and others to be seen by other users and booked. They can set account details like their hourly rates, location, longest and shortest gig length, and upload media to be shared on their accounts' profiles.</p>
+<p>Additionally, a user can create a talent management account to list themself and others to be seen by other users and booked. They can set account details like their hourly rates, location, longest and shortest gig length, and upload media to be shared on their accounts' profiles. Accounts also have dynamic links to Instagram and Twitter using handles that can be input upon account creation. All details are updateable at any point in time.</p>
 
 ### Dependencies
 This Cheeky Frontend was built with React 18.2.0 and designed to be used with its [Ruby on Rails API Backend](https://github.com/kyle-pazdel/cheeky-api). Cheeky uses tools like [Leaflet](https://leafletjs.com/) for map data, and is styled with Bootstrap.
+<br/>
+*This app utilizes Node Package Manager ] for dependency installation. If you don't already have npm or Node.js configured on your local machine, you can follow the instructions [here for a quick set-up](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm).
 
 
 ### Installation
 
-```bash
+This app is currently in development, but can be cloned and run on a in conjunction with the running rails server ([see Cheeky API documentation](https://github.com/kyle-pazdel/cheeky-api#readme)).
 
+Navigate to your desired directory and use the following command to clone down...
+
+```bash
+git clone https://github.com/kyle-pazdel/cheeky-frontend
+
+```
+change directories to the new clone...
+
+```bash
+cd cheeky-frontend
+
+```
+then install all dependencies with the following
+
+```bash
+cd cheeky-frontend
 
 ```
 
