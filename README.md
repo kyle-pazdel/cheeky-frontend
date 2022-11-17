@@ -34,19 +34,19 @@ Cheeky is currently in development, but can be cloned and run in conjunction wit
 
 Navigate to your desired directory and use the following command to clone down...
 
-```bash
+```
 git clone https://github.com/kyle-pazdel/cheeky-frontend
 
 ```
 change directories to the new clone...
 
-```bash
+```
 cd cheeky-frontend
 
 ```
 then install all dependencies with the following command.
 
-```bash
+```
 npm install
 
 ```
@@ -55,7 +55,7 @@ npm install
 
 To begin using Cheeky, run the following command and proceed with backend installation.
 
-```bash
+```
 npm run dev
 
 ```
