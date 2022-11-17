@@ -7,9 +7,9 @@
 # Cheeky
 
 <p align="center" dir="center">
-  <img src="" alt="Landing page screenshot" width="70%" >
-  <img src="" alt="Drag Queen profile screenshot" width="45%" >
-  <img src="" alt="Example booking screenshot" width="45%" >
+  <img src="https://github.com/kyle-pazdel/cheeky-frontend/blob/main/src/assets/screenshot1.png?raw=true" alt="Landing page screenshot" width="70%" >
+  <img src="https://github.com/kyle-pazdel/cheeky-frontend/blob/main/src/assets/screenshot2.png?raw=true" alt="Drag Queen profile screenshot" width="45%" >
+  <img src="https://github.com/kyle-pazdel/cheeky-frontend/blob/main/src/assets/screenshot3.png?raw=true" alt="Example booking screenshot" width="45%" >
 </p>
 <h2>Introduction</h2>
 
