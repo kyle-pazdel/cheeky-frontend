@@ -5,6 +5,9 @@ html {
 body {
   margin: 0;
   padding: 0;
+}
+
+.top-buff {
   padding-top: 3rem;
 }
 
@@ -89,3 +92,4 @@ body {
 .landing-text {
   text-shadow: 5px 2px 15px black;
 }
+

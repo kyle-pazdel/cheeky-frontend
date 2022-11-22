@@ -56,7 +56,7 @@ export function BookingsNew(props) {
   };
 
   return (
-    <div>
+    <div className="top-buff">
       <img
         src={performer.profile_image?.image_url}
         alt={`photo of ${performer.name}`}

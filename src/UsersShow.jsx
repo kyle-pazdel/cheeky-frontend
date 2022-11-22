@@ -71,7 +71,7 @@ export function UsersShow() {
   useEffect(handleShowUser, []);
 
   return (
-    <div>
+    <div className="top-buff">
       <div className="row card shadow">
         <p className="card-header m-3 fs-3 fw-semibold">My Profile</p>
         <ul className="list-group list-group-flush">

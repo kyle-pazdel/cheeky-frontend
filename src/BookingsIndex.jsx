@@ -22,7 +22,7 @@ export function BookingsIndex() {
   useEffect(handleIndexBookings, []);
 
   return (
-    <div>
+    <div className="top-buff">
       <p className="fs-2 fw-semibold">My Bookings</p>
       {bookings.map((booking) => (
         <div>

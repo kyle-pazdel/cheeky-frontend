@@ -58,7 +58,7 @@ export function Signup() {
   return (
     <div
       id="signup"
-      className="card shadow container mb-4 d-flex flex-column align-items-center p-5"
+      className="top-buff card shadow container mb-4 d-flex flex-column align-items-center p-5"
       style={{ maxWidth: "40rem" }}
     >
       <h1>Signup</h1>

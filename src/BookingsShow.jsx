@@ -117,7 +117,7 @@ export function BookingsShow() {
   };
 
   return (
-    <div>
+    <div className="top-buff">
       <h2>
         {booking.event_name} with {booking.performer_name}
       </h2>

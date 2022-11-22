@@ -52,7 +52,7 @@ export function PaymentProcessing() {
     window.location.href = `/bookings/${booking.id}`;
   };
   return (
-    <div>
+    <div className="top-buff">
       <div
         className="card shadow mb-4 container d-flex flex-column align-items-center p-5"
         style={{ maxWidth: "40rem" }}

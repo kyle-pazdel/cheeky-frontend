@@ -48,7 +48,7 @@ export function PerformersNew() {
   const [performanceType, setPerformanceType] = useState("");
 
   return (
-    <div className="card container d-flex flex-column align-items-center p-5">
+    <div className="top-buff card container d-flex flex-column align-items-center p-5">
       <p className="m-3 fs-5 fw-semibold card-title">Add Queen's Details</p>
       <ul>
         {errors?.map((error) => (
