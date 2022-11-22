@@ -3,20 +3,20 @@ import { LogoutLink } from "./LogoutLink";
 import { useState, useEffect } from "react";
 
 export function Header(props) {
-  // const [colorChange, setColorchange] = useState(false);
+  const [colorChange, setColorchange] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
 
-  // const changeNavbarColor = () => {
-  //   if (location.pathname !== "/") {
-  //     setColorchange(true);
-  //   } else if (window.scrollY >= 80 && location.pathname === "/") {
-  //     setColorchange(true);
-  //   } else {
-  //     setColorchange(false);
-  //   }
-  // };
+  const changeNavbarColor = () => {
+    if (location.pathname !== "/") {
+      setColorchange(true);
+    } else if (window.scrollY >= 924 && location.pathname === "/") {
+      setColorchange(true);
+    } else {
+      setColorchange(false);
+    }
+  };
 
-  // window.addEventListener("scroll", changeNavbarColor);
+  window.addEventListener("scroll", changeNavbarColor);
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -106,7 +106,7 @@ export function Header(props) {
       </header> */}
       <nav
         className={
-          props.colorChange
+          colorChange
             ? "navbar colorChange navbar-expand-lg navbar-dark fixed-top py-3"
             : "navbar navbar-expand-lg navbar-dark fixed-top py-3"
         }
