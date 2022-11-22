@@ -1,5 +1,6 @@
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { useState } from "react";
 import axios from "axios";
 import { Header } from "./Header";
 import { Home } from "./Home";
@@ -18,10 +19,33 @@ import { PaymentProcessing } from "./PaymentProcessing";
 function App() {
   axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
 
+  const [colorChange, setColorChange] = useState(false);
+
+  const changeNavbarColor = () => {
+    if (location.pathname !== "/") {
+      setColorChange(true);
+    } else if (window.scrollY >= 924 && location.pathname === "/") {
+      setColorChange(true);
+    } else {
+      setColorChange(false);
+    }
+  };
+
+  const handleNavHome = () => {
+    setColorChange(false);
+  };
+
+  const handleNavOther = () => {
+    setColorChange(true);
+  };
+
+  window.addEventListener("scroll", changeNavbarColor);
+  window.addEventListener("load", changeNavbarColor);
+
   return (
     <BrowserRouter>
       <div>
-        <Header />
+        <Header colorChange={colorChange} onNavHome={handleNavHome} onNavOther={handleNavOther} />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/performers/:id" element={<PerformersShow />} />

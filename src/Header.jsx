@@ -1,22 +1,9 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { LogoutLink } from "./LogoutLink";
 import { useState, useEffect } from "react";
 
 export function Header(props) {
-  const [colorChange, setColorchange] = useState(false);
   const [scrollPosition, setScrollPosition] = useState(0);
-
-  const changeNavbarColor = () => {
-    if (location.pathname !== "/") {
-      setColorchange(true);
-    } else if (window.scrollY >= 924 && location.pathname === "/") {
-      setColorchange(true);
-    } else {
-      setColorchange(false);
-    }
-  };
-
-  window.addEventListener("scroll", changeNavbarColor);
 
   const handleScroll = () => {
     const position = window.pageYOffset;
@@ -106,9 +93,9 @@ export function Header(props) {
       </header> */}
       <nav
         className={
-          colorChange
+          props.colorChange
             ? "navbar colorChange navbar-expand-lg navbar-dark fixed-top py-3"
-            : "navbar navbar-expand-lg navbar-dark fixed-top py-3"
+            : "navbar color navbar-expand-lg navbar-dark fixed-top py-3"
         }
       >
         <div className="container px-4 px-lg-5">
@@ -129,19 +116,19 @@ export function Header(props) {
           <div>
             <ul className="navbar-nav ms-auto my-2 my-lg-0">
               <li className="nav-item">
-                <Link className="nav-link" to="/">
+                <Link className="nav-link" to="/" onClick={props.onNavHome}>
                   Home
                 </Link>
               </li>
               {localStorage.jwt === undefined ? (
                 <>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/login">
+                    <Link className="nav-link" to="/login" onClick={props.onNavOther}>
                       Login
                     </Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/signup">
+                    <Link className="nav-link" to="/signup" onClick={props.onNavOther}>
                       Signup
                     </Link>
                   </li>
@@ -163,12 +150,12 @@ export function Header(props) {
                     </a>
                     <ul className="dropdown-menu dropdown-menu-dark">
                       <li>
-                        <Link className="dropdown-item" to="/me">
+                        <Link className="dropdown-item" to="/me" onClick={props.onNavOther}>
                           My Profile
                         </Link>
                       </li>
                       <li>
-                        <Link className="dropdown-item" to="/my-bookings">
+                        <Link className="dropdown-item" to="/my-bookings" onClick={props.onNavOther}>
                           My Bookings
                         </Link>
                       </li>
