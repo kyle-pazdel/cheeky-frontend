@@ -1,19 +1,35 @@
 import { NavLink, useLocation } from "react-router-dom";
 import { LogoutLink } from "./LogoutLink";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export function Header() {
-  const [colorChange, setColorchange] = useState(false);
-  const changeNavbarColor = () => {
-    if (location.pathname !== "/") {
-      setColorchange(true);
-    } else if (window.scrollY >= 80 && location.pathname === "/") {
-      setColorchange(true);
-    } else {
-      setColorchange(false);
-    }
+export function Header(props) {
+  // const [colorChange, setColorchange] = useState(false);
+  const [scrollPosition, setScrollPosition] = useState(0);
+
+  // const changeNavbarColor = () => {
+  //   if (location.pathname !== "/") {
+  //     setColorchange(true);
+  //   } else if (window.scrollY >= 80 && location.pathname === "/") {
+  //     setColorchange(true);
+  //   } else {
+  //     setColorchange(false);
+  //   }
+  // };
+
+  // window.addEventListener("scroll", changeNavbarColor);
+
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
   };
-  window.addEventListener("scroll", changeNavbarColor);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <>
       {/* <header>
@@ -90,14 +106,14 @@ export function Header() {
       </header> */}
       <nav
         className={
-          colorChange
+          props.colorChange
             ? "navbar colorChange navbar-expand-lg navbar-dark fixed-top py-3"
             : "navbar navbar-expand-lg navbar-dark fixed-top py-3"
         }
       >
         <div className="container px-4 px-lg-5">
           <a className="navbar-brand" href="#page-top">
-            Start Bootstrap
+            {scrollPosition}
           </a>
           <button
             className="navbar-toggler navbar-toggler-right"
