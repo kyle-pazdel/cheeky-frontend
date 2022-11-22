@@ -1,4 +1,4 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { LogoutLink } from "./LogoutLink";
 import { useState, useEffect } from "react";
 
@@ -35,9 +35,9 @@ export function Header(props) {
       {/* <header>
         <nav className="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
           <div className="container-fluid">
-            <NavLink className="navbar-brand" to="/">
+            <Link className="navbar-brand" to="/">
               Cheeky
-            </NavLink>
+            </Link>
             <button
               className="navbar-toggler"
               type="button"
@@ -52,21 +52,21 @@ export function Header(props) {
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <NavLink className="nav-link" to="/">
+                  <Link className="nav-link" to="/">
                     Home
-                  </NavLink>
+                  </Link>
                 </li>
                 {localStorage.jwt === undefined ? (
                   <>
                     <li className="nav-item">
-                      <NavLink className="nav-link" to="/login">
+                      <Link className="nav-link" to="/login">
                         Login
-                      </NavLink>
+                      </Link>
                     </li>
                     <li className="nav-item">
-                      <NavLink className="nav-link" to="/signup">
+                      <Link className="nav-link" to="/signup">
                         Signup
-                      </NavLink>
+                      </Link>
                     </li>
                   </>
                 ) : (
@@ -86,14 +86,14 @@ export function Header(props) {
                       </a>
                       <ul className="dropdown-menu dropdown-menu-dark">
                         <li>
-                          <NavLink className="dropdown-item" to="/me">
+                          <Link className="dropdown-item" to="/me">
                             My Profile
-                          </NavLink>
+                          </Link>
                         </li>
                         <li>
-                          <NavLink className="dropdown-item" to="/my-bookings">
+                          <Link className="dropdown-item" to="/my-bookings">
                             My Bookings
-                          </NavLink>
+                          </Link>
                         </li>
                       </ul>
                     </li>
@@ -126,28 +126,56 @@ export function Header(props) {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarResponsive">
+          <div>
             <ul className="navbar-nav ms-auto my-2 my-lg-0">
               <li className="nav-item">
-                <a className="nav-link" href="#about">
-                  About
-                </a>
+                <Link className="nav-link" to="/">
+                  Home
+                </Link>
               </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#services">
-                  Services
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#portfolio">
-                  Portfolio
-                </a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="#contact">
-                  Contact
-                </a>
-              </li>
+              {localStorage.jwt === undefined ? (
+                <>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/login">
+                      Login
+                    </Link>
+                  </li>
+                  <li className="nav-item">
+                    <Link className="nav-link" to="/signup">
+                      Signup
+                    </Link>
+                  </li>
+                </>
+              ) : (
+                <>
+                  <li className="nav-item">
+                    <LogoutLink />
+                  </li>
+                  <li className="nav-item dropdown">
+                    <a
+                      className="nav-link dropdown-toggle"
+                      href="#"
+                      role="button"
+                      data-bs-toggle="dropdown"
+                      aria-expanded="false"
+                    >
+                      My Account
+                    </a>
+                    <ul className="dropdown-menu dropdown-menu-dark">
+                      <li>
+                        <Link className="dropdown-item" to="/me">
+                          My Profile
+                        </Link>
+                      </li>
+                      <li>
+                        <Link className="dropdown-item" to="/my-bookings">
+                          My Bookings
+                        </Link>
+                      </li>
+                    </ul>
+                  </li>
+                </>
+              )}
             </ul>
           </div>
         </div>
