@@ -46,4 +46,7 @@
 
 .navbar.colorChange{
   background-color: #000;
+  transition: background-color 300ms linear;
+  -webkit-transition: background-color 300ms linear;
+    -ms-transition: background-color 300ms linear;
 }

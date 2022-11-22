@@ -69,7 +69,6 @@ body {
 }
 
 .landing-page-image {
-  /* background-image: url("./assets/landingimage.jpg"); */
   background-image: url("./assets/landingimage2.jpg");
   background-size: cover;
   background-position: center-center;
