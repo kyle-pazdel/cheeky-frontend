@@ -13,7 +13,6 @@ export function ReviewsUpdate(props) {
       booking_id: props.booking.id,
     };
     props.onUpdateReview(props.review.id, params);
-    props.onClose();
     event.target.reset();
   };
 

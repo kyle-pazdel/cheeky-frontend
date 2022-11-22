@@ -19,6 +19,7 @@ export function BookingsShow() {
   const [reviews, setReviews] = useState([]);
   const [isReviewUpdateVisible, setIsReviewUpdateVisible] = useState(0);
   const [isCancellationVisible, setIsCancellationVisible] = useState(false);
+  const [rating, setRating] = useState(0);
 
   const handleShowBooking = () => {
     axios.get(`/bookings/${params.id}.json`).then((response) => {
@@ -46,10 +47,6 @@ export function BookingsShow() {
 
   const handleShowUpdateReview = (review) => {
     setIsReviewUpdateVisible(review.id);
-  };
-
-  const handleHideUpdateReview = () => {
-    setIsReviewUpdateVisible(0);
   };
 
   useEffect(handleShowBooking, []);
@@ -95,6 +92,8 @@ export function BookingsShow() {
           }
         })
       );
+      console.log(reviews);
+      setIsReviewUpdateVisible(0);
     });
   };
 
@@ -173,7 +172,6 @@ export function BookingsShow() {
           <div className="card-body">
             {booking.paid === true ? (
               <div className="row d-flex justify-content-center">
-                {/* <p className="col-2">Payment Received</p> */}
                 <img className="col-2 icon-image" src={paymentreceived} />
               </div>
             ) : (
@@ -243,12 +241,7 @@ export function BookingsShow() {
                 </div>
               </div>
             ) : (
-              <ReviewsUpdate
-                review={review}
-                booking={booking}
-                onUpdateReview={handleUpdateReview}
-                onClose={handleHideUpdateReview}
-              />
+              <ReviewsUpdate review={review} booking={booking} onUpdateReview={handleUpdateReview} />
             )}
           </div>
         ))}
