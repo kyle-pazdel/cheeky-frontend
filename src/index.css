@@ -8,6 +8,11 @@ body {
 }
 
 .top-buff {
+  margin-top: 4rem;
+  
+}
+
+.performer-show-top {
   padding-top: 3rem;
 }
 

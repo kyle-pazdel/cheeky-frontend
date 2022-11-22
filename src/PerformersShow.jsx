@@ -74,7 +74,7 @@ export function PerformersShow() {
   };
 
   return (
-    <div className="row top-buff">
+    <div className="row performer-show-top">
       <div className="col-3">
         <div className="fw-bold">
           <img
