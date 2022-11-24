@@ -35,20 +35,9 @@ export function PerformersIndexAdmin(props) {
       .then((response) => {
         console.log(response.data);
         props.onSetPerformers(response.data);
-        // sortPerformers(
-        //   performers.map((performer) => {
-        //     if (performer.id === response.data.id) {
-        //       return response.data;
-        //     } else {
-        //       return performer;
-        //     }
-        //   })
-        // );
       })
       .catch((error) => {
         console.log(error.response);
-        // setErrors(error.response.data.errors);
-        // setStatus(error.response.status);
       });
   };
 
@@ -103,7 +92,6 @@ export function PerformersIndexAdmin(props) {
                         {performer.city}, {performer.state}
                       </li>
                     </ul>
-                    {/* <p className="card-text">{performer.bio}</p> */}
                   </div>
                   <button className="btn btn-dark" onClick={() => handleShowForm(performer)}>
                     Update Account Details
