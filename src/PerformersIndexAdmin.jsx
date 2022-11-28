@@ -20,6 +20,7 @@ export function PerformersIndexAdmin(props) {
   const handleShowForm = (performer) => {
     setCurrentPerformer(performer);
     setIsFormVisible(true);
+    console.log(performer);
   };
 
   const handleHideForm = () => {
@@ -38,7 +39,6 @@ export function PerformersIndexAdmin(props) {
     axios
       .patch("/performers/" + performerId + ".json", params)
       .then((response) => {
-        console.log(response.data);
         props.onSetPerformers(response.data);
       })
       .catch((error) => {
@@ -49,7 +49,6 @@ export function PerformersIndexAdmin(props) {
   const handleDestroyPerformer = () => {
     axios.delete(`/performers/${currentPerformer.id}.json`).then((response) => {
       props.onRemovePerformer(currentPerformer);
-      console.log(currentPerformer);
     });
     handleHideForm();
     handleHideDeletePerformer();
@@ -58,7 +57,6 @@ export function PerformersIndexAdmin(props) {
   const sortPerformers = (p) => {
     if (p) {
       p.sort((a, b) => (a.id > b.id ? 1 : -1));
-      console.log(p);
       setPerformers(p);
     } else {
       null;

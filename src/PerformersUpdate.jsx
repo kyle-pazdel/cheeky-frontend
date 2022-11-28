@@ -190,7 +190,7 @@ export function PerformersUpdate(props) {
             type="text"
             className="form-control mt-3 bio-textarea"
             rows="10"
-            maxlength="750"
+            maxLength="750"
             value={bio}
             onChange={(event) => setBio(event.target.value)}
           />
