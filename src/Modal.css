@@ -28,7 +28,6 @@
   max-height: 80vh;
   transform: translate(-50%, -50%);
   padding: 1em;
-  /* border: 4px solid black; */
   z-index: 1000;
   border-radius: 2%;
   overflow-y: auto;

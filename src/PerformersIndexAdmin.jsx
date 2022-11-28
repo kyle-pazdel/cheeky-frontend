@@ -12,9 +12,14 @@ export function PerformersIndexAdmin(props) {
   const [currentPerformer, setCurrentPerformer] = useState({});
   const [isDeletePerformerVisible, setIsDeletePerformerVisible] = useState(false);
 
-  const handleShowForm = (performer) => {
-    setIsFormVisible(true);
+  const handleClick = (performer) => {
     setCurrentPerformer(performer);
+    handleShowForm();
+  };
+
+  const handleShowForm = (performer) => {
+    setCurrentPerformer(performer);
+    setIsFormVisible(true);
   };
 
   const handleHideForm = () => {
