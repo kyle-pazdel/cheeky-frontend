@@ -23,7 +23,6 @@ export function BookingsShow() {
 
   const handleShowBooking = () => {
     axios.get(`/bookings/${params.id}.json`).then((response) => {
-      console.log(response.data);
       setBooking(response.data);
       setReviews(response.data.reviews);
     });
@@ -52,14 +51,11 @@ export function BookingsShow() {
   useEffect(handleShowBooking, []);
 
   const handleDestroyBooking = (booking) => {
-    console.log("handleDestroyBooking");
     axios.delete(`/bookings/${booking.id}.json`).then((window.location.href = `/my-bookings`));
   };
 
   const handleCreateReview = (params) => {
-    console.log(params);
     axios.post("/reviews.json", params).then((response) => {
-      console.log(response.data);
       setReviews([...reviews, response.data]);
     });
   };
@@ -69,7 +65,6 @@ export function BookingsShow() {
     axios
       .patch(`/bookings/${booking.id}.json`, params)
       .then((response) => {
-        console.log(response.data);
         setBooking(response.data);
       })
       .catch((error) => {
@@ -80,9 +75,7 @@ export function BookingsShow() {
   };
 
   const handleUpdateReview = (id, params) => {
-    console.log(params);
     axios.patch(`/reviews/${id}.json`, params).then((response) => {
-      console.log(response.data);
       setReviews(
         reviews.map((review) => {
           if (review.id === response.data.id) {
@@ -92,7 +85,6 @@ export function BookingsShow() {
           }
         })
       );
-      console.log(reviews);
       setIsReviewUpdateVisible(0);
     });
   };

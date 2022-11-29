@@ -8,13 +8,11 @@ export function BookingsIndex() {
 
   const handleIndexBookings = () => {
     axios.get("/bookings.json").then((response) => {
-      console.log(response.data);
       setBookings(response.data);
     });
   };
 
   const formatTime = (time) => {
-    console.log(time);
     const formattedTime = format(new Date(time), "MMMM dd yyyy, p");
     return formattedTime;
   };
@@ -24,9 +22,9 @@ export function BookingsIndex() {
   return (
     <div className="top-buff">
       <p className="fs-2 fw-semibold">My Bookings</p>
-      {bookings.map((booking) => (
-        <div>
-          <div key={booking.id} className="card shadow mb-4">
+      {bookings?.map((booking) => (
+        <div key={booking.id}>
+          <div className="card shadow mb-4">
             <h5 className="card-header">
               {booking.event_name} with {booking.performer_name}
             </h5>
