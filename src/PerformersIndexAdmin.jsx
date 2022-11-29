@@ -12,11 +12,6 @@ export function PerformersIndexAdmin(props) {
   const [currentPerformer, setCurrentPerformer] = useState({});
   const [isDeletePerformerVisible, setIsDeletePerformerVisible] = useState(false);
 
-  const handleClick = (performer) => {
-    setCurrentPerformer(performer);
-    handleShowForm();
-  };
-
   const handleShowForm = (performer) => {
     setCurrentPerformer(performer);
     setIsFormVisible(true);
@@ -96,14 +91,17 @@ export function PerformersIndexAdmin(props) {
                       </li>
                     </ul>
                   </div>
-                  <button className="btn btn-dark" onClick={() => handleShowForm(performer)}>
+                  {/* <button className="btn btn-dark" onClick={() => handleShowForm(performer)}>
+                    Update Account Details
+                  </button> */}
+                  <button className="btn btn-dark" onClick={() => props.onShowPerformerForm(performer)}>
                     Update Account Details
                   </button>
                 </div>
               </div>
             </div>
           </div>
-          <Modal show={isFormVisible} onClose={handleHideForm}>
+          {/* <Modal show={isFormVisible} onClose={handleHideForm}>
             <button className="btn btn-sm btn-outline-success" onClick={handleShowDeletePerformer}>
               Delete {currentPerformer.name}'s Account
             </button>
@@ -128,7 +126,7 @@ export function PerformersIndexAdmin(props) {
                 </button>
               </div>
             </Modal>
-          </Modal>
+          </Modal> */}
         </div>
       ))}
     </div>

@@ -5,6 +5,11 @@ import { UsersUpdate } from "./UsersUpdate";
 import { PerformersIndexAdmin } from "./PerformersIndexAdmin";
 import { Link } from "react-router-dom";
 import { formatPhoneNumber } from "react-phone-number-input";
+import { FileForm } from "./FileForm";
+import { PerformersUpdate } from "./PerformersUpdate";
+
+// *** REFACTOR IN PROCESS: Moving PerformersUpdate in Modal up one level to be rendered directly in UsersShow.jsx ***
+// ________________________(^^^ PICK UP HERE ^^^)____________________________
 
 export function UsersShow() {
   const [user, setUser] = useState({});
@@ -13,13 +18,14 @@ export function UsersShow() {
   const [errors, setErrors] = useState([]);
   const [status, setStatus] = useState(null);
   const [performers, setPerformers] = useState([]);
+  const [currentPerformer, setCurrentPerformer] = useState({});
+  const [isPerformerFormVisible, setIsPerformerFormVisible] = useState(false);
+  const [isDeletePerformerVisible, setIsDeletePerformerVisible] = useState(false);
 
   const handleShowUser = () => {
     axios.get("/users/" + userId + ".json").then((response) => {
-      console.log(response.data);
       setUser(response.data);
       setPerformers(response.data.performers);
-      console.log("handleShowUser");
     });
   };
 
@@ -29,18 +35,6 @@ export function UsersShow() {
 
   const handleHideUserForm = () => {
     setIsFormVisible(false);
-  };
-
-  const handleSetPerformers = (p) => {
-    setPerformers(
-      performers.map((performer) => {
-        if (performer.id === p.id) {
-          return p;
-        } else {
-          return performer;
-        }
-      })
-    );
   };
 
   const handleRemovePerformer = (performer) => {
@@ -69,6 +63,30 @@ export function UsersShow() {
   };
 
   useEffect(handleShowUser, []);
+
+  // Performer Actions
+
+  const handleSetPerformers = (p) => {
+    setPerformers(
+      performers.map((performer) => {
+        if (performer.id === p.id) {
+          return p;
+        } else {
+          return performer;
+        }
+      })
+    );
+  };
+
+  const handleShowPerformerForm = (performer) => {
+    setCurrentPerformer(performer);
+    setIsPerformerFormVisible(true);
+    console.log(performer);
+  };
+
+  const handleHidePerformerForm = () => {
+    setIsPerformerFormVisible(false);
+  };
 
   return (
     <div className="top-buff">
@@ -108,8 +126,35 @@ export function UsersShow() {
             user={user}
             onSetPerformers={handleSetPerformers}
             onRemovePerformer={handleRemovePerformer}
+            onShowPerformerForm={handleShowPerformerForm}
           />
           <div>
+            <Modal show={isPerformerFormVisible} onClose={handleHidePerformerForm}>
+              {/* <button className="btn btn-sm btn-outline-success" onClick={handleShowDeletePerformer}>
+                Delete {currentPerformer.name}'s Account
+              </button>
+              <div className="card mb-3 mt-4">
+                <PerformersUpdate
+                  performer={currentPerformer}
+                  onUpdatePerformer={handleUpdatePerformer}
+                  onClose={handleHidePerformerForm}
+                />
+              </div>
+
+              <div className="card mb-3">
+                <FileForm performer={currentPerformer} onClose={handleHidePerformerForm} />
+              </div>
+              <Modal show={isDeletePerformerVisible} onClose={handleHideDeletePerformer}>
+                <div className="card m-4">
+                  <p className="cardTitle">
+                    Are you sure you want to delete <br /> {currentPerformer.name}'s account
+                  </p>
+                  <button className="btn btn-outline-success" onClick={handleDestroyPerformer}>
+                    Yes, proceed.
+                  </button>
+                </div>
+              </Modal> */}
+            </Modal>
             <Link
               className="shadow btn btn-success btn-lg d-flex flex-row  justify-content-center pb-0 mb-4"
               to="/add-performer"
