@@ -51,7 +51,7 @@ export function BookingsShow() {
   useEffect(handleShowBooking, []);
 
   const handleDestroyBooking = (booking) => {
-    axios.delete(`/bookings/${booking.id}.json`).then((window.location.href = `/my-bookings`));
+    axios.delete(`/bookings/${booking.id}.json`).then((window.location.href = `/my-events`));
   };
 
   const handleCreateReview = (params) => {

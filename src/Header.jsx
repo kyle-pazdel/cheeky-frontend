@@ -78,7 +78,7 @@ export function Header(props) {
                           </Link>
                         </li>
                         <li>
-                          <Link className="dropdown-item" to="/my-bookings">
+                          <Link className="dropdown-item" to="/my-events">
                             My Bookings
                           </Link>
                         </li>
@@ -155,7 +155,7 @@ export function Header(props) {
                         </Link>
                       </li>
                       <li>
-                        <Link className="dropdown-item" to="/my-bookings" onClick={props.onNavOther}>
+                        <Link className="dropdown-item" to="/my-events" onClick={props.onNavOther}>
                           My Bookings
                         </Link>
                       </li>

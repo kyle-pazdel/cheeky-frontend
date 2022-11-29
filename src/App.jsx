@@ -15,6 +15,7 @@ import { PerformersShow } from "./PerformersShow";
 import { PerformersNew } from "./PerformersNew";
 import { ProfileImageNew } from "./ProfileImageNew";
 import { PaymentProcessing } from "./PaymentProcessing";
+import { PerformersBookings } from "./PerformersBookings";
 
 function App() {
   axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
@@ -52,12 +53,13 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/me" element={<UsersShow />} />
-          <Route path="/my-bookings" element={<BookingsIndex />} />
+          <Route path="/my-events" element={<BookingsIndex />} />
           <Route path="/bookings/:id" element={<BookingsShow />} />
           <Route path="/process-payment/:id" element={<PaymentProcessing />} />
           <Route path="/book" element={<BookingsNew />} />
           <Route path="/add-performer" element={<PerformersNew />} />
           <Route path="/profile-image/:id" element={<ProfileImageNew />} />
+          <Route path="/my-bookings" element={<PerformersBookings />} />
         </Routes>
         <Footer />
       </div>
