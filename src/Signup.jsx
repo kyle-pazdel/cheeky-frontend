@@ -108,9 +108,6 @@ export function Signup() {
           ></input>
         </div>
         <div className="input-group input-group-sm mb-3">
-          {/* <span className="input-group-text" id="inputGroup-sizing-sm">
-            Phone Number
-          </span> */}
           <PhoneInput placeholder="Enter phone number" value={phoneNumber} onChange={setPhoneNumber} />
         </div>
         <div className="input-group input-group-sm mb-3">
@@ -150,10 +147,9 @@ export function Signup() {
           <label className="form-check-label" for="flexSwitchCheckDefault">
             Signing Up as a Queen?
           </label>
-          <p>Is "My Value" checked? {isAdmin.toString()}</p>
         </div>
 
-        <button className="btn btn-dark" type="submit" value="Create">
+        <button className="btn btn-dark mt-3" type="submit" value="Create">
           Signup
         </button>
       </form>
