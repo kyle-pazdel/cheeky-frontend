@@ -37,10 +37,6 @@ export function UsersShow() {
     setIsUserFormVisible(false);
   };
 
-  const handleRemovePerformer = (performer) => {
-    setPerformers(performers.filter((p) => p.id !== performer.id));
-  };
-
   const handleUpdateUser = (userId, params) => {
     axios
       .patch("/users/" + userId + ".json", params)
@@ -64,7 +60,7 @@ export function UsersShow() {
 
   useEffect(handleShowUser, []);
 
-  // Performer Actions
+  // Performer Actions ( Update / Destroy )
 
   const handleShowPerformerForm = (performer) => {
     setCurrentPerformer(performer);
@@ -97,6 +93,26 @@ export function UsersShow() {
         }
       })
     );
+  };
+
+  const handleDestroyPerformer = () => {
+    axios.delete(`/performers/${currentPerformer.id}.json`).then((response) => {
+      handleRemovePerformer(currentPerformer);
+    });
+    handleHidePerformerForm();
+    handleHideDeletePerformer();
+  };
+
+  const handleRemovePerformer = (performer) => {
+    setPerformers(performers.filter((p) => p.id !== performer.id));
+  };
+
+  const handleShowDeletePerformer = () => {
+    setIsDeletePerformerVisible(true);
+  };
+
+  const handleHideDeletePerformer = () => {
+    setIsDeletePerformerVisible(false);
   };
 
   return (
@@ -135,15 +151,14 @@ export function UsersShow() {
           <PerformersIndexAdmin
             performers={performers}
             user={user}
-            // onSetPerformers={handleSetPerformers}
             onRemovePerformer={handleRemovePerformer}
             onShowPerformerForm={handleShowPerformerForm}
           />
           <div>
             <Modal show={isPerformerFormVisible} onClose={handleHidePerformerForm}>
-              {/* <button className="btn btn-sm btn-outline-success" onClick={handleShowDeletePerformer}>
+              <button className="btn btn-sm btn-outline-success" onClick={handleShowDeletePerformer}>
                 Delete {currentPerformer.name}'s Account
-              </button> */}
+              </button>
               <div className="card mb-3 mt-4">
                 <PerformersUpdate
                   performer={currentPerformer}
@@ -156,7 +171,7 @@ export function UsersShow() {
                 <FileForm performer={currentPerformer} onClose={handleHidePerformerForm} />
               </div>
 
-              {/* <Modal show={isDeletePerformerVisible} onClose={handleHideDeletePerformer}>
+              <Modal show={isDeletePerformerVisible} onClose={handleHideDeletePerformer}>
                 <div className="card m-4">
                   <p className="cardTitle">
                     Are you sure you want to delete <br /> {currentPerformer.name}'s account
@@ -165,7 +180,7 @@ export function UsersShow() {
                     Yes, proceed.
                   </button>
                 </div>
-              </Modal> */}
+              </Modal>
             </Modal>
             <Link
               className="shadow btn btn-success btn-lg d-flex flex-row  justify-content-center pb-0 mb-4"
