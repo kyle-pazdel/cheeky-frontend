@@ -48,6 +48,9 @@ export function PerformersIndexAdmin(props) {
                       </li>
                     </ul>
                   </div>
+                  <Link className="btn btn-warning" to={`/my-bookings/${performer.id}`}>
+                    View {performer.name}'s Bookings
+                  </Link>
                   <button className="btn btn-dark" onClick={() => props.onShowPerformerForm(performer)}>
                     Update Account Details
                   </button>

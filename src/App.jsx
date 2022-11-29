@@ -59,7 +59,7 @@ function App() {
           <Route path="/book" element={<BookingsNew />} />
           <Route path="/add-performer" element={<PerformersNew />} />
           <Route path="/profile-image/:id" element={<ProfileImageNew />} />
-          <Route path="/my-bookings" element={<PerformersBookings />} />
+          <Route path="/my-bookings/:id" element={<PerformersBookings />} />
         </Routes>
         <Footer />
       </div>
