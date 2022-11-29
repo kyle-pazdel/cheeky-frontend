@@ -8,9 +8,6 @@ import { formatPhoneNumber } from "react-phone-number-input";
 import { FileForm } from "./FileForm";
 import { PerformersUpdate } from "./PerformersUpdate";
 
-// *** REFACTOR IN PROCESS: Moving PerformersUpdate in Modal up one level to be rendered directly in UsersShow.jsx ***
-// ________________________(^^^ PICK UP HERE ^^^)____________________________
-
 export function UsersShow() {
   const [user, setUser] = useState({});
   const userId = localStorage.getItem("user_id");
@@ -148,12 +145,7 @@ export function UsersShow() {
       {user.is_admin === true ? (
         <div>
           <h2 className="mb-4">Manage Talent Accounts</h2>
-          <PerformersIndexAdmin
-            performers={performers}
-            user={user}
-            onRemovePerformer={handleRemovePerformer}
-            onShowPerformerForm={handleShowPerformerForm}
-          />
+          <PerformersIndexAdmin performers={performers} user={user} onShowPerformerForm={handleShowPerformerForm} />
           <div>
             <Modal show={isPerformerFormVisible} onClose={handleHidePerformerForm}>
               <button className="btn btn-sm btn-outline-success" onClick={handleShowDeletePerformer}>

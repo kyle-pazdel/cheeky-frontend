@@ -1,4 +1,5 @@
 import axios from "axios";
+import { set } from "date-fns";
 import { useState } from "react";
 import TableDatePicker from "./TableDatePicker";
 
@@ -36,17 +37,6 @@ export function BookingsUpdate(props) {
     };
     props.onUpdateBooking(params);
     event.target.reset();
-    // axios
-    //   .patch(`/bookings/${booking.id}.json`, params)
-    //   .then((response) => {
-    //     console.log(response.data);
-    //     event.target.reset();
-    //     window.location.href = `/my-bookings`; // Change this to hide a modal, redirect to a specific page, etc.
-    //   })
-    //   .catch((error) => {
-    //     console.log(error.response.data.errors);
-    //     setErrors(error.response.data.errors);
-    //   });
   };
   const handleEventNameChange = (event) => {
     setEventName(event.target.value);
