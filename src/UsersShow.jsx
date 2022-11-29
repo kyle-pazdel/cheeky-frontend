@@ -88,6 +88,17 @@ export function UsersShow() {
     setIsPerformerFormVisible(false);
   };
 
+  const handleUpdatePerformer = (performerId, params) => {
+    axios
+      .patch("/performers/" + performerId + ".json", params)
+      .then((response) => {
+        setPerformers(response.data);
+      })
+      .catch((error) => {
+        console.log(error.response);
+      });
+  };
+
   return (
     <div className="top-buff">
       <div className="row card shadow">
@@ -124,7 +135,7 @@ export function UsersShow() {
           <PerformersIndexAdmin
             performers={performers}
             user={user}
-            onSetPerformers={handleSetPerformers}
+            // onSetPerformers={handleSetPerformers}
             onRemovePerformer={handleRemovePerformer}
             onShowPerformerForm={handleShowPerformerForm}
           />
@@ -132,7 +143,7 @@ export function UsersShow() {
             <Modal show={isPerformerFormVisible} onClose={handleHidePerformerForm}>
               {/* <button className="btn btn-sm btn-outline-success" onClick={handleShowDeletePerformer}>
                 Delete {currentPerformer.name}'s Account
-              </button>
+              </button> */}
               <div className="card mb-3 mt-4">
                 <PerformersUpdate
                   performer={currentPerformer}
@@ -144,7 +155,8 @@ export function UsersShow() {
               <div className="card mb-3">
                 <FileForm performer={currentPerformer} onClose={handleHidePerformerForm} />
               </div>
-              <Modal show={isDeletePerformerVisible} onClose={handleHideDeletePerformer}>
+
+              {/* <Modal show={isDeletePerformerVisible} onClose={handleHideDeletePerformer}>
                 <div className="card m-4">
                   <p className="cardTitle">
                     Are you sure you want to delete <br /> {currentPerformer.name}'s account

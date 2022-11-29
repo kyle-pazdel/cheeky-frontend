@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PhoneInput from "react-phone-number-input";
 import { SocialIcon } from "react-social-icons";
 
@@ -25,19 +25,35 @@ export function PerformersUpdate(props) {
   };
 
   const [errors, setErrors] = useState([]);
-  const [name, setName] = useState(props.performer.name);
-  const [phoneNumber, setPhoneNumber] = useState(props.performer.phone_number);
-  const [email, setEmail] = useState(props.performer.email);
-  const [shortestGig, setShortestGig] = useState(props.performer.shortest_gig);
-  const [longestGig, setLongestGig] = useState(props.performer.longest_gig);
-  const [city, setCity] = useState(props.performer.city);
-  const [state, setState] = useState(props.performer.state);
-  const [rate, setRate] = useState(props.performer.rate);
-  const [bio, setBio] = useState(props.performer.bio);
-  const [instagramHandle, setInstagramHandle] = useState(props.performer.instagram_handle);
-  const [twitterHandle, setTwitterHandle] = useState(props.performer.twitter_handle);
-  const [performanceType, setPerformanceType] = useState(props.performer.performance_type);
+  const [name, setName] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const [shortestGig, setShortestGig] = useState("");
+  const [longestGig, setLongestGig] = useState("");
+  const [city, setCity] = useState("");
+  const [state, setState] = useState("");
+  const [rate, setRate] = useState("");
+  const [bio, setBio] = useState("");
+  const [instagramHandle, setInstagramHandle] = useState("");
+  const [twitterHandle, setTwitterHandle] = useState("");
+  const [performanceType, setPerformanceType] = useState("");
 
+  const setDefaultValues = () => {
+    setName(props.performer.name);
+    setPhoneNumber(props.performer.phone_number);
+    setEmail(props.performer.email);
+    setShortestGig(props.performer.shortest_gig);
+    setLongestGig(props.performer.longest_gig);
+    setCity(props.performer.city);
+    setState(props.performer.state);
+    setRate(props.performer.rate);
+    setBio(props.performer.bio);
+    setInstagramHandle(props.performer.instagram_handle);
+    setTwitterHandle(props.performer.twitter_handle);
+    setPerformanceType(props.performer.performance_type);
+  };
+
+  useEffect(setDefaultValues, []);
   return (
     <div>
       <p className="m-3 fs-5 fw-semibold card-title">Update {props.performer?.name}'s Account</p>
