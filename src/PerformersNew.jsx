@@ -55,7 +55,7 @@ export function PerformersNew() {
           <li key={error}>{error}</li>
         ))}
       </ul>
-      <form onSubmit={handleSubmit} action="/photos" method="post" enctype="multipart/form-data">
+      <form onSubmit={handleSubmit}>
         <div className="input-group input-group-sm mb-3">
           <span className="input-group-text" id="inputGroup-sizing-sm">
             Drag Name
@@ -199,7 +199,7 @@ export function PerformersNew() {
             type="text"
             className="form-control mt-3"
             rows="10"
-            maxlength="750"
+            maxLength="750"
             value={bio}
             onChange={(event) => setBio(event.target.value)}
           />

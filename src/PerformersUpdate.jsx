@@ -39,18 +39,18 @@ export function PerformersUpdate(props) {
   const [performanceType, setPerformanceType] = useState("");
 
   const setDefaultValues = () => {
-    setName(props.performer.name);
-    setPhoneNumber(props.performer.phone_number);
-    setEmail(props.performer.email);
-    setShortestGig(props.performer.shortest_gig);
-    setLongestGig(props.performer.longest_gig);
-    setCity(props.performer.city);
-    setState(props.performer.state);
-    setRate(props.performer.rate);
-    setBio(props.performer.bio);
-    setInstagramHandle(props.performer.instagram_handle);
-    setTwitterHandle(props.performer.twitter_handle);
-    setPerformanceType(props.performer.performance_type);
+    props.performer.name ? setName(props.performer.name) : null;
+    props.performer.phone_number ? setPhoneNumber(props.performer.phone_number) : null;
+    props.performer.email ? setEmail(props.performer.email) : null;
+    props.performer.shortest_gig ? setShortestGig(props.performer.shortest_gig) : null;
+    props.performer.longest_gig ? setLongestGig(props.performer.longest_gig) : null;
+    props.performer.city ? setCity(props.performer.city) : null;
+    props.performer.state ? setState(props.performer.state) : null;
+    props.performer.rate ? setRate(props.performer.rate) : null;
+    props.performer.bio ? setBio(props.performer.bio) : null;
+    props.performer.instagram_handle ? setInstagramHandle(props.performer.instagram_handle) : null;
+    props.performer.twitter_handle ? setTwitterHandle(props.performer.twitter_handle) : null;
+    props.performer.performance_type ? setPerformanceType(props.performer.performance_type) : null;
   };
 
   useEffect(setDefaultValues, []);
