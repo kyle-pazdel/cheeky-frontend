@@ -14,7 +14,7 @@ import { PerformersUpdate } from "./PerformersUpdate";
 export function UsersShow() {
   const [user, setUser] = useState({});
   const userId = localStorage.getItem("user_id");
-  const [isFormVisible, setIsFormVisible] = useState(false);
+  const [isUserFormVisible, setIsUserFormVisible] = useState(false);
   const [errors, setErrors] = useState([]);
   const [status, setStatus] = useState(null);
   const [performers, setPerformers] = useState([]);
@@ -30,11 +30,11 @@ export function UsersShow() {
   };
 
   const handleShowUserForm = () => {
-    setIsFormVisible(true);
+    setIsUserFormVisible(true);
   };
 
   const handleHideUserForm = () => {
-    setIsFormVisible(false);
+    setIsUserFormVisible(false);
   };
 
   const handleRemovePerformer = (performer) => {
@@ -109,7 +109,7 @@ export function UsersShow() {
           ))}
         </ul>
       ) : null}
-      <Modal show={isFormVisible} onClose={handleHideUserForm}>
+      <Modal show={isUserFormVisible} onClose={handleHideUserForm}>
         <UsersUpdate
           user={user}
           errors={errors}
