@@ -62,7 +62,7 @@ export function PerformersUpdate(props) {
           <li key={error}>{error}</li>
         ))}
       </ul>
-      <form onSubmit={handleSubmit} action="/photos" method="post" encType="multipart/form-data">
+      <form onSubmit={handleSubmit}>
         <div className="input-group input-group-sm mb-3">
           <span className="input-group-text" id="inputGroup-sizing-sm">
             Drag Name

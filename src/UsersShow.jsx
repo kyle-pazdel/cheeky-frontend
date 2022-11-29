@@ -66,18 +66,6 @@ export function UsersShow() {
 
   // Performer Actions
 
-  const handleSetPerformers = (p) => {
-    setPerformers(
-      performers.map((performer) => {
-        if (performer.id === p.id) {
-          return p;
-        } else {
-          return performer;
-        }
-      })
-    );
-  };
-
   const handleShowPerformerForm = (performer) => {
     setCurrentPerformer(performer);
     setIsPerformerFormVisible(true);
@@ -92,11 +80,23 @@ export function UsersShow() {
     axios
       .patch("/performers/" + performerId + ".json", params)
       .then((response) => {
-        setPerformers(response.data);
+        handleSetPerformers(response.data);
       })
       .catch((error) => {
         console.log(error.response);
       });
+  };
+
+  const handleSetPerformers = (p) => {
+    setPerformers(
+      performers.map((performer) => {
+        if (performer.id === p.id) {
+          return p;
+        } else {
+          return performer;
+        }
+      })
+    );
   };
 
   return (
