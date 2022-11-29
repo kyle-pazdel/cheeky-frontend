@@ -1,53 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { PerformersUpdate } from "./PerformersUpdate";
-import { Modal } from "./Modal";
-import { FileForm } from "./FileForm";
 import { Link } from "react-router-dom";
 import { formatPhoneNumber } from "react-phone-number-input";
 
 export function PerformersIndexAdmin(props) {
-  const [isFormVisible, setIsFormVisible] = useState(false);
   const [performers, setPerformers] = useState([]);
-  const [currentPerformer, setCurrentPerformer] = useState({});
-  const [isDeletePerformerVisible, setIsDeletePerformerVisible] = useState(false);
-
-  const handleShowForm = (performer) => {
-    setCurrentPerformer(performer);
-    setIsFormVisible(true);
-    console.log(performer);
-  };
-
-  const handleHideForm = () => {
-    setIsFormVisible(false);
-  };
-
-  const handleShowDeletePerformer = () => {
-    setIsDeletePerformerVisible(true);
-  };
-
-  const handleHideDeletePerformer = () => {
-    setIsDeletePerformerVisible(false);
-  };
-
-  const handleUpdatePerformer = (performerId, params) => {
-    axios
-      .patch("/performers/" + performerId + ".json", params)
-      .then((response) => {
-        props.onSetPerformers(response.data);
-      })
-      .catch((error) => {
-        console.log(error.response);
-      });
-  };
-
-  const handleDestroyPerformer = () => {
-    axios.delete(`/performers/${currentPerformer.id}.json`).then((response) => {
-      props.onRemovePerformer(currentPerformer);
-    });
-    handleHideForm();
-    handleHideDeletePerformer();
-  };
 
   const sortPerformers = (p) => {
     if (p) {
@@ -91,9 +48,6 @@ export function PerformersIndexAdmin(props) {
                       </li>
                     </ul>
                   </div>
-                  {/* <button className="btn btn-dark" onClick={() => handleShowForm(performer)}>
-                    Update Account Details
-                  </button> */}
                   <button className="btn btn-dark" onClick={() => props.onShowPerformerForm(performer)}>
                     Update Account Details
                   </button>
@@ -101,32 +55,6 @@ export function PerformersIndexAdmin(props) {
               </div>
             </div>
           </div>
-          {/* <Modal show={isFormVisible} onClose={handleHideForm}>
-            <button className="btn btn-sm btn-outline-success" onClick={handleShowDeletePerformer}>
-              Delete {currentPerformer.name}'s Account
-            </button>
-            <div className="card mb-3 mt-4">
-              <PerformersUpdate
-                performer={currentPerformer}
-                onUpdatePerformer={handleUpdatePerformer}
-                onClose={handleHideForm}
-              />
-            </div>
-
-            <div className="card mb-3">
-              <FileForm performer={currentPerformer} onClose={handleHideForm} />
-            </div>
-            <Modal show={isDeletePerformerVisible} onClose={handleHideDeletePerformer}>
-              <div className="card m-4">
-                <p className="cardTitle">
-                  Are you sure you want to delete <br /> {currentPerformer.name}'s account
-                </p>
-                <button className="btn btn-outline-success" onClick={handleDestroyPerformer}>
-                  Yes, proceed.
-                </button>
-              </div>
-            </Modal>
-          </Modal> */}
         </div>
       ))}
     </div>
