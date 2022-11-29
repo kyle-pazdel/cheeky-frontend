@@ -212,7 +212,7 @@ export function BookingsShow() {
           <div key={review.id} className="card">
             {isReviewUpdateVisible !== review.id ? (
               <div className="card">
-                <p>
+                <>
                   <ReactStars
                     count={5}
                     value={review.rating}
@@ -223,7 +223,7 @@ export function BookingsShow() {
                     color="#ecb5bd"
                   />
                   {review.comment}
-                </p>
+                </>
                 <div className="row d-flex justify-content-center">
                   <div className="col-1 d-grid gap-2">
                     <button className=" m-1 btn btn-dark btn-sm" onClick={() => handleShowUpdateReview(review)}>

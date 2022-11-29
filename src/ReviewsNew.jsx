@@ -3,7 +3,7 @@ import ReactStars from "react-rating-stars-component";
 
 export function ReviewsNew(props) {
   const [comment, setComment] = useState("");
-  const [rating, setRating] = useState("");
+  const [rating, setRating] = useState(0);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -30,7 +30,7 @@ export function ReviewsNew(props) {
               type="text"
               className="form-control mt-3"
               rows="3"
-              maxlength="300"
+              maxLength="300"
               value={comment}
               onChange={(event) => setComment(event.target.value)}
             />
