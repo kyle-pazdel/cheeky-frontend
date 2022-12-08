@@ -14,7 +14,6 @@ export function PerformersBookings() {
       setPerformer(response.data);
       setPosts(response.data.posts);
       setBookings(response.data.performer_bookings);
-      console.log(response.data.posts);
     });
   };
 
