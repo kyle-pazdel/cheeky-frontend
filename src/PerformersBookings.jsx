@@ -2,6 +2,7 @@ import { Link, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { format } from "date-fns";
+import { MapComponent } from "./MapComponent";
 
 export function PerformersBookings() {
   const params = useParams();
@@ -33,7 +34,13 @@ export function PerformersBookings() {
         <div key={booking.id} className="mb-4 card shadow">
           <div className="row justify-content-md-center container text-center">
             <h5 className="card-header pb-4 mb-3">{booking.event_name}</h5>
-            <div className="me-1 col-6">
+            <div className="me-4 col-6">
+              <MapComponent
+                className="p-3 m-3"
+                booking={booking}
+                latitude={booking.latitude}
+                longitude={booking.longitude}
+              />
               <div className="card-body">
                 <h5 className="card-title">{formatTime(booking.start_time)}</h5>
                 <div className="card-text mt-4">
