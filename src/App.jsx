@@ -19,6 +19,7 @@ import { PerformersBookings } from "./PerformersBookings";
 
 function App() {
   axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
+  // axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://52.38.153.86" : null;
 
   const [colorChange, setColorChange] = useState(false);
 

@@ -18,7 +18,7 @@ export function PerformersIndexAdmin(props) {
   useEffect(() => sortPerformers(props.performers));
 
   return (
-    <div className="row">
+    <div className="row top-buff">
       {performers?.map((performer) => (
         <div key={performer.id}>
           <div className="card mb-3 shadow" style={{ maxWidth: "100vh" }}>
@@ -48,12 +48,14 @@ export function PerformersIndexAdmin(props) {
                       </li>
                     </ul>
                   </div>
-                  <Link className="btn btn-warning" to={`/my-bookings/${performer.id}`}>
-                    View {performer.name}'s Bookings
-                  </Link>
-                  <button className="btn btn-dark" onClick={() => props.onShowPerformerForm(performer)}>
-                    Update Account Details
-                  </button>
+                  <div className="btn-group">
+                    <Link className="btn btn-success" to={`/my-bookings/${performer.id}`}>
+                      View Bookings
+                    </Link>
+                    <button className="btn btn-success" onClick={() => props.onShowPerformerForm(performer)}>
+                      Update Account Details
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
