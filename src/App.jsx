@@ -16,6 +16,7 @@ import { PerformersNew } from "./PerformersNew";
 import { ProfileImageNew } from "./ProfileImageNew";
 import { PaymentProcessing } from "./PaymentProcessing";
 import { PerformersBookings } from "./PerformersBookings";
+import { PerformersBookingsShow } from "./PerformersBookingsShow";
 
 function App() {
   axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
@@ -61,6 +62,7 @@ function App() {
           <Route path="/add-performer" element={<PerformersNew />} />
           <Route path="/profile-image/:id" element={<ProfileImageNew />} />
           <Route path="/my-bookings/:id" element={<PerformersBookings />} />
+          <Route path="/my-bookings/:id/:id" element={<PerformersBookingsShow />} />
         </Routes>
         <Footer />
       </div>

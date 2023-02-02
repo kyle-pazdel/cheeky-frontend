@@ -15,6 +15,7 @@ export function PerformersBookings() {
       setPerformer(response.data);
       setPosts(response.data.posts);
       setBookings(response.data.performer_bookings);
+      console.log(response.data.performer_bookings);
     });
   };
 
@@ -31,15 +32,29 @@ export function PerformersBookings() {
       {bookings?.map((booking) => (
         <div key={booking.id}>
           <div className="card shadow mb-4">
-            <h5 className="card-header">
-              {booking.event_name} with {booking.performer_name}
-            </h5>
+            <h5 className="card-header">{booking.event_name}</h5>
             <div className="card-body">
               <h5 className="card-title">{formatTime(booking.start_time)}</h5>
-              <p className="card-text">at {booking.address}</p>
-              <Link to={`/bookings/${booking.id}`} className="btn btn-dark">
+              <div className="card-text mt-4">
+                <p> {booking.address}</p>
+                <p>
+                  {booking.city}, {booking.state} {booking.postal_code}
+                </p>
+              </div>
+              <div>
+                <p>{booking.event_type}</p>
+                <p>{booking.start_time}</p>
+                <p>{booking.end_time}</p>
+                <p>{booking.paid}</p>
+                <p>{booking.total}</p>
+                <p>{booking.user.first_name}</p>
+                <p>{booking.user.last_name}</p>
+                <p>{booking.user.email}</p>
+                <p>{booking.user.phone_number}</p>
+              </div>
+              {/* <Link to={`/my-bookings/${performer.id}/${booking.id}`} className="btn btn-dark">
                 See Booking Details
-              </Link>
+              </Link> */}
             </div>
           </div>
         </div>
