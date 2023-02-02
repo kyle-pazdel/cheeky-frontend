@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import { format } from "date-fns";
 import { MapComponent } from "./MapComponent";
+import { formatPhoneNumber } from "react-phone-number-input";
 
 export function PerformersBookings() {
   const params = useParams();
@@ -20,9 +21,18 @@ export function PerformersBookings() {
     });
   };
 
+  const formatDate = (date) => {
+    const formattedDate = format(new Date(date), "MMMM dd, yyyy");
+    return formattedDate;
+  };
+
   const formatTime = (time) => {
-    const formattedTime = format(new Date(time), "MMMM dd yyyy, p");
+    const formattedTime = format(new Date(time), "p");
     return formattedTime;
+  };
+
+  const formatMoney = (n) => {
+    return "$ " + (Math.round(n * 100) / 100).toLocaleString();
   };
 
   useEffect(handleShowPerformer, []);
@@ -32,8 +42,8 @@ export function PerformersBookings() {
       <p className="fs-2 fw-semibold">{performer.name}'s Bookings</p>
       {bookings?.map((booking) => (
         <div key={booking.id} className="mb-4 card shadow">
-          <div className="row justify-content-md-center container text-center">
-            <h5 className="card-header pb-4 mb-3">{booking.event_name}</h5>
+          <div className="row justify-content-md-around container text-center">
+            <h5 className="card-header pb-4 mb-4">{booking.event_name}</h5>
             <div className="me-4 col-6">
               <MapComponent
                 className="p-3 m-3"
@@ -42,19 +52,49 @@ export function PerformersBookings() {
                 longitude={booking.longitude}
               />
               <div className="card-body">
-                <h5 className="card-title">{formatTime(booking.start_time)}</h5>
                 <div className="card-text mt-4">
-                  <p> {booking.address}</p>
-                  <p>
-                    {booking.city}, {booking.state} {booking.postal_code}
-                  </p>
+                  <ul className="list-group list-group-flush">
+                    <li className="list-group-item">{booking.address}</li>
+                    <li className="list-group-item">
+                      {booking.city}, {booking.state}
+                    </li>
+                    <li className="list-group-item">{booking.postal_code}</li>
+                  </ul>
                 </div>
               </div>
             </div>
             <div className="col-4">
-              <p>{booking.event_type}</p>
-              <p>{booking.start_time}</p>
-              <p>{booking.end_time}</p>
+              <h5 className="card-title">{formatDate(booking.start_time)}</h5>
+              <p>
+                {formatTime(booking.start_time)} – {formatTime(booking.end_time)}
+              </p>
+              <p className="card-title"></p>
+              <p>Event Type - {booking.event_type}</p>
+              <div className="card row">
+                <div className="card-header">{booking.event_name}</div>
+                <ul className="list-group list-group-flush">
+                  {/* <li className="list-group-item">
+                    {formatTime(booking.start_time)} – {formatTime(booking.end_time)}
+                  </li> */}
+                  <div className="card mt-0 p-0 row-12">
+                    <ul className="list-group list-group-flush">
+                      <li className="list-group-item fs-6 fst-italic">Rate ${performer.rate} hourly</li>
+                    </ul>
+                    <div className="card-header fs-6 fw-semibold">Total {formatMoney(booking.total)}</div>
+                  </div>
+                  <li className="list-group-item">
+                    <small>{booking.user.email}</small> <br />
+                    <small>{formatPhoneNumber(booking.user.phone_number)}</small>
+                  </li>
+                  {/* <li className="list-group-item">
+                    <small>
+                      <Link className="link-dark text-wrap fst-italic" to={`/performers/${booking.performer_id}`}>
+                        See {booking.performer_name}'s Page
+                      </Link>
+                    </small>
+                  </li> */}
+                </ul>
+              </div>
               <p>{booking.paid}</p>
               <p>{booking.total}</p>
               <p>{booking.user.first_name}</p>

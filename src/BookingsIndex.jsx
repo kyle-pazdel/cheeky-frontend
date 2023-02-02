@@ -9,6 +9,7 @@ export function BookingsIndex() {
   const handleIndexBookings = () => {
     axios.get("/bookings.json").then((response) => {
       setBookings(response.data);
+      console.log(bookings);
     });
   };
 

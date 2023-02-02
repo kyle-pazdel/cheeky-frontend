@@ -133,7 +133,7 @@ export function BookingsShow() {
             <ul className="list-group list-group-flush">
               <li className="list-group-item">{booking.address}</li>
               <li className="list-group-item">
-                {booking.city}, {booking.state} {booking.postal_code}
+                {booking.city}, {booking.state}
               </li>
               <li className="list-group-item">{booking.postal_code}</li>
               <li className="list-group-item">
