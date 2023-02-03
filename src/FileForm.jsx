@@ -50,7 +50,9 @@ export function FileForm(props) {
   return (
     <div>
       <p className="m-3 fs-4 fw-semibold card-title">Add Image</p>
-      <p className="fs-6 fw-lighter">File must be jpeg format and cannot exceed 100kb</p>
+      <p className="fs-6 fw-lighter">
+        File must be in <strong>jpeg</strong> format and cannot exceed <strong>100kb</strong>
+      </p>
       <ul>
         {errors?.map((error) => (
           <li key={error}>{error}</li>
@@ -58,7 +60,7 @@ export function FileForm(props) {
       </ul>
       <form className="mb-3" onSubmit={(event) => handleSubmit(event)}>
         <div className="mb-3">
-          <input className="form-control" type="file" name="image" id="formFileLg" />
+          <input className="form-control" type="file" accept="image/jpeg" name="image" id="formFileLg" />
         </div>
         <div className="input-group mb-3">
           <span className="input-group-text" id="basic-addon1">
