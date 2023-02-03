@@ -4,6 +4,7 @@ import axios from "axios";
 import { format } from "date-fns";
 import { MapComponent } from "./MapComponent";
 import { formatPhoneNumber } from "react-phone-number-input";
+import paymentreceived from "./assets/paymentreceived.svg";
 
 export function PerformersBookings() {
   const params = useParams();
@@ -71,11 +72,11 @@ export function PerformersBookings() {
               <p className="card-title"></p>
               <p>Event Type - {booking.event_type}</p>
               <div className="card row">
-                <div className="card-header">{booking.event_name}</div>
+                <h5>{formatDate(booking.start_time)}</h5>
                 <ul className="list-group list-group-flush">
-                  {/* <li className="list-group-item">
+                  <li className="list-group-item">
                     {formatTime(booking.start_time)} – {formatTime(booking.end_time)}
-                  </li> */}
+                  </li>
                   <div className="card mt-0 p-0 row-12">
                     <ul className="list-group list-group-flush">
                       <li className="list-group-item fs-6 fst-italic">Rate ${performer.rate} hourly</li>
@@ -86,6 +87,15 @@ export function PerformersBookings() {
                     <small>{booking.user.email}</small> <br />
                     <small>{formatPhoneNumber(booking.user.phone_number)}</small>
                   </li>
+                  {booking.paid === true ? (
+                    <div className="row d-flex justify-content-center">
+                      <img className="col-2 icon-image" src={paymentreceived} />
+                    </div>
+                  ) : (
+                    <Link className="d-grid gap-2 btn btn-outline-warning" to={`/process-payment/${booking.id}`}>
+                      Submit Payment
+                    </Link>
+                  )}
                   {/* <li className="list-group-item">
                     <small>
                       <Link className="link-dark text-wrap fst-italic" to={`/performers/${booking.performer_id}`}>
