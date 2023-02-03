@@ -49,7 +49,8 @@ export function FileForm(props) {
 
   return (
     <div>
-      <p className="m-3 fs-5 fw-semibold card-title">Add Image</p>
+      <p className="m-3 fs-4 fw-semibold card-title">Add Image</p>
+      <p className="fs-6 fw-lighter">File must be jpeg format and cannot exceed 100kb</p>
       <ul>
         {errors?.map((error) => (
           <li key={error}>{error}</li>
