@@ -18,7 +18,7 @@ export function ProfileImageNew(props) {
     event.preventDefault();
     const imageFile = event.target.image.files[0];
     const options = {
-      maxSizeMB: 0.1,
+      maxSizeMB: 0.14,
     };
     const data = new FormData();
     try {

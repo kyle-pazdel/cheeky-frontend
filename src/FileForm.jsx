@@ -11,7 +11,8 @@ export function FileForm(props) {
     event.preventDefault();
     const imageFile = event.target.image.files[0];
     const options = {
-      maxSizeMB: 0.1,
+      maxSizeMB: 0.14,
+      maxWidthOrHeight: 1920,
     };
     const data = new FormData();
     try {
