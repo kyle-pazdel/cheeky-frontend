@@ -65,12 +65,6 @@ export function PerformersBookings() {
               </div>
             </div>
             <div className="col-4">
-              <h5 className="card-title">{formatDate(booking.start_time)}</h5>
-              <p>
-                {formatTime(booking.start_time)} – {formatTime(booking.end_time)}
-              </p>
-              <p className="card-title"></p>
-              <p>Event Type - {booking.event_type}</p>
               <div className="card row">
                 <h5>{formatDate(booking.start_time)}</h5>
                 <ul className="list-group list-group-flush">
@@ -101,7 +95,6 @@ export function PerformersBookings() {
                   )}
                 </ul>
               </div>
-              <p>{booking.paid.toString()}</p>
             </div>
           </div>
         </div>
