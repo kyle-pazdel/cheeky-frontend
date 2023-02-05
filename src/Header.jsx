@@ -22,7 +22,7 @@ export function Header(props) {
       <nav
         className={
           props.colorChange
-            ? "navbar colorChange navbar-expand-lg navbar-dark fixed-top py-3"
+            ? "navbar colorChange navbar-expand-sm navbar-dark fixed-top py-3"
             : "navbar color navbar-expand-lg navbar-dark fixed-top py-3"
         }
       >
@@ -41,7 +41,7 @@ export function Header(props) {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div>
+          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
             <ul className="navbar-nav ms-auto my-2 my-lg-0">
               <li className="nav-item">
                 <Link className="nav-link" to="/" onClick={props.onNavHome}>
