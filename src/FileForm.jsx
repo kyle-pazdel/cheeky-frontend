@@ -7,21 +7,6 @@ export function FileForm(props) {
   const [posts, setPosts] = useState([]);
   const [currentPost, setCurrentPost] = useState({});
 
-  // async function handleImageUpload(event) {
-  //   const imageFile = event.target.files[0];
-
-  //   const options = {
-  //     maxSizeMB: 0.08,
-  //   };
-  //   try {
-  //     const compressedFile = await imageCompression(imageFile, options);
-  //     console.log(compressedFile.size / 1024 / 1024);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  //   handleSubmit(event.target.title.value, compressedFile);
-  // }
-
   async function handleSubmit(event) {
     event.preventDefault();
     const imageFile = event.target.image.files[0];
