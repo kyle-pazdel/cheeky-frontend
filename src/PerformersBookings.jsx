@@ -83,34 +83,25 @@ export function PerformersBookings() {
                     </ul>
                     <div className="card-header fs-6 fw-semibold">Total {formatMoney(booking.total)}</div>
                   </div>
+                  <li className="list-group-item mt-3">Contact Info</li>
                   <li className="list-group-item">
+                    <small>
+                      {booking.user.first_name} {booking.user.last_name}
+                    </small>{" "}
+                    <br />
                     <small>{booking.user.email}</small> <br />
                     <small>{formatPhoneNumber(booking.user.phone_number)}</small>
                   </li>
                   {booking.paid === true ? (
-                    <div className="row d-flex justify-content-center">
-                      <img className="col-2 icon-image" src={paymentreceived} />
+                    <div className="row d-flex justify-content-center btn btn-dark disabled">
+                      <img className="icon-image" src={paymentreceived} />
                     </div>
                   ) : (
-                    <Link className="d-grid gap-2 btn btn-outline-warning" to={`/process-payment/${booking.id}`}>
-                      Submit Payment
-                    </Link>
+                    <div className="row d-flex justify-content-center btn btn-warning disabled">Payment Pending...</div>
                   )}
-                  {/* <li className="list-group-item">
-                    <small>
-                      <Link className="link-dark text-wrap fst-italic" to={`/performers/${booking.performer_id}`}>
-                        See {booking.performer_name}'s Page
-                      </Link>
-                    </small>
-                  </li> */}
                 </ul>
               </div>
-              <p>{booking.paid}</p>
-              <p>{booking.total}</p>
-              <p>{booking.user.first_name}</p>
-              <p>{booking.user.last_name}</p>
-              <p>{booking.user.email}</p>
-              <p>{booking.user.phone_number}</p>
+              <p>{booking.paid.toString()}</p>
             </div>
           </div>
         </div>
