@@ -23,7 +23,7 @@ export function Header(props) {
         className={
           props.colorChange
             ? "navbar colorChange navbar-expand-sm navbar-dark fixed-top py-3"
-            : "navbar color navbar-expand-lg navbar-dark fixed-top py-3"
+            : "navbar color navbar-expand-sm navbar-dark fixed-top py-3"
         }
       >
         <div className="container px-4 px-lg-5">
@@ -31,18 +31,18 @@ export function Header(props) {
             Cheeky
           </a>
           <button
-            className="navbar-toggler navbar-toggler-right"
+            className="navbar-toggler"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#navbarResponsive"
-            aria-controls="navbarResponsive"
+            data-bs-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02"
             aria-expanded="false"
             aria-label="Toggle navigation"
           >
-            <span className="navbar-toggler-icon"></span>
+            <span class="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-            <ul className="navbar-nav ms-auto my-2 my-lg-0">
+          <div className="collapse navbar-collapse" id="navbarTogglerDemo02">
+            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
                 <Link className="nav-link" to="/" onClick={props.onNavHome}>
                   Home
