@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export function PerformersIndex(props) {
   return (
-    <div className="row" id="performers-index">
+    <div className="row justify-content-center" id="performers-index">
       {props.performers.map((performer) => (
         <div key={performer.id} className="card col-2 shadow m-3" style={{ width: "18rem" }}>
           <div>
