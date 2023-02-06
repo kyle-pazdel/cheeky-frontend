@@ -33,6 +33,7 @@ function App() {
     } else {
       setColorChange(false);
     }
+    x;
   };
 
   const handleNavHome = () => {

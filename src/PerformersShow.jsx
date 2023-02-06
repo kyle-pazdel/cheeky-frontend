@@ -75,7 +75,7 @@ export function PerformersShow() {
 
   return (
     <div className="row performer-show-top">
-      <div className="col-3">
+      <div className="col-xl-3">
         <div className="fw-bold">
           <img
             src={performer.profile_image?.image_url}
@@ -116,7 +116,7 @@ export function PerformersShow() {
           </ul>
         </div>
       </div>
-      <div className="col-9">
+      <div className="col-xl-9">
         <Carousel autoPlay={true} showArrows={true} showThumbs={true}>
           {posts?.map((post) => (
             <div>
