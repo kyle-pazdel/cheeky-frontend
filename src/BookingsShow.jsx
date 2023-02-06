@@ -95,9 +95,19 @@ export function BookingsShow() {
     });
   };
 
+  const formatDate = (date) => {
+    if (date) {
+      const formattedDate = format(new Date(date), "MMMM dd, yyyy");
+      return formattedDate;
+    } else {
+      return null;
+    }
+  };
+
   const formatTime = (time) => {
     if (time) {
-      return format(new Date(time), "MMMM dd yyyy, p");
+      const formattedTime = format(new Date(time), "p");
+      return formattedTime;
     } else {
       return null;
     }
@@ -136,9 +146,12 @@ export function BookingsShow() {
                 {booking.city}, {booking.state}
               </li>
               <li className="list-group-item">{booking.postal_code}</li>
+              <li className="list-group-item"></li>
+              <li className="list-group-item">{formatDate(booking.start_time)} </li>
               <li className="list-group-item">
                 {formatTime(booking.start_time)} – {formatTime(booking.end_time)}
               </li>
+              <li className="list-group-item"></li>
 
               <div className="card mt-0 p-0 row-12">
                 <ul className="list-group list-group-flush">

@@ -23,13 +23,21 @@ export function PerformersBookings() {
   };
 
   const formatDate = (date) => {
-    const formattedDate = format(new Date(date), "MMMM dd, yyyy");
-    return formattedDate;
+    if (date) {
+      const formattedDate = format(new Date(date), "MMMM dd, yyyy");
+      return formattedDate;
+    } else {
+      return null;
+    }
   };
 
   const formatTime = (time) => {
-    const formattedTime = format(new Date(time), "p");
-    return formattedTime;
+    if (time) {
+      const formattedTime = format(new Date(time), "p");
+      return formattedTime;
+    } else {
+      return null;
+    }
   };
 
   const formatMoney = (n) => {
