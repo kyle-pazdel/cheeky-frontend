@@ -50,12 +50,26 @@ body {
   object-position: 100% 0
 }
 
-.carousel-image {
-  height: 700px;
+.carousel-image,
+.carousel-image-mid,
+.carousel-image-small {
   width: auto;
   object-fit: cover;
   object-position: 50% 50%;
 }
+
+.carousel-image {
+  height: 700px;
+}
+
+.carousel-image-mid {
+  height: 500px;
+  
+}
+.carousel-image-small {
+  height: 300px;
+}
+
 .card-img-top {
   width: 100%;
   height: 18rem;

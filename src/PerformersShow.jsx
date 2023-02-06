@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { SocialIcon } from "react-social-icons";
 import { format } from "date-fns";
 import ReactStars from "react-rating-stars-component";
+import useWindowDimensions from "./useWindowDimensions";
 
 export function PerformersShow() {
   const params = useParams();
@@ -18,6 +19,7 @@ export function PerformersShow() {
   const [posts, setPosts] = useState([]);
   const [shortestGig, setShortestGig] = useState(0);
   const [longestGig, setLongestGig] = useState(0);
+  const { height, width } = useWindowDimensions();
 
   const handleShowPerformer = () => {
     axios.get(`/performers/${params.id}.json`).then((response) => {
@@ -73,6 +75,16 @@ export function PerformersShow() {
     return formattedTime;
   };
 
+  const carouselImageResize = () => {
+    if (width < 700) {
+      return "carousel-image-small";
+    } else if (width < 1000) {
+      return "carousel-image-mid";
+    } else {
+      return "carousel-image";
+    }
+  };
+
   return (
     <div className="row performer-show-top">
       <div className="col-xl-3">
@@ -121,7 +133,11 @@ export function PerformersShow() {
           {posts?.map((post) => (
             <div>
               <div key={post.id}>
-                <img src={post.image_url} alt={`photo of ${performer.name}`} className="profile-image carousel-image" />
+                <img
+                  src={post.image_url}
+                  alt={`photo of ${performer.name}`}
+                  className={`profile-image ${carouselImageResize()}`}
+                />
               </div>
               <p className="legend">{post.title}</p>
             </div>
