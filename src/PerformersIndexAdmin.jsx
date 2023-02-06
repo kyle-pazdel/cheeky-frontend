@@ -48,13 +48,17 @@ export function PerformersIndexAdmin(props) {
                       </li>
                     </ul>
                   </div>
-                  <div className="btn-group">
-                    <Link className="btn btn-success" to={`/my-bookings/${performer.id}`}>
-                      View Bookings
-                    </Link>
-                    <button className="btn btn-success" onClick={() => props.onShowPerformerForm(performer)}>
-                      Update Account Details
-                    </button>
+                  <div className="row d-flex justify-content-center">
+                    <div className="col-12 d-grid">
+                      <Link className="btn btn-success" to={`/my-bookings/${performer.id}`}>
+                        View Bookings
+                      </Link>
+                    </div>
+                    <div className="col-12 d-grid gap-2 mt-3">
+                      <button className="btn btn-success" onClick={() => props.onShowPerformerForm(performer)}>
+                        Update Account Details
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
