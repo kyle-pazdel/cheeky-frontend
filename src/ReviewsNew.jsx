@@ -14,6 +14,7 @@ export function ReviewsNew(props) {
     };
     console.log(params);
     props.onCreateReview(params, () => event.target.reset());
+    event.target.reset();
   };
 
   const handleRating = (rating) => {
@@ -23,8 +24,8 @@ export function ReviewsNew(props) {
   return (
     <div>
       <form onSubmit={handleSubmit}>
-        <div className="row m-3">
-          <label className="col-12 mb-3 mt-3 form-label fs-5">
+        <div className="row">
+          <label className="col-lg-12 mb-3 mt-3 form-label fs-5">
             Leave a Review
             <textarea
               type="text"
@@ -35,7 +36,7 @@ export function ReviewsNew(props) {
               onChange={(event) => setComment(event.target.value)}
             />
           </label>
-          <div className="col-3">
+          <div className="col-lg-3 ">
             <ReactStars
               count={5}
               value={rating}
@@ -46,7 +47,7 @@ export function ReviewsNew(props) {
               color="#ecb5bd"
             />
           </div>
-          <button type="submit" className="col-8 btn btn-dark mb-5">
+          <button type="submit" className="col-lg-8 btn btn-dark mb-5 mt-3">
             Submit
           </button>
           {comment.length > 0 ? <p>Characters remaining {300 - comment.length}</p> : null}
