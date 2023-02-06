@@ -40,17 +40,17 @@ export function ReviewsUpdate(props) {
             count={5}
             value={rating}
             onChange={handleRating}
-            size={30}
+            size={28}
             isHalf={true}
             activeColor="#e98dd7"
             color="#ecb5bd"
           />
-          <div className="col-1 d-grid gap-2">
+          <div className="col-lg-1 d-grid">
             <button className="btn btn-dark btn-sm" type="submit">
               Submit
             </button>
           </div>
-          <div className="col-1 d-grid gap-2">
+          <div className="col-lg-1 d-grid gap-2">
             <button className="btn btn-outline-secondary btn-sm" onClick={handleClose}>
               Cancel
             </button>

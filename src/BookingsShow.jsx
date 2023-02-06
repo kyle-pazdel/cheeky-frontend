@@ -10,6 +10,7 @@ import { ReviewsUpdate } from "./ReviewsUpdate";
 import { formatPhoneNumber } from "react-phone-number-input";
 import paymentreceived from "./assets/paymentreceived.svg";
 import ReactStars from "react-rating-stars-component";
+import useWindowDimensions from "./useWindowDimensions";
 
 export function BookingsShow() {
   const params = useParams();
@@ -20,6 +21,18 @@ export function BookingsShow() {
   const [isReviewUpdateVisible, setIsReviewUpdateVisible] = useState(0);
   const [isCancellationVisible, setIsCancellationVisible] = useState(false);
   const [rating, setRating] = useState(0);
+  const { height, width } = useWindowDimensions();
+  const [smallScreen, setSmallScreen] = useState(false);
+
+  const handleReviewsLayout = () => {
+    if (width < 500) {
+      setSmallScreen(true);
+    } else {
+      setSmallScreen(false);
+    }
+  };
+
+  useEffect(handleReviewsLayout, []);
 
   const handleShowBooking = () => {
     axios.get(`/bookings/${params.id}.json`).then((response) => {
@@ -212,46 +225,89 @@ export function BookingsShow() {
           </div>
         </Modal>
       </div>
-      <div className="card shadow mb-4">
-        {reviews?.map((review) => (
-          <div key={review.id} className="card">
-            {isReviewUpdateVisible !== review.id ? (
-              <div className="card">
+      {smallScreen ? (
+        <div className="card shadow mb-4">
+          {reviews?.map((review) => (
+            <div key={review.id} className="card">
+              {isReviewUpdateVisible !== review.id ? (
                 <>
-                  <ReactStars
-                    count={5}
-                    value={review.rating}
-                    edit={false}
-                    size={24}
-                    isHalf={true}
-                    activeColor="#e98dd7"
-                    color="#ecb5bd"
-                  />
-                  {review.comment}
-                </>
-                <div className="row d-flex justify-content-center">
-                  <div className="col-1 d-grid gap-2">
-                    <button className=" m-1 btn btn-dark btn-sm" onClick={() => handleShowUpdateReview(review)}>
-                      Edit
-                    </button>
+                  <div>
+                    <ReactStars
+                      count={5}
+                      value={review.rating}
+                      edit={false}
+                      size={24}
+                      isHalf={true}
+                      activeColor="#e98dd7"
+                      color="#ecb5bd"
+                    />
+                    <p>{review.comment}</p>
                   </div>
-                  <div className="col-1 d-grid gap-2">
-                    <button
-                      className=" m-1 btn btn-outline-secondary btn-sm"
-                      onClick={() => handleDestroyReview(review)}
-                    >
-                      Delete
-                    </button>
+                  <div className="row d-flex justify-content-center">
+                    <div className="col-lg-1 d-grid gap-2">
+                      <button className=" m-1 btn btn-dark btn-sm" onClick={() => handleShowUpdateReview(review)}>
+                        Edit
+                      </button>
+                    </div>
+                    <div className="col-lg-1 d-grid gap-2">
+                      <button
+                        className=" m-1 btn btn-outline-secondary btn-sm"
+                        onClick={() => handleDestroyReview(review)}
+                      >
+                        Delete
+                      </button>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <ReviewsUpdate review={review} booking={booking} onUpdateReview={handleUpdateReview} />
+              )}
+            </div>
+          ))}
+          <ReviewsNew booking={booking} onCreateReview={handleCreateReview} />
+        </div>
+      ) : (
+        <div className="card shadow mb-4">
+          {reviews?.map((review) => (
+            <div key={review.id} className="card">
+              {isReviewUpdateVisible !== review.id ? (
+                <div className="card">
+                  <>
+                    <ReactStars
+                      count={5}
+                      value={review.rating}
+                      edit={false}
+                      size={24}
+                      isHalf={true}
+                      activeColor="#e98dd7"
+                      color="#ecb5bd"
+                    />
+                    <p>{review.comment}</p>
+                  </>
+                  <div className="row d-flex justify-content-center">
+                    <div className="col-lg-1 d-grid gap-2">
+                      <button className=" m-1 btn btn-dark btn-sm" onClick={() => handleShowUpdateReview(review)}>
+                        Edit
+                      </button>
+                    </div>
+                    <div className="col-lg-1 d-grid gap-2">
+                      <button
+                        className=" m-1 btn btn-outline-secondary btn-sm"
+                        onClick={() => handleDestroyReview(review)}
+                      >
+                        Delete
+                      </button>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ) : (
-              <ReviewsUpdate review={review} booking={booking} onUpdateReview={handleUpdateReview} />
-            )}
-          </div>
-        ))}
-        <ReviewsNew booking={booking} onCreateReview={handleCreateReview} />
-      </div>
+              ) : (
+                <ReviewsUpdate review={review} booking={booking} onUpdateReview={handleUpdateReview} />
+              )}
+            </div>
+          ))}
+          <ReviewsNew booking={booking} onCreateReview={handleCreateReview} />
+        </div>
+      )}
     </div>
   );
 }
