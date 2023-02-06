@@ -21,36 +21,10 @@ import useWindowDimensions from "./useWindowDimensions";
 function App() {
   // axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
   axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://52.38.153.86" : null;
-
-  const [colorChange, setColorChange] = useState(false);
-  const { height, width } = useWindowDimensions();
-
-  const changeNavbarColor = () => {
-    if (location.pathname !== "/") {
-      setColorChange(true);
-    } else if (window.scrollY >= height * 0.8 && location.pathname === "/") {
-      setColorChange(true);
-    } else {
-      setColorChange(false);
-    }
-    x;
-  };
-
-  const handleNavHome = () => {
-    setColorChange(false);
-  };
-
-  const handleNavOther = () => {
-    setColorChange(true);
-  };
-
-  window.addEventListener("scroll", changeNavbarColor);
-  window.addEventListener("load", changeNavbarColor);
-
   return (
     <BrowserRouter>
       <div>
-        <Header colorChange={colorChange} onNavHome={handleNavHome} onNavOther={handleNavOther} />
+        <Header />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/performers/:id" element={<PerformersShow />} />
@@ -70,5 +44,4 @@ function App() {
     </BrowserRouter>
   );
 }
-
 export default App;
