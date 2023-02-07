@@ -117,10 +117,10 @@ export function UsersShow() {
       <div className="card shadow">
         <p className="card-header m-3 fs-3 fw-semibold">My Profile</p>
         <ul className="list-group list-group-flush">
-          <li className="list-group-item">{user.first_name}</li>
-          <li className="list-group-item">{user.last_name}</li>
-          <li className="list-group-item">{user.email}</li>
-          <li className="list-group-item">{formatPhoneNumber(user.phone_number)}</li>
+          <li className="list-group-item text-nowrap">{user.first_name}</li>
+          <li className="list-group-item text-nowrap">{user.last_name}</li>
+          <li className="list-group-item text-nowrap">{user.email}</li>
+          <li className="list-group-item text-nowrap">{formatPhoneNumber(user.phone_number)}</li>
           <button className="btn btn-dark" onClick={handleShowUserForm}>
             Edit Account Details
           </button>

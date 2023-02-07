@@ -95,7 +95,7 @@ export function FileForm(props) {
         {posts?.map((post) => (
           <div
             key={post.id}
-            className="card shadow container d-flex flex-column align-items-center m-1"
+            className="card shadow container d-flex flex-column align-items-center"
             style={{ width: "10rem" }}
           >
             <div>
