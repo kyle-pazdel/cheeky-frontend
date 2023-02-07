@@ -40,7 +40,7 @@ export function Home() {
                   Whether for private parties or large events, begin browsing profiles below to search for a queen that
                   will take your event to the next level!{" "}
                 </p> */}
-                <img className="profile-image" src="./public/lips.png" />
+                <img className="profile-image" src="/lips.png" />
                 <a className="btn btn-dark btn-lg" href="#performers-index">
                   Find Out More
                 </a>
