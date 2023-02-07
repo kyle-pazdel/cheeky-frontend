@@ -40,7 +40,7 @@ export function Home() {
                   Whether for private parties or large events, begin browsing profiles below to search for a queen that
                   will take your event to the next level!{" "}
                 </p> */}
-                <img className="profile-image" src="/lips.png" />
+                <img className="profile-image" src="./lips.png" />
                 <a className="btn btn-dark btn-lg" href="#performers-index">
                   Find Out More
                 </a>
@@ -51,7 +51,7 @@ export function Home() {
               <div className="col-lg-8 align-self-end">
                 <h1 className="text-white font-weight-bold under-landing">Cheeky</h1>
                 <p className="text-white font-weight-bold under-landing">Your Premiere Drag Booking Spot</p>
-                <img className="profile-image small-image" src="/lips.png" />
+                <img className="profile-image small-image" src="./lips.png" />
               </div>
               <div className="col-lg-8 mb-5 align-self-end">
                 <a className="btn btn-dark btn-lg" href="#performers-index">
