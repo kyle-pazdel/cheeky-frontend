@@ -51,7 +51,7 @@ export function Home() {
               <div className="col-lg-8 align-self-end">
                 <h1 className="text-white font-weight-bold under-landing">Cheeky</h1>
                 <p className="text-white font-weight-bold under-landing">Your Premiere Drag Booking Spot</p>
-                <img className="profile-image small-image" src="./public/lips.png" />
+                <img className="profile-image small-image" src="/lips.png" />
               </div>
               <div className="col-lg-8 mb-5 align-self-end">
                 <a className="btn btn-dark btn-lg" href="#performers-index">
