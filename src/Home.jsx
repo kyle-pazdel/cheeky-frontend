@@ -40,7 +40,10 @@ export function Home() {
                   Whether for private parties or large events, begin browsing profiles below to search for a queen that
                   will take your event to the next level!{" "}
                 </p> */}
-                <img className="profile-image" src={"/public/lips.svg"} />
+                <img
+                  className="profile-image"
+                  src="https://res.cloudinary.com/du0bbnnzx/image/upload/v1675744092/CHEEKY_API_CLOUDINARY_FOLDER/lips_ndmwsm.png"
+                />
                 <a className="btn btn-dark btn-lg" href="#performers-index">
                   Find Out More
                 </a>
@@ -51,7 +54,10 @@ export function Home() {
               <div className="col-lg-8 align-self-end">
                 <h1 className="text-white font-weight-bold under-landing">Cheeky</h1>
                 <p className="text-white font-weight-bold under-landing">Your Premiere Drag Booking Spot</p>
-                <img className="profile-image small-image" src={"/public/lips.svg"} />
+                <img
+                  className="profile-image small-image"
+                  src="https://res.cloudinary.com/du0bbnnzx/image/upload/v1675744092/CHEEKY_API_CLOUDINARY_FOLDER/lips_ndmwsm.png"
+                />
               </div>
               <div className="col-lg-8 mb-5 align-self-end">
                 <a className="btn btn-dark btn-lg" href="#performers-index">
