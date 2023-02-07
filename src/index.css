@@ -113,6 +113,11 @@ body {
   text-shadow: 5px 2px 15px black;
 }
 
+.small-image {
+  width: 10em;
+  height: auto;
+}
+
 .sticker-size {
   width: 70%;
 }
