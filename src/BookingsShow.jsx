@@ -22,16 +22,17 @@ export function BookingsShow() {
   const [isCancellationVisible, setIsCancellationVisible] = useState(false);
   const [rating, setRating] = useState(0);
   const { height, width } = useWindowDimensions();
-  const [smallScreen, setSmallScreen] = useState(false);
+  const [smallScreen, setSmallScreen] = useState(true);
 
   const handleReviewsLayout = () => {
-    if (width < 500) {
+    if (width < 900) {
       setSmallScreen(true);
+      console.log("true");
     } else {
       setSmallScreen(false);
+      console.log("false");
     }
   };
-
   useEffect(handleReviewsLayout, []);
 
   const handleShowBooking = () => {
@@ -142,171 +143,258 @@ export function BookingsShow() {
           className="thumbnail-profile-image rounded-circle mb-3 mt-3"
         />
       </div>
-      <div className="row card shadow mb-4">
-        <MapComponent
-          className="p-0 m-0 card-image-top"
-          booking={booking}
-          latitude={booking.latitude}
-          longitude={booking.longitude}
-        />
-        <div className="col">
-          <p className="m-3 fs-5 fw-semibold">Event Details</p>
-          <div className="card row">
-            <div className="card-header">{booking.event_name}</div>
-            <ul className="list-group list-group-flush">
-              <li className="list-group-item">{booking.address}</li>
-              <li className="list-group-item">
-                {booking.city}, {booking.state}
-              </li>
-              <li className="list-group-item">{booking.postal_code}</li>
-              <li className="list-group-item"></li>
-              <li className="list-group-item">{formatDate(booking.start_time)} </li>
-              <li className="list-group-item">
-                {formatTime(booking.start_time)} – {formatTime(booking.end_time)}
-              </li>
-              <li className="list-group-item"></li>
-
-              <div className="card mt-0 p-0 row-12">
+      {smallScreen ? (
+        <>
+          <div className="row card shadow mb-4">
+            <MapComponent
+              className="p-0 m-0 card-image-top"
+              booking={booking}
+              latitude={booking.latitude}
+              longitude={booking.longitude}
+            />
+            <div className="col">
+              <p className="m-3 fs-5 fw-semibold">Event Details</p>
+              <div className="card row">
+                <div className="card-header">{booking.event_name}</div>
                 <ul className="list-group list-group-flush">
-                  <li className="list-group-item fs-6 fst-italic">Rate ${booking.performer_rate} hourly</li>
+                  <li className="list-group-item">{booking.address}</li>
+                  <li className="list-group-item">
+                    {booking.city}, {booking.state}
+                  </li>
+                  <li className="list-group-item">{booking.postal_code}</li>
+                  <li className="list-group-item"></li>
+                  <li className="list-group-item">{formatDate(booking.start_time)} </li>
+                  <li className="list-group-item">
+                    {formatTime(booking.start_time)} – {formatTime(booking.end_time)}
+                  </li>
+                  <li className="list-group-item"></li>
+
+                  <div className="card mt-0 p-0 row-12">
+                    <ul className="list-group list-group-flush">
+                      <li className="list-group-item fs-6 fst-italic">Rate ${booking.performer_rate} hourly</li>
+                    </ul>
+                    <div className="card-header fs-6 fw-semibold">Total {formatMoney(booking.total)}</div>
+                  </div>
+                  <li className="list-group-item">
+                    <small>{booking.performer_email}</small> <br />
+                    <small>{formatPhoneNumber(booking.performer_phone_number)}</small>
+                  </li>
+                  <li className="list-group-item">
+                    <small>
+                      <Link className="link-dark text-wrap fst-italic" to={`/performers/${booking.performer_id}`}>
+                        See {booking.performer_name}'s Page
+                      </Link>
+                    </small>
+                  </li>
                 </ul>
-                <div className="card-header fs-6 fw-semibold">Total {formatMoney(booking.total)}</div>
               </div>
-              <li className="list-group-item">
-                <small>{booking.performer_email}</small> <br />
-                <small>{formatPhoneNumber(booking.performer_phone_number)}</small>
-              </li>
-              <li className="list-group-item">
-                <small>
-                  <Link className="link-dark text-wrap fst-italic" to={`/performers/${booking.performer_id}`}>
-                    See {booking.performer_name}'s Page
+            </div>
+            <div className="col card text-bg-dark mb-3 p-0 h-50">
+              <div className="card-body">
+                {booking.paid === true ? (
+                  <div className="row d-flex justify-content-center sticker-size">
+                    <img className="" src={paymentreceived} />
+                  </div>
+                ) : (
+                  <Link className="d-grid gap-2 btn btn-outline-warning" to={`/process-payment/${booking.id}`}>
+                    Submit Payment
                   </Link>
-                </small>
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div className="col card text-bg-dark mb-3 p-0 h-50">
-          <div className="card-body">
-            {booking.paid === true ? (
-              <div className="row d-flex justify-content-center">
-                <img className="col-2 icon-image" src={paymentreceived} />
+                )}
+                <div className="pt-3 pb-3 d-grid gap-2">
+                  <button className="btn btn-outline-info" onClick={handleShowUpdateBooking}>
+                    Update Booking Details
+                  </button>
+                </div>
+                <div className="d-grid gap-2">
+                  <button className="btn btn-outline-secondary" onClick={handleShowCancellation}>
+                    Cancel Booking
+                  </button>
+                </div>
+                <Modal show={isBookingUpdateVisible} onClose={handleHideUpdateBooking}>
+                  <BookingsUpdate
+                    onCancel={handleHideUpdateBooking}
+                    onUpdateBooking={handleUpdateBooking}
+                    booking={booking}
+                  />
+                </Modal>
               </div>
-            ) : (
-              <Link className="d-grid gap-2 btn btn-outline-warning" to={`/process-payment/${booking.id}`}>
-                Submit Payment
-              </Link>
-            )}
-            <div className="pt-3 pb-3 d-grid gap-2">
-              <button className="btn btn-outline-info" onClick={handleShowUpdateBooking}>
-                Update Booking Details
-              </button>
             </div>
-            <div className="d-grid gap-2">
-              <button className="btn btn-outline-secondary" onClick={handleShowCancellation}>
-                Cancel Booking
-              </button>
-            </div>
-            <Modal show={isBookingUpdateVisible} onClose={handleHideUpdateBooking}>
-              <BookingsUpdate
-                onCancel={handleHideUpdateBooking}
-                onUpdateBooking={handleUpdateBooking}
-                booking={booking}
-              />
+            <Modal show={isCancellationVisible} onClose={handleHideCancellation}>
+              <div className="card m-4">
+                <p className="cardTitle">Are you sure you want to cancel?</p>
+                <button className="btn btn-outline-secondary" onClick={() => handleDestroyBooking(booking)}>
+                  Yes, proceed.
+                </button>
+              </div>
             </Modal>
           </div>
-        </div>
-        <Modal show={isCancellationVisible} onClose={handleHideCancellation}>
-          <div className="card m-4">
-            <p className="cardTitle">Are you sure you want to cancel?</p>
-            <button className="btn btn-outline-secondary" onClick={() => handleDestroyBooking(booking)}>
-              Yes, proceed.
-            </button>
-          </div>
-        </Modal>
-      </div>
-      {smallScreen ? (
-        <div className="card shadow mb-4">
-          {reviews?.map((review) => (
-            <div key={review.id} className="card">
-              {isReviewUpdateVisible !== review.id ? (
-                <>
-                  <div>
-                    <ReactStars
-                      count={5}
-                      value={review.rating}
-                      edit={false}
-                      size={24}
-                      isHalf={true}
-                      activeColor="#e98dd7"
-                      color="#ecb5bd"
-                    />
-                    <p>{review.comment}</p>
-                  </div>
-                  <div className="row d-flex justify-content-center">
-                    <div className="col-lg-1 d-grid gap-2">
-                      <button className=" m-1 btn btn-dark btn-sm" onClick={() => handleShowUpdateReview(review)}>
-                        Edit
-                      </button>
-                    </div>
-                    <div className="col-lg-1 d-grid gap-2">
-                      <button
-                        className=" m-1 btn btn-outline-secondary btn-sm"
-                        onClick={() => handleDestroyReview(review)}
-                      >
-                        Delete
-                      </button>
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <ReviewsUpdate review={review} booking={booking} onUpdateReview={handleUpdateReview} />
-              )}
-            </div>
-          ))}
-          <ReviewsNew booking={booking} onCreateReview={handleCreateReview} />
-        </div>
-      ) : (
-        <div className="card shadow mb-4">
-          {reviews?.map((review) => (
-            <div key={review.id} className="card">
-              {isReviewUpdateVisible !== review.id ? (
-                <div className="card">
+          <div className="card shadow mb-4">
+            {reviews?.map((review) => (
+              <div key={review.id} className="card">
+                {isReviewUpdateVisible !== review.id ? (
                   <>
-                    <ReactStars
-                      count={5}
-                      value={review.rating}
-                      edit={false}
-                      size={24}
-                      isHalf={true}
-                      activeColor="#e98dd7"
-                      color="#ecb5bd"
-                    />
-                    <p>{review.comment}</p>
-                  </>
-                  <div className="row d-flex justify-content-center">
-                    <div className="col-lg-1 d-grid gap-2">
-                      <button className=" m-1 btn btn-dark btn-sm" onClick={() => handleShowUpdateReview(review)}>
-                        Edit
-                      </button>
+                    <div>
+                      <ReactStars
+                        count={5}
+                        value={review.rating}
+                        edit={false}
+                        size={24}
+                        isHalf={true}
+                        activeColor="#e98dd7"
+                        color="#ecb5bd"
+                      />
+                      <p>{review.comment}</p>
                     </div>
-                    <div className="col-lg-1 d-grid gap-2">
-                      <button
-                        className=" m-1 btn btn-outline-secondary btn-sm"
-                        onClick={() => handleDestroyReview(review)}
-                      >
-                        Delete
-                      </button>
+                    <div className="row d-flex justify-content-center">
+                      <div className="col-lg-1 d-grid gap-2">
+                        <button className=" m-1 btn btn-dark btn-sm" onClick={() => handleShowUpdateReview(review)}>
+                          Edit
+                        </button>
+                      </div>
+                      <div className="col-lg-1 d-grid gap-2">
+                        <button
+                          className=" m-1 btn btn-outline-secondary btn-sm"
+                          onClick={() => handleDestroyReview(review)}
+                        >
+                          Delete
+                        </button>
+                      </div>
+                    </div>
+                  </>
+                ) : (
+                  <ReviewsUpdate review={review} booking={booking} onUpdateReview={handleUpdateReview} />
+                )}
+              </div>
+            ))}
+            <ReviewsNew booking={booking} onCreateReview={handleCreateReview} />
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="row card shadow mb-4">
+            <MapComponent
+              className="p-0 m-0 card-image-top"
+              booking={booking}
+              latitude={booking.latitude}
+              longitude={booking.longitude}
+            />
+            <div className="col">
+              <p className="m-3 fs-5 fw-semibold">Event Details</p>
+              <div className="card row">
+                <div className="card-header">{booking.event_name}</div>
+                <ul className="list-group list-group-flush">
+                  <li className="list-group-item">{booking.address}</li>
+                  <li className="list-group-item">
+                    {booking.city}, {booking.state}
+                  </li>
+                  <li className="list-group-item">{booking.postal_code}</li>
+                  <li className="list-group-item"></li>
+                  <li className="list-group-item">{formatDate(booking.start_time)} </li>
+                  <li className="list-group-item">
+                    {formatTime(booking.start_time)} – {formatTime(booking.end_time)}
+                  </li>
+                  <li className="list-group-item"></li>
+
+                  <div className="card mt-0 p-0 row-12">
+                    <ul className="list-group list-group-flush">
+                      <li className="list-group-item fs-6 fst-italic">Rate ${booking.performer_rate} hourly</li>
+                    </ul>
+                    <div className="card-header fs-6 fw-semibold">Total {formatMoney(booking.total)}</div>
+                  </div>
+                  <li className="list-group-item">
+                    <small>{booking.performer_email}</small> <br />
+                    <small>{formatPhoneNumber(booking.performer_phone_number)}</small>
+                  </li>
+                  <li className="list-group-item">
+                    <small>
+                      <Link className="link-dark text-wrap fst-italic" to={`/performers/${booking.performer_id}`}>
+                        See {booking.performer_name}'s Page
+                      </Link>
+                    </small>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className="col card text-bg-dark mb-3 p-0 h-50">
+              <div className="card-body">
+                {booking.paid === true ? (
+                  <div className="row d-flex justify-content-center">
+                    <img className="col-2 " src={paymentreceived} />
+                  </div>
+                ) : (
+                  <Link className="d-grid gap-2 btn btn-outline-warning" to={`/process-payment/${booking.id}`}>
+                    Submit Payment
+                  </Link>
+                )}
+                <div className="pt-3 pb-3 d-grid gap-2">
+                  <button className="btn btn-outline-info" onClick={handleShowUpdateBooking}>
+                    Update Booking Details
+                  </button>
+                </div>
+                <div className="d-grid gap-2">
+                  <button className="btn btn-outline-secondary" onClick={handleShowCancellation}>
+                    Cancel Booking
+                  </button>
+                </div>
+                <Modal show={isBookingUpdateVisible} onClose={handleHideUpdateBooking}>
+                  <BookingsUpdate
+                    onCancel={handleHideUpdateBooking}
+                    onUpdateBooking={handleUpdateBooking}
+                    booking={booking}
+                  />
+                </Modal>
+              </div>
+            </div>
+            <Modal show={isCancellationVisible} onClose={handleHideCancellation}>
+              <div className="card m-4">
+                <p className="cardTitle">Are you sure you want to cancel?</p>
+                <button className="btn btn-outline-secondary" onClick={() => handleDestroyBooking(booking)}>
+                  Yes, proceed.
+                </button>
+              </div>
+            </Modal>
+          </div>
+          <div className="card shadow mb-4">
+            {reviews?.map((review) => (
+              <div key={review.id} className="card">
+                {isReviewUpdateVisible !== review.id ? (
+                  <div className="card">
+                    <>
+                      <ReactStars
+                        count={5}
+                        value={review.rating}
+                        edit={false}
+                        size={24}
+                        isHalf={true}
+                        activeColor="#e98dd7"
+                        color="#ecb5bd"
+                      />
+                      <p>{review.comment}</p>
+                    </>
+                    <div className="row d-flex justify-content-center">
+                      <div className="col-lg-1 d-grid gap-2">
+                        <button className=" m-1 btn btn-dark btn-sm" onClick={() => handleShowUpdateReview(review)}>
+                          Edit
+                        </button>
+                      </div>
+                      <div className="col-lg-1 d-grid gap-2">
+                        <button
+                          className=" m-1 btn btn-outline-secondary btn-sm"
+                          onClick={() => handleDestroyReview(review)}
+                        >
+                          Delete
+                        </button>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ) : (
-                <ReviewsUpdate review={review} booking={booking} onUpdateReview={handleUpdateReview} />
-              )}
-            </div>
-          ))}
-          <ReviewsNew booking={booking} onCreateReview={handleCreateReview} />
-        </div>
+                ) : (
+                  <ReviewsUpdate review={review} booking={booking} onUpdateReview={handleUpdateReview} />
+                )}
+              </div>
+            ))}
+            <ReviewsNew booking={booking} onCreateReview={handleCreateReview} />
+          </div>
+        </>
       )}
     </div>
   );
