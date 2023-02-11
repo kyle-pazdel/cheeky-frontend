@@ -21,7 +21,8 @@ import useWindowDimensions from "./useWindowDimensions";
 function App() {
   // axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "http://localhost:3000" : "/";
   axios.defaults.baseURL = process.env.NODE_ENV === "development" ? "https://cheeky-api.com/" : null;
-  // axios.defaults.baseURL = process.env.NODE_ENV === "production" ? "http://52.38.153.86" : null;
+  axios.defaults.baseURL = process.env.NODE_ENV === "production" ? "https://cheeky-api.com/" : null;
+
   return (
     <BrowserRouter>
       <div>
