@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import imageCompression from "browser-image-compression";
+import { Login } from "./Login";
 
 export function FileForm(props) {
   const [errors, setErrors] = useState([]);
@@ -9,6 +10,7 @@ export function FileForm(props) {
 
   async function handleSubmit(event) {
     event.preventDefault();
+    console.log(event.target.image.files[0]);
     const imageFile = event.target.image.files[0];
     const options = {
       maxSizeMB: 0.14,
