@@ -18,7 +18,7 @@ export function ProfileImageNew(props) {
     event.preventDefault();
     const imageFile = event.target.image.files[0];
     const options = {
-      maxSizeMB: 0.14,
+      maxSizeMB: 2,
     };
     const data = new FormData();
     try {
@@ -31,25 +31,14 @@ export function ProfileImageNew(props) {
     data.append("post[title]", event.target.title.value);
     submitToAPI(data);
     event.target.reset();
-    window.location.href = "/me";
   }
-
-  // const handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   const data = new FormData();
-  //   data.append("post[performer_id]", performer.id);
-  //   data.append("post[title]", event.target.title.value);
-  //   data.append("post[image]", event.target.image.files[0]);
-  //   submitToAPI(data);
-  //   event.target.reset();
-  //   window.location.href = "/me";
-  // };
 
   const submitToAPI = (data) => {
     axios
       .post(`/posts.json`, data)
       .then((response) => {
         console.log(response.data.image_url);
+        window.location.href = "/me";
       })
       .catch((error) => {
         console.log(error.response.data.errors);

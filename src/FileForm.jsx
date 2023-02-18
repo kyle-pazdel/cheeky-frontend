@@ -10,10 +10,9 @@ export function FileForm(props) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    console.log(event.target.image.files[0]);
     const imageFile = event.target.image.files[0];
     const options = {
-      maxSizeMB: 0.14,
+      maxSizeMB: 2,
       maxWidthOrHeight: 1920,
     };
     const data = new FormData();
@@ -27,12 +26,12 @@ export function FileForm(props) {
     data.append("post[title]", event.target.title.value);
     submitToAPI(data);
     event.target.reset();
-    window.location.href = "/me";
   }
   const submitToAPI = (data) => {
     axios
       .post(`/posts.json`, data)
       .then((response) => {
+        window.location.href = "/me";
         console.log(response.data.image_url);
       })
       .catch((error) => {
