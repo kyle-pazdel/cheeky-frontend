@@ -39,6 +39,7 @@ export function BookingsShow() {
     axios.get(`/bookings/${params.id}.json`).then((response) => {
       setBooking(response.data);
       setReviews(response.data.reviews);
+      console.log(response.data);
     });
   };
 

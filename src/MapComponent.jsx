@@ -2,8 +2,10 @@ import { MapContainer, TileLayer, useMap, Popup, Marker } from "react-leaflet";
 import L from "leaflet";
 import marker from "./assets/lipstick2.svg";
 import "leaflet/dist/leaflet.css";
+import { useState, useEffect } from "react";
 
 export function MapComponent(props) {
+  const defaultPosition = [33.823101, -116.549431];
   const position = [props.latitude, props.longitude];
 
   const myIcon = new L.icon({
@@ -18,7 +20,9 @@ export function MapComponent(props) {
   return (
     <div>
       <div className="leaflet-container">
-        {props.longitude !== undefined ? (
+        {props.latitude == null ? (
+          <div>ADDRESS NOT FOUND ON MAP</div>
+        ) : (
           <MapContainer center={position} zoom={14} scrollWheelZoom={false}>
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -33,7 +37,7 @@ export function MapComponent(props) {
               </Popup>
             </Marker>
           </MapContainer>
-        ) : null}
+        )}
       </div>
     </div>
   );
