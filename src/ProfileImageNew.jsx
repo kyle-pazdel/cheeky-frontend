@@ -50,10 +50,10 @@ export function ProfileImageNew(props) {
 
   return (
     <div className="card container d-flex flex-column align-items-center p-5">
-      <div clasName="mb-3" style={{ width: "30rem" }}>
+      <div clasName="mb-3">
         <p className="m-3 fs-4 fw-semibold card-title">Add Image</p>
         <p className="fs-6 fw-lighter">
-          File must be in <strong>jpeg</strong> format and cannot exceed <strong>100kb</strong>
+          File must be in <strong>jpeg</strong> / <strong>png</strong> format and cannot exceed <strong>1MB</strong>
         </p>
         <ul></ul>
         <ul>
