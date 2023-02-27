@@ -37,7 +37,6 @@ export function ProfileImageNew(props) {
     axios
       .post(`/posts.json`, data)
       .then((response) => {
-        console.log(response.data.image_url);
         window.location.href = "/me";
       })
       .catch((error) => {

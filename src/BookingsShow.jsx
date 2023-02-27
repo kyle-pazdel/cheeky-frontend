@@ -27,10 +27,8 @@ export function BookingsShow() {
   const handleReviewsLayout = () => {
     if (width < 900) {
       setSmallScreen(true);
-      console.log("true");
     } else {
       setSmallScreen(false);
-      console.log("false");
     }
   };
   useEffect(handleReviewsLayout, []);
@@ -39,7 +37,6 @@ export function BookingsShow() {
     axios.get(`/bookings/${params.id}.json`).then((response) => {
       setBooking(response.data);
       setReviews(response.data.reviews);
-      console.log(response.data);
     });
   };
 

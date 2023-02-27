@@ -3,10 +3,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export function DatePickerComponent(props) {
-  // const [startDate, setStartDate] = useState(null);
-  // console.log(startDate);
-  // const [endDate, setEndDate] = useState(null);
-
   const handleStartChange = (event) => {
     props.start(event.target.value);
   };
@@ -63,10 +59,6 @@ export function DatePickerComponent(props) {
           allowSameDay={true}
         />
       </div>
-      {/* <div>
-        <p>Selected start date: {props.start ? props.start.toString() : null}</p>
-        <p>Selected end date: {props.end ? props.end.toString() : null}</p>
-      </div> */}
     </div>
   );
 }
