@@ -122,6 +122,8 @@ export function Signup() {
             value={password}
             onChange={handlePasswordChange}
           ></input>
+        </div>
+        <div className="input-group input-group-sm mb-3">
           <span className="input-group-text" id="inputGroup-sizing-sm">
             Confirm Password
           </span>
