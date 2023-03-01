@@ -30,7 +30,7 @@ export function FileForm(props) {
   const submitToAPI = (data) => {
     axios
       .post(`/posts.json`, data)
-      .then((response) => {
+      .then(() => {
         window.location.href = "/me";
       })
       .catch((error) => {
