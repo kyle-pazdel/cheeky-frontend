@@ -32,7 +32,6 @@ export function FileForm(props) {
       .post(`/posts.json`, data)
       .then(() => {
         window.location.href = "/me";
-        console.log(response.data.image_url);
       })
       .catch((error) => {
         console.log(error.response.data.errors);

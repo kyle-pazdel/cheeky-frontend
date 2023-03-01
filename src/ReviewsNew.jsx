@@ -12,7 +12,6 @@ export function ReviewsNew(props) {
       rating: rating,
       booking_id: props.booking.id,
     };
-    console.log(params);
     props.onCreateReview(params, () => event.target.reset());
     event.target.reset();
   };

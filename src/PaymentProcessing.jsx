@@ -14,7 +14,6 @@ export function PaymentProcessing() {
 
   const handleShowBooking = () => {
     axios.get(`/bookings/${params.id}.json`).then((response) => {
-      console.log(response.data);
       setBooking(response.data);
     });
   };
@@ -31,7 +30,6 @@ export function PaymentProcessing() {
       axios
         .patch(`/bookings/${booking.id}.json`, params)
         .then((response) => {
-          console.log(response.data);
           event.target.reset();
           window.location.href = `/bookings/${booking.id}`;
         })

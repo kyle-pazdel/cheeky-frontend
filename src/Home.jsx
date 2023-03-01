@@ -9,9 +9,7 @@ export function Home() {
 
   const handleIndexPerformers = () => {
     axios.get("/performers.json").then((response) => {
-      console.log(response.data);
       sortPerformers(response.data);
-      console.log(height);
     });
   };
   const sortPerformers = (performers) => {

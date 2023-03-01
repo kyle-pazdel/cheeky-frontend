@@ -62,7 +62,6 @@ export function UsersShow() {
   const handleShowPerformerForm = (performer) => {
     setCurrentPerformer(performer);
     setIsPerformerFormVisible(true);
-    console.log(performer);
   };
 
   const handleHidePerformerForm = () => {
