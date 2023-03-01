@@ -27,9 +27,11 @@ export function PerformersBookings() {
 
   const handleShowPerformer = () => {
     axios.get(`/performers/${params.id}.json`).then((response) => {
+      console.log(response.data);
       setPerformer(response.data);
       setPosts(response.data.posts);
       setBookings(response.data.performer_bookings);
+      console.log(response.data.performer_bookings);
     });
   };
 

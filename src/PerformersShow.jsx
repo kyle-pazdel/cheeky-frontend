@@ -23,10 +23,12 @@ export function PerformersShow() {
 
   const handleShowPerformer = () => {
     axios.get(`/performers/${params.id}.json`).then((response) => {
+      console.log(response.data);
       setPerformer(response.data);
       setPosts(response.data.posts);
       setShortestGig(response.data.shortest_gig);
       setLongestGig(response.data.longest_gig);
+      console.log(response.data.posts);
     });
   };
 
@@ -47,6 +49,7 @@ export function PerformersShow() {
     axios
       .post("/bookings.json", params)
       .then((response) => {
+        console.log(response.data);
         window.location.href = `/bookings/${response.data.id}`;
       })
       .catch((error) => {
@@ -56,8 +59,10 @@ export function PerformersShow() {
   };
 
   const formatTime = (time) => {
+    console.log(time);
     if (time >= 60) {
       const quotient = time / 60;
+      console.log(quotient);
       return Math.round(quotient) + " hr";
     } else {
       return time + " min";
@@ -66,6 +71,7 @@ export function PerformersShow() {
 
   const formatPostTime = (time) => {
     const formattedTime = format(new Date(time), "MMMM dd yyyy, p");
+    console.log(formattedTime);
     return formattedTime;
   };
 

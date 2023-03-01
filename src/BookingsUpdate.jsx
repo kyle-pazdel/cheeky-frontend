@@ -65,7 +65,7 @@ export function BookingsUpdate(props) {
       />
       <p className="m-3 fs-5 text-dark fw-semibold">Update Event with {props.booking.performer_name}</p>
       <div className="card row">
-        <div className="card-header text-dark ">{eventName}</div>
+        <div class="card-header text-dark ">{eventName}</div>
         <ul className="list-group list-group-flush">
           <li className="list-group-item">{address}</li>
           <li className="list-group-item">

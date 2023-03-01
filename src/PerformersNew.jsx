@@ -24,6 +24,7 @@ export function PerformersNew() {
     axios
       .post("/performers.json", params)
       .then((response) => {
+        console.log(response.data);
         event.target.reset();
         window.location.href = "/me";
       })
