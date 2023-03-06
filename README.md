@@ -5,6 +5,7 @@
 </h1>
 
 # Cheeky
+<h4>View the Live Web App <a href="https://www.cheeky.rocks/" target="_blank">cheeky.rocks</a></h4>
 
 <p align="center" dir="center">
   <img src="https://github.com/kyle-pazdel/cheeky-frontend/blob/main/src/assets/screenshot1.png?raw=true" alt="Landing page screenshot" width="70%" >
